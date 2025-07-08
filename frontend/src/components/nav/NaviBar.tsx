@@ -7,9 +7,10 @@ export const Navibar = ({ isMenuOpen, toggleMenu }: { isMenuOpen: boolean, toggl
             <div className="mx-auto px-4">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex items-center">
-                        <a href="#" className="text-2xl font-bold text-[#b0ec2c]">
+                        <img src="/beresIcon.png" alt="Beres" className="w-10 h-10" />
+                        <div onClick={() => { window.location.href = '#home' }} className="text-2xl font-bold text-[#b0ec2c]">
                             Beres
-                        </a>
+                        </div>
                     </div>
 
                     {/* Desktop Navigation */}
