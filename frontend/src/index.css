@@ -1,17 +1,11 @@
 @import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 :root {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   font-weight: 400;
   color: #1f2937;
-  background-color: #ffffff;
+  background-color: #061511;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -20,12 +14,6 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background-color: #ffffff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -102,12 +90,6 @@ button {
 .btn-secondary:hover {
   background-color: #f9fafb;
   border-color: #d1d5db;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
 }
 
 .section {
