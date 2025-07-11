@@ -1,237 +1,145 @@
 import { useState } from 'react'
 import './App.css'
 import { Navibar } from './components/nav/NaviBar'
-import MainButton from './components/button/MainButton'
+import FloatingContactButton from './components/FloatingContactButton';
+import IncentivePopup from './components/IncentivePopup';
+import { useEffect } from 'react';
+import HeroSection from './HeroSection';
+import BenefitSection from './BenefitSection';
+import FeaturesCarousel from './FeaturesCarousel';
+import Step from './Step';
+import Feedback from './Feedback';
+
+const features = [
+  {
+    icon: (
+      <div className="w-16 h-16 bg-blue-500 bg-opacity-70 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg className="w-8 h-8 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      </div>
+    ),
+    title: "Lightning Fast",
+    desc: "Experience blazing-fast performance with our optimized solutions that deliver results in real-time.",
+  },
+  {
+    icon: (
+      <div className="w-16 h-16 bg-green-500 bg-opacity-70 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg className="w-8 h-8 text-green-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+    ),
+    title: "Secure & Reliable",
+    desc: "Your data is protected with enterprise-grade security measures and 99.9% uptime guarantee.",
+  },
+  {
+    icon: (
+      <div className="w-16 h-16 bg-purple-500 bg-opacity-70 rounded-full flex items-center justify-center mx-auto mb-4">
+        <svg className="w-8 h-8 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      </div>
+    ),
+    title: "User-Friendly",
+    desc: "Intuitive interface designed with your users in mind, making complex tasks simple and enjoyable.",
+  },
+];
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showPopup, setShowPopup] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    let triggered = false;
+
+    // Timer for 30 seconds
+    timer = setTimeout(() => {
+      if (!triggered) {
+        setShowPopup(true);
+        triggered = true;
+        window.removeEventListener('scroll', onScroll);
+      }
+    }, 30000);
+
+    // Scroll handler
+    const onScroll = () => {
+      if (!triggered && window.scrollY > 100) { // adjust scrollY threshold as needed
+        setShowPopup(true);
+        triggered = true;
+        clearTimeout(timer);
+        window.removeEventListener('scroll', onScroll);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, []);
+
+  // Carousel state
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % features.length);
+    }, 2500); // Change every 2.5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  // 2. Carousel animation state and effect
+  const [angle, setAngle] = useState(0);
+  const radius = 250; // More space between cards
+
+  
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAngle((prev) => prev + 120); // 360/3 = 120deg per step
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="relative min-h-screen text-white">
       {/* Navigation */}
       <Navibar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
 
-      <div className='mt-20'>
+    
+
         {/* Hero Section */}
-        <section id="home" className="text-white w-full">
-          <div className='w-full h-full flex justify-center items-center'>
-            <div className="max-w-full mx-auto text-center p-2">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                <span className='text-white'>Headline</span>
-                <span className="text-[#b0ec2c]"> Beres</span>
-              </h1>
-              <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-                sub headdline on discover how our solution helps to
-                achieve specifc beneft - faster and easier than before
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
-                <MainButton text="Get Started Today" handleClick={() => {}} />
-                <button className="btn-secondary text-lg px-8 py-4">
-                  Learn More
-                </button>
-              </div>
-            </div>
-            <div className='w-full h-full flex justify-center items-center bg-black'>
-              {/* <img src={heroImage} alt="Hero Image" className="w-full h-full object-cover" /> */}
-            </div>
-          </div>
-        </section>
+        <div className="max-w-7xl mx-auto px-4 py-16">
+          <HeroSection />
+        </div>
+
+        {/* Benefit Section */}
+        <div className="max-w-7xl mx-auto px-4 py-16">
+          <BenefitSection />
+        </div>
 
         {/* Features Section */}
-        <section id="features" className="section">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Why Choose Beres?
-              </h2>
-              <p className="text-lg text-white max-w-2xl mx-auto">
-                Our comprehensive suite of services is designed to meet your business needs and exceed your expectations.
-              </p>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 py-16">
+          <FeaturesCarousel />
+        </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center p-6 rounded-lg border border-gray-400 hover:shadow-lg transition-shadow bg-gray-700 bg-opacity-50">
-                <div className="w-16 h-16 bg-blue-500 bg-opacity-70 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-3">Lightning Fast</h3>
-                <p className="text-white">
-                  Experience blazing-fast performance with our optimized solutions that deliver results in real-time.
-                </p>
-              </div>
+        {/* Step Section */}
+        <div className="max-w-7xl mx-auto px-4 py-16">
+          <Step />
+        </div>
 
-              <div className="text-center p-6 rounded-lg border border-gray-400 hover:shadow-lg transition-shadow bg-gray-700 bg-opacity-50">
-                <div className="w-16 h-16 bg-green-500 bg-opacity-70 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-green-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-3">Secure & Reliable</h3>
-                <p className="text-white">
-                  Your data is protected with enterprise-grade security measures and 99.9% uptime guarantee.
-                </p>
-              </div>
-
-              <div className="text-center p-6 rounded-lg border border-gray-400 hover:shadow-lg transition-shadow bg-gray-700 bg-opacity-50">
-                <div className="w-16 h-16 bg-purple-500 bg-opacity-70 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-purple-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-3">User-Friendly</h3>
-                <p className="text-white">
-                  Intuitive interface designed with your users in mind, making complex tasks simple and enjoyable.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* About Section */}
-        <section id="about" className="section">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                    About Beres
-                  </h2>
-                  <p className="text-lg text-gray-200 mb-6">
-                    We are a forward-thinking company dedicated to providing innovative solutions that drive business success.
-                    With years of experience and a passion for excellence, we help organizations transform their operations
-                    and achieve their goals.
-                  </p>
-                  <p className="text-lg text-gray-200 mb-8">
-                    Our team of experts combines technical expertise with strategic thinking to deliver solutions that
-                    not only meet today's challenges but also prepare you for tomorrow's opportunities.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <button className="btn-primary">Learn More</button>
-                    <button className="btn-secondary">Our Story</button>
-                  </div>
-                </div>
-                <div className="relative">
-                  <div className="bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg p-8 text-white">
-                    <div className="space-y-6">
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                          <span className="text-2xl font-bold">5+</span>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold">Years of Experience</h4>
-                          <p className="text-blue-100">Proven track record</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                          <span className="text-2xl font-bold">500+</span>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold">Happy Clients</h4>
-                          <p className="text-blue-100">Worldwide satisfaction</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center">
-                        <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                          <span className="text-2xl font-bold">24/7</span>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold">Support Available</h4>
-                          <p className="text-blue-100">Always here to help</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="section">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Get In Touch
-                </h2>
-                <p className="text-lg text-gray-200 max-w-2xl mx-auto">
-                  Ready to transform your business? Contact us today and let's discuss how we can help you achieve your goals.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                  <h3 className="text-2xl font-semibold text-white mb-6">Contact Information</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center">
-                      <svg className="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      <span className="text-gray-200">+1 (555) 123-4567</span>
-                    </div>
-                    <div className="flex items-center">
-                      <svg className="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                      <span className="text-gray-200">hello@beres.com</span>
-                    </div>
-                    <div className="flex items-center">
-                      <svg className="w-6 h-6 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      <span className="text-gray-200">123 Business Ave, Suite 100, City, State 12345</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <form className="space-y-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-white mb-1">Name</label>
-                      <input
-                        type="text"
-                        id="name"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Your Name"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-white mb-1">Email</label>
-                      <input
-                        type="email"
-                        id="email"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="your@email.com"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-white mb-1">Message</label>
-                      <textarea
-                        id="message"
-                        rows={4}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Tell us about your project..."
-                      ></textarea>
-                    </div>
-                    <button type="submit" className="btn-primary w-full">
-                      Send Message
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+        {/* Feedback Section */}
+        <div className="max-w-7xl mx-auto px-4 py-16">
+          <Feedback />
+        </div>
+     
 
 
       {/* Footer */}
@@ -239,7 +147,7 @@ function App() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-2xl font-bold mb-4">Beres</h3>
+              <h3 className="text-2xl font-bold mb-4 !text-[#65d546] ">Beres</h3>
               <p className="text-gray-400 mb-4">
                 Transforming businesses with innovative solutions and exceptional service.
               </p>
@@ -262,7 +170,7 @@ function App() {
               </div>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Services</h4>
+              <h4 className="text-lg font-semibold mb-4 !text-[#65d546] ">Services</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Web Development</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Mobile Apps</a></li>
@@ -271,7 +179,7 @@ function App() {
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Company</h4>
+              <h4 className="text-lg font-semibold mb-4 !text-[#65d546] ">Company</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Our Team</a></li>
@@ -280,7 +188,7 @@ function App() {
               </ul>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Support</h4>
+              <h4 className="text-lg font-semibold mb-4 !text-[#65d546] ">Support</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
@@ -296,6 +204,16 @@ function App() {
           </div>
         </div>
       </footer>
+      <FloatingContactButton />
+      {showPopup && <IncentivePopup onClose={() => setShowPopup(false)} />}
+
+      {/* Temporary test button, bottom left */}
+      <button
+        className="fixed bottom-4 left-4 z-50 bg-blue-600 text-white px-4 py-2 rounded"
+        onClick={() => setShowPopup(true)}
+      >
+        Test Popup
+      </button>
     </div>
   )
 }
