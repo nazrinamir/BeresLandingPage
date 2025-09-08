@@ -1,11 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif , poppins;
   line-height: 1.6;
   font-weight: 400;
   color: #1f2937;
-  background-color: #012219;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

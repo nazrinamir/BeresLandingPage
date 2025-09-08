@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Navibar } from './components/nav/NaviBar'
+import Navbar from "./components/nav/NaviBar";
 import FloatingContactButton from './components/FloatingContactButton';
 import IncentivePopup from './components/IncentivePopup';
 import { useEffect } from 'react';
@@ -109,34 +109,33 @@ function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen text-white">
+    <div className="relative min-h-screen text-white w-full">
       {/* Navigation */}
-      {/* <Navibar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} /> */}
-
-
+      <Navbar/>
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div  className="rounded-b-2xl overflow-hidden">
         <HeroSection />
       </div>
 
-      {/* Benefit Section */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <BenefitSection />
-      </div>
-
       {/* Features Section */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className=' bg-white'>
         <FeaturesCarousel />
       </div>
 
+      {/* Benefit Section */}
+      <div className=' bg-[#EFEFEF]'>
+        <BenefitSection />
+      </div>
+
+
       {/* Step Section */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div >
         <Step />
       </div>
 
       {/* Feedback Section */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
+      <div >
         <Feedback />
       </div>
 
