@@ -99,7 +99,7 @@ function App() {
   const [angle, setAngle] = useState(0);
   const radius = 250; // More space between cards
 
-  
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -111,35 +111,35 @@ function App() {
   return (
     <div className="relative min-h-screen text-white">
       {/* Navigation */}
-      <Navibar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+      {/* <Navibar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} /> */}
 
-    
 
-        {/* Hero Section */}
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <HeroSection />
-        </div>
 
-        {/* Benefit Section */}
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <BenefitSection />
-        </div>
+      {/* Hero Section */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <HeroSection />
+      </div>
 
-        {/* Features Section */}
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <FeaturesCarousel />
-        </div>
+      {/* Benefit Section */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <BenefitSection />
+      </div>
 
-        {/* Step Section */}
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <Step />
-        </div>
+      {/* Features Section */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <FeaturesCarousel />
+      </div>
 
-        {/* Feedback Section */}
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <Feedback />
-        </div>
-     
+      {/* Step Section */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <Step />
+      </div>
+
+      {/* Feedback Section */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <Feedback />
+      </div>
+
 
 
       {/* Footer */}
