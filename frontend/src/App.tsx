@@ -128,21 +128,13 @@ function App() {
         <BenefitSection />
       </div>
 
-
       {/* Step Section */}
       <div >
         <Step />
       </div>
 
-      {/* Feedback Section */}
-      <div >
-        <Feedback />
-      </div>
-
-
-
       {/* Footer */}
-      <footer className="">
+      <footer className="rounded-t-2xl overflow-hidden bg-[#012219]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>

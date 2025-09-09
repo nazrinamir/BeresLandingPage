@@ -1,64 +1,34 @@
-import React, { useState } from 'react';
+// components/FeaturesGrid.tsx
+import { motion } from "framer-motion";
 
-const steps = [
-  {
-    title: 'Step 1',
-    description: "First, users interact with the landing page and get instant info. It's fast, seamless, and mobile-friendly.",
-    image: '🖼️',
-  },
-  {
-    title: 'Step 2',
-    description: "Then, users receive an email or notification about the next steps — handled automatically behind the scenes.",
-    image: '🖼️',
-  },
-  // Add more steps here if needed
-];
-
-const Step = () => {
-  const [currentStep, setCurrentStep] = useState(0);
-
+export default function step() {
   return (
-    <section id="steps" className="py-16 text-white">
-      <div className="container mx-auto px-4">
-        {/* Stepper */}
-        <div className="flex items-center justify-center mb-12">
-          {steps.map((step, idx) => (
-            <React.Fragment key={idx}>
-              <button
-                className={`flex flex-col items-center focus:outline-none transition-colors
-                  ${idx === currentStep ? 'text-blue-400 font-bold' : 'text-gray-400'}
-                `}
-                onClick={() => setCurrentStep(idx)}
-              >
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2
-                  ${idx === currentStep ? 'bg-blue-400 text-white' : 'bg-gray-700'}
-                `}>
-                  {idx + 1}
-                </div>
-                <span className="text-xs">{step.title}</span>
-              </button>
-              {idx < steps.length - 1 && (
-                <div className="w-8 h-1 bg-gray-600 mx-2 rounded" />
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+    <section id="features" className="bg-white py-20">
+      <div className="relative mx-auto max-w-6xl px-6 md:px-10">
+        {/* Floating invoice sticker */}
+        <img
+          src="/invoice.svg"
+          alt="Invoice"
+          className="hidden md:block absolute -top-28 -right-8 h-40 w-auto drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)] pointer-events-none select-none"
+        />
 
-        {/* Step Content */}
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-semibold mb-2 !text-white">{steps[currentStep].title}</h3>
-            <p className="text-lg text-gray-400 max-w-md mx-auto md:mx-0">{steps[currentStep].description}</p>
-          </div>
-          <div className="flex-1 flex justify-center">
-            <div className="w-60 h-60 bg-gray-700 rounded-xl flex items-center justify-center">
-              <span className="text-4xl">{steps[currentStep].image}</span>
-            </div>
-          </div>
+        {/* Title + subtitle */}
+        <div className="mb-10 md:mb-14 text-left">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E18]">
+            With these three simple steps
+          </h2>
+          <p className="text-2xl md:text-3xl mt-1 text-gray-400">
+            Yeah, not kidding.
+          </p>
+
+          {/* Image directly below the title */}
+          <img
+            src="Group164.svg"
+            alt="Steps illustration"
+            className="mt-6 w-full h-full"
+          />
         </div>
       </div>
     </section>
   );
-};
-
-export default Step;
+}
