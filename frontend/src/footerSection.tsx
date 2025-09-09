@@ -10,33 +10,33 @@ const FooterSection = () => {
           <h3 className="text-3xl font-extrabold text-white">Beres</h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-14 items-start">
+        <div className="flex flex-col md:flex-row gap-14 items-start">
           {/* Left: Description */}
-          <div>
+          <div className='w-full'>
             <p className="leading-relaxed text-justify max-w-sm !text-white">
-              We’re a remote software company. Care for joy as much as process.
+              We're a remote software company. Care for joy as much as process.
               See details as the baseline of quality. And we help people focus
               on what matters.
             </p>
           </div>
 
-          {/* Middle: About */}
-          <div className='flex flex-col w-full'>
+          {/* Middle: About - CENTERED */}
+          <div className='flex flex-col w-full items-center text-center'>
             <h4 className="text-xl font-semibold mb-5 !text-white">About</h4>
-            <ul className="space-y-1 grid grid-cols-3">
-              <li><a href="#features" className="!text-white">Features</a></li>
-              <li><a href="#benefits" className="!text-white">Benefits</a></li>
-              <li><a href="#" className="!text-white">Prize</a></li>
-              <li><a href="#steps" className="!text-white">Steps</a></li>
-              <li><a href="#waitlist" className="!text-white">Join our waitlist</a></li>
+            <ul className="space-y-1">
+              <li><a href="#features" className="!text-white hover:text-[#AEEA30] transition-colors">Features</a></li>
+              <li><a href="#benefits" className="!text-white hover:text-[#AEEA30] transition-colors">Benefits</a></li>
+              <li><a href="#" className="!text-white hover:text-[#AEEA30] transition-colors">Prize</a></li>
+              <li><a href="#steps" className="!text-white hover:text-[#AEEA30] transition-colors">Steps</a></li>
+              <li><a href="#waitlist" className="!text-white hover:text-[#AEEA30] transition-colors">Join our waitlist</a></li>
             </ul>
           </div>
 
           {/* Right: Social */}
-          <div className='flex flex-col items-end justify-end'>
+          <div className='flex flex-col items-end'>
             <h4 className="text-xl font-semibold mb-5 !text-white">Social</h4>
-            <div className="flex flex-col space-y-4 items-center justify-center">
-              <div className=' rounded-md p-2'>
+            <div className="flex flex-col space-y-4">
+              <div className='rounded-md p-2'>
                 <a
                   href="https://instagram.com/yourusername"
                   target="_blank"
@@ -44,10 +44,10 @@ const FooterSection = () => {
                   className="!text-white hover:text-[#E4405F] transition-colors duration-200"
                   aria-label="Follow us on Instagram"
                 >
-                  <FaInstagram size={28} color='#fff' />
+                  <FaInstagram size={28} />
                 </a>
               </div>
-              <div className=' rounded-md p-2'>
+              <div className='rounded-md p-2'>
                 <a
                   href="https://facebook.com/yourpage"
                   target="_blank"
@@ -55,7 +55,7 @@ const FooterSection = () => {
                   className="!text-white hover:text-[#1877F2] transition-colors duration-200"
                   aria-label="Follow us on Facebook"
                 >
-                  <FaFacebook size={28} color='#fff' />
+                  <FaFacebook size={28} />
                 </a>
               </div>
             </div>
