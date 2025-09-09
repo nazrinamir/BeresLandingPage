@@ -28,9 +28,12 @@ const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
       {/* Catch up now button overlapping bottom */}
       <button
         onClick={() => alert("Catch up now clicked!")}
-        className="absolute -bottom-4 bg-lime-400 text-black font-bold py-4 px-8 rounded-full shadow-md hover:bg-lime-500 transition z-40"
+        className="absolute text-xs md:text-base -bottom-4 md:-bottom-4  bg-lime-400 text-black font-bold px-4 py-2 md:px-8 md:py-4 rounded-full shadow-md hover:bg-lime-500 transition z-40"
       >
-        Catch up now
+        <strong>
+          Catch Up Now!
+        </strong>
+
       </button>
     </div>
 
