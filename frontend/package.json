@@ -4,8 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite --host\" \"node backend/server.ts\"",
+    "dev": "concurrently \"vite --host\" \"cd backend && npm run dev\"",
+    "dev:frontend": "vite --host",
+    "dev:backend": "cd backend && npm run dev",
     "build": "tsc -b && vite build",
+    "build:backend": "cd backend && npm run build",
+    "start:backend": "cd backend && npm start",
     "lint": "eslint .",
     "preview": "vite preview"
   },
