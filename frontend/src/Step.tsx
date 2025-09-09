@@ -34,6 +34,15 @@ export default function step() {
             alt="Steps desktop illustration"
             className="mt-6 w-full h-full hidden md:block"
           />
+
+       
+          <div className="mt-20 flex justify-center">
+            <img
+              src="/CTA.svg" 
+              alt="Extra illustration"
+              className="w-full h-full max-h-48"
+            />
+          </div>
         </div>
       </div>
     </section>
