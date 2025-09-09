@@ -50,3 +50,7 @@
 .animate-fadeInUp {
   animation: fadeInUp 0.8s ease-out;
 }
+
+.poppins {
+  font-family: 'Poppins', sans-serif;
+}

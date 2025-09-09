@@ -1,0 +1,130 @@
+{
+    "nav": {
+      "features": "Features",
+      "benefits": "Benefits",
+      "steps": "Steps",
+      "joinWaitlist": "Join our wait list",
+      "toggleMenu": "Toggle menu"
+    },
+    "hero": {
+      "description": "From product listing to payment gateway, we simplify the entire selling process so you can act like a boss.",
+      "emailPlaceholder": "Enter your email",
+      "joinUs": "Join Us",
+      "dealAlt": "Deal",
+      "heroAlt": "Hero"
+    },
+    "features": {
+      "title": "Beres has the features.",
+      "subtitle": "Both familiar and new.",
+      "cartAlt": "Cart",
+      "items": [
+        {
+          "title": "All-in-One Dashboard",
+          "description": "Track orders, monitor payments, manage stock, and get analysis. All from one clean dashboard. Everything's updated in real time so you stay in control."
+        },
+        {
+          "title": "Real-Time Stock Confirmation",
+          "description": "Automated stock checks on WhatsApp orders. If available, customers instantly get a payment link. If not, they're notified."
+        },
+        {
+          "title": "Easy and Safe Transaction",
+          "description": "Smooth and secure checkout so customers can pay with confidence. No complicated steps."
+        },
+        {
+          "title": "Generated E-Invoice",
+          "description": "Invoices are generated automatically for every order. Just confirm the sale."
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Beres has the benefits.",
+      "subtitle": "Both familiar and new.",
+      "items": [
+        "Straight from \nWhatsApp",
+        "Orders on \nAutopilot",
+        "Your Business, \nAll in One Place",
+        "Bye-Bye \nOverselling",
+        "Serve better, \nSell more"
+      ]
+    },
+    "steps": {
+      "steps": [
+        {
+          "title": "Step 1",
+          "description": "First, users interact with the landing page and get instant info. It's fast, seamless, and mobile-friendly."
+        },
+        {
+          "title": "Step 2",
+          "description": "Then, users receive an email or notification about the next steps — handled automatically behind the scenes."
+        }
+      ]
+    },
+    "feedback": {
+      "title": "Have any suggestions or feedback?",
+      "linkText": "Let us know here"
+    },
+    "footer": {
+      "brandName": "Beres",
+      "description": "Transforming businesses with innovative solutions and exceptional service.",
+      "services": {
+        "title": "Services",
+        "items": [
+          "Web Development",
+          "Mobile Apps",
+          "Digital Marketing",
+          "Consulting"
+        ]
+      },
+      "company": {
+        "title": "Company",
+        "items": [
+          "About Us",
+          "Our Team",
+          "Careers",
+          "News"
+        ]
+      },
+      "support": {
+        "title": "Support",
+        "items": [
+          "Help Center",
+          "Contact Us",
+          "Privacy Policy",
+          "Terms of Service"
+        ]
+      },
+      "copyright": "© 2024 Beres. All rights reserved."
+    },
+    "popup": {
+      "title": "Special Incentive!",
+      "description": "Fill in your details and get a special reward! Don't miss out on this exclusive offer.",
+      "close": "Close"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "We'd love to hear from you! Fill out the form below.",
+      "placeholders": {
+        "name": "Enter Name",
+        "phone": "Phone",
+        "email": "Email",
+        "message": "Message"
+      },
+      "submit": "SUBMIT",
+      "close": "Close contact form",
+      "openForm": "Open contact form"
+    },
+    "app": {
+      "lightningFast": {
+        "title": "Lightning Fast",
+        "description": "Experience blazing-fast performance with our optimized solutions that deliver results in real-time."
+      },
+      "secureReliable": {
+        "title": "Secure & Reliable",
+        "description": "Your data is protected with enterprise-grade security measures and 99.9% uptime guarantee."
+      },
+      "userFriendly": {
+        "title": "User-Friendly",
+        "description": "Intuitive interface designed with your users in mind, making complex tasks simple and enjoyable."
+      }
+    }
+  }

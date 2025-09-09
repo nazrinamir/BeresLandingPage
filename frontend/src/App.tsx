@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import 'boxicons/css/boxicons.min.css';
 import Navbar from "./components/nav/NaviBar";
 import FloatingContactButton from './components/button/FloatingContactButton';
 import IncentivePopup from './components/popup/IncentivePopup';
@@ -56,7 +57,7 @@ function App() {
   }
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setTimeout>;
     let triggered = false;
 
     // Timer for 30 seconds
@@ -112,10 +113,10 @@ function App() {
   return (
     <div className="relative min-h-screen text-white w-full">
       {/* Navigation */}
-      <Navbar/>
+      <Navbar />
 
       {/* Hero Section */}
-      <div  className="rounded-b-2xl overflow-hidden">
+      <div className="rounded-b-2xl overflow-hidden">
         <HeroSection />
       </div>
 

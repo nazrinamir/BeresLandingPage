@@ -1,21 +1,25 @@
 // components/BenefitSection.tsx
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "./lang/useTranslation";
 
 type Benefit = { title: string; img: string };
 
-const benefits: Benefit[] = [
-  { title: "Straight from \nWhatsApp", img: "/StraightfromWhatsApp.svg" },
-  { title: "Orders on \nAutopilot", img: "/OrdersonAutopilot.svg" },
-  { title: "Your Business, \nAll in One Place", img: "/YourBusiness.svg" },
-  { title: "Bye-Bye \nOverselling", img: "/Bye-bye.svg" },
-  { title: "Serve better, \nSell more", img: "/ServeBetter.svg" },
-];
+
 
 export default function BenefitSection() {
   const [selected, setSelected] = useState(2);
   const [hovered, setHovered] = useState<number | null>(null);
+  const { t } = useTranslation();
   const active = hovered ?? selected;
+
+  const benefits: Benefit[] = [
+    { title: t('benefits.items.0'), img: "/StraightfromWhatsApp.svg" },
+    { title: t('benefits.items.1'), img: "/OrdersonAutopilot.svg" },
+    { title: t('benefits.items.2'), img: "/YourBusiness.svg" },
+    { title: t('benefits.items.3'), img: "/Bye-bye.svg" },
+    { title: t('benefits.items.4'), img: "/ServeBetter.svg" },
+  ];
 
   return (
     <section id="benefits" className="relative bg-[#F3F4F6] py-20">
@@ -29,10 +33,10 @@ export default function BenefitSection() {
         {/* Title + subtitle (matches spacing) */}
         <div className="mb-10 md:mb-14 text-left">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E18]">
-            Beres has the benefits.
+            {t('benefits.title')}
           </h2>
           <p className="text-2xl md:text-3xl mt-1 text-gray-400">
-            Both familiar and new.
+            {t('benefits.subtitle')}
           </p>
         </div>
 

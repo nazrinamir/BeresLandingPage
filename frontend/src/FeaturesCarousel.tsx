@@ -1,15 +1,21 @@
 // components/FeaturesGrid.tsx
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "./lang/useTranslation";
 
-const items = [
-  { title: "All-in-One Dashboard", desc: "Track orders, monitor payments, manage stock, and get analysis. All from one clean dashboard. Everything’s updated in real time so you stay in control.", img: "/Group159.svg" },
-  { title: "Real-Time Stock Confirmation", desc: "Automated stock checks on WhatsApp orders. If available, customers instantly get a payment link. If not, they’re notified.", img: "/Group160.svg" },
-  { title: "Easy and Safe Transaction", desc: "Smooth and secure checkout so customers can pay with confidence. No complicated steps.", img: "/Group161.svg" },
-  { title: "Generated E-Invoice", desc: "Invoices are generated automatically for every order. Just confirm the sale.", img: "/Group162.svg" },
-];
+
 
 export default function FeaturesGrid() {
+
+  const { t } = useTranslation();
+
+  const items = [
+    { title: t('features.items.0.title'), desc: t('features.items.0.description'), img: "/Group159.svg" },
+    { title: t('features.items.1.title'), desc: t('features.items.1.description'), img: "/Group160.svg" },
+    { title: t('features.items.2.title'), desc: t('features.items.2.description'), img: "/Group161.svg" },
+    { title: t('features.items.3.title'), desc: t('features.items.3.description'), img: "/Group162.svg" },
+  ];
+
   return (
     <section id="features" className="bg-white py-20">
       <div className="relative mx-auto max-w-6xl px-6 md:px-10">
@@ -23,10 +29,10 @@ export default function FeaturesGrid() {
         {/* Title + subtitle */}
         <div className="mb-10 md:mb-14 text-left">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E18]">
-            Beres has the features.
+            {t('features.title')}
           </h2>
           <p className="text-2xl md:text-3xl mt-1 text-gray-400">
-            Both familiar and new.
+            {t('features.subtitle')}
           </p>
         </div>
 
