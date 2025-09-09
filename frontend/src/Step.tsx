@@ -18,7 +18,7 @@ const Step = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
   return (
-    <section className="py-16 text-white">
+    <section id="steps" className="py-16 text-white">
       <div className="container mx-auto px-4">
         {/* Stepper */}
         <div className="flex items-center justify-center mb-12">

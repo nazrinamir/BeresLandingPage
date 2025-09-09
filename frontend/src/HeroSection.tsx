@@ -7,32 +7,34 @@ const HeroSection = () => {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 gap-8 mt-4">
 
         {/* Left Content - smaller */}
-        <div className="md:w-5/12 w-full mb-12 md:mb-0" data-aos="fade-right">
-          {/* Heading */}
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 ml-52" >
-            <img
-              src={'/deal.svg'}
-              alt="Deal"
-              className="w-[413.53px] h-[300.55px] object-contain"
-            />
-          </h1>
+        <div className="md:w-5/12 w-full mb-12 md:mb-0 md:ml-12" data-aos="fade-right">
+          <div className="max-w-md w-full">
+            {/* Heading */}
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+              <img
+                src={'/deal.svg'}
+                alt="Deal"
+                className="w-[413.53px] h-[300.55px] object-contain"
+              />
+            </h1>
 
-          {/* Paragraph */}
-          <p className="text-lg !text-white mb-8 max-w-md text-justify ml-52">
-            From product listing to payment gateway, we simplify the entire
-            selling process so you can act like a boss.
-          </p>
+            {/* Paragraph */}
+            <p className="text-lg !text-white mb-8 text-justify">
+              From product listing to payment gateway, we simplify the entire
+              selling process so you can act like a boss.
+            </p>
 
-          {/* Email Input + Button */}
-          <div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full max-w-md ml-52">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
-            />
-            <button className="bg-[#AEEA30] text-black font-medium px-6 py-2 mr-2 rounded-full hover:bg-[#9cd426] transition">
-              Join Us
-            </button>
+            {/* Email Input + Button */}
+            <div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
+              />
+              <button className="bg-[#AEEA30] text-black font-medium px-6 py-2 mr-2 rounded-full hover:bg-[#9cd426] transition">
+                Join Us
+              </button>
+            </div>
           </div>
         </div>
 
