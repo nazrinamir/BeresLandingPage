@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import 'boxicons/css/boxicons.min.css';
 import Navbar from "./components/nav/NaviBar";
 import FloatingContactButton from './components/button/FloatingContactButton';
 import IncentivePopup from './components/popup/IncentivePopup';
