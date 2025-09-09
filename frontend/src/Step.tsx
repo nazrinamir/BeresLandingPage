@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function step() {
   return (
-    <section id="features" className="bg-white py-20">
+    <section id="steps" className="bg-white py-20">
       <div className="relative mx-auto max-w-6xl px-6 md:px-10">
         {/* Floating invoice sticker */}
         <img
@@ -24,7 +24,7 @@ export default function step() {
           {/* Responsive images */}
           {/* Mobile only */}
           <img
-            src="/Group165.svg"
+            src="/mobilesteps.svg"
             alt="Steps mobile illustration"
             className="mt-6 w-full h-full md:hidden"
           />
