@@ -19,7 +19,7 @@ export default function Navbar() {
             <img
               src="/bereslogo.svg" 
               alt="Beres Logo"
-              className="h-6 w-full"
+              className="h-5.5 w-full"
             />
           </a>
 
@@ -41,7 +41,7 @@ export default function Navbar() {
             {/* CTA */}
             <a
               href="#waitlist"
-              className="hidden sm:inline-flex h-8 items-center rounded-full bg-lime-400 px-3.5 font-semibold !text-black hover:bg-lime-300 transition"
+              className="hidden sm:inline-flex h-8 items-center rounded-full text-md bg-lime-400 px-3.5 font-semibold !text-black hover:bg-lime-300 transition"
             >
               Join our waitlist
             </a>
