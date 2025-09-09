@@ -1,10 +1,18 @@
 // components/FeaturesGrid.tsx
 import React, { useState } from "react";
-// adjust this import path if your folder structure differs
+import { motion } from "framer-motion";
 import IncentivePopup from "./components/popup/IncentivePopup";
 
 export default function Step() {
   const [showPopup, setShowPopup] = useState(false);
+
+  // Hover/tap animations (no X shift to avoid horizontal scroll)
+  const pillHover = {
+    y: -6,
+    scale: 1.03,
+    boxShadow: "0 10px 18px rgba(0,0,0,0.18)",
+  };
+  const pillTap = { scale: 0.98, y: -2 };
 
   return (
     <section id="steps" className="bg-white py-20">
@@ -19,9 +27,7 @@ export default function Step() {
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E18]">
             With these three simple steps
           </h2>
-          <p className="text-2xl md:text-3xl mt-1 text-gray-400">
-            Yeah, not kidding.
-          </p>
+          <p className="text-2xl md:text-3xl mt-1 text-gray-400">Yeah, not kidding.</p>
 
           {/* Mobile only */}
           <img src="/mobilesteps.svg" alt="Steps mobile illustration" className="mt-6 w-full h-full md:hidden" />
@@ -30,12 +36,12 @@ export default function Step() {
 
           <div className="mt-20 grid grid-cols-1 md:[grid-template-columns:2fr_3fr] gap-2">
             {/* Left */}
-            <div className="rounded-2xl bg-[#08231B] md:h-[260px] flex items-center justify-center overflow-hidden shadow-2xl">
+            <div className="rounded-2xl bg-[#08231B] md:h-[260px] flex items-center justify-center overflow-hidden">
               <img src="/Frame8.svg" alt="Extra illustration" className="w-full h-full object-contain" />
             </div>
 
             {/* Right */}
-            <div className="rounded-2xl bg-[#A7E34A] p-6 md:p-8 shadow-2xl flex flex-col md:h-[260px]">
+            <div className="rounded-2xl bg-[#A7E34A] p-6 md:p-8 flex flex-col md:h-[260px]">
               <h3 className="text-[#0B1E18] font-bold !text-sm md:text-xl mb-4">
                 Feel like helping us? Here are some ways you can. There’s{" "}
                 <button
@@ -48,8 +54,11 @@ export default function Step() {
                 as well!
               </h3>
 
-              {/* 6 thin pills – no layout push */}
-              <div className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 gap-2 overflow-auto mt-4">
+              {/* Pills (animated) */}
+              <div
+                className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 gap-2 pr-2 h-full"
+                style={{ scrollbarGutter: "stable" }}
+              >
                 {[
                   { icon: "/Waitlist.svg", label: "Join the waitlist" },
                   { icon: "/Group134.svg", label: "Tweet about us" },
@@ -58,10 +67,19 @@ export default function Step() {
                   { icon: "/1to1.svg", label: "One-to-one session" },
                   { icon: "/Sharing.svg", label: "Share with your friends" },
                 ].map((b, i) => (
-                  <button
+                  <motion.button
                     key={i}
-                    className="flex items-center gap-2 rounded-full bg-white px-2 h-10 hover:shadow-sm transition overflow-hidden"
+                    type="button"
+                    whileHover={pillHover}
+                    whileTap={pillTap}
+                    transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
+                    className="group flex items-center gap-2 rounded-full bg-white px-2 h-10 transition overflow-hidden will-change-transform transform-gpu focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
                     aria-label={b.label}
+                    onClick={() => {
+                      if (b.label === "Join the waitlist") {
+                        console.log("Join the waitlist clicked");
+                      }
+                    }}
                   >
                     <span className="flex items-center justify-center -ml-1 flex-shrink-0">
                       <img
@@ -72,10 +90,10 @@ export default function Step() {
                         }`}
                       />
                     </span>
-                    <span className="text-[0.6rem] md:text-sm font-semibold text-[#0B1E18] truncate">
+                    <span className="!text-xs md:text-sm font-semibold text-[#0B1E18] truncate">
                       {b.label}
                     </span>
-                  </button>
+                  </motion.button>
                 ))}
               </div>
             </div>
