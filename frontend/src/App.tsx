@@ -130,33 +130,25 @@ function App() {
         <BenefitSection />
       </div>
 
-
       {/* Step Section */}
       <div >
         <Step />
       </div>
 
-      {/* Feedback Section */}
-      <div >
-        <Feedback />
-      </div>
-
-
-
       {/* Footer */}
-      <footer className="">
+      <footer className="rounded-t-2xl overflow-hidden bg-[#012219]">
         <FooterSection />
       </footer>
       <FloatingContactButton />
       {showPopup && <IncentivePopup onClose={() => setShowPopup(false)} />}
 
       {/* Temporary test button, bottom left */}
-      {/* <button
+      <button
         className="fixed bottom-4 left-4 z-50 bg-blue-600 text-white px-4 py-2 rounded"
         onClick={() => setShowPopup(true)}
       >
         Test Popup
-      </button> */}
+      </button>
     </div>
   )
 }

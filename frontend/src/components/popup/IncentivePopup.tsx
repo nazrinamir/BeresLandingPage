@@ -1,39 +1,33 @@
-import React from 'react';
+import React from "react";
 
 const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
   <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-    {/* Firework container */}
+    {/* Firework container (optional, can remove if not needed) */}
     <div className="absolute inset-0 pointer-events-none">
       <div className="firework firework1"></div>
       <div className="firework firework2"></div>
       <div className="firework firework3"></div>
     </div>
-    {/* Gradient border wrapper */}
-    <div className="p-1 rounded-2xl bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 shadow-2xl">
-      <div className="bg-white text-black p-8 rounded-2xl relative">
-        <button
-          className="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl"
-          onClick={onClose}
-          aria-label="Close"
-        >
-          &times;
-        </button>
-        <div className="flex flex-col items-center">
-          <span className="text-4xl mb-2">🎉</span>
-          <h2 className="text-3xl font-extrabold mb-2 text-yellow-600 text-center drop-shadow">Special Incentive!</h2>
-          <p className="mb-4 text-center text-lg">
-            Fill in your details and get a <span className="font-bold text-pink-600">special reward</span>!<br />
-            Don’t miss out on this exclusive offer.
-          </p>
-          <button
-            className="btn-primary w-full mt-2"
-            onClick={onClose}
-          >
-            Close
-          </button>
-        </div>
-      </div>
+
+    {/* Image wrapper */}
+    <div className="relative">
+      {/* Your popup image */}
+      <img
+        src="/Incentive.svg" 
+        alt="Special Incentive"
+        className="rounded-2xl shadow-2xl max-w-sm w-full"
+      />
+
+      {/* Close button on top of the image */}
+      <button
+        onClick={onClose}
+        className="absolute top-3 right-3 bg-white/80 text-black rounded-full w-8 h-8 flex items-center justify-center hover:bg-white"
+        aria-label="Close"
+      >
+        &times;
+      </button>
     </div>
+
     {/* Firework CSS */}
     <style>
       {`
