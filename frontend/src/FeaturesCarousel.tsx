@@ -52,7 +52,7 @@ export default function FeaturesGrid() {
               <h3 className="text-[15px] font-extrabold text-[#0B1E18] leading-snug text-left">
                 {f.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#7A7A82] text-justify">
+              <p className="mt-2 text-sm leading-relaxed !text-[#4A4A4A] text-justify">
                 {f.desc}
               </p>
 
