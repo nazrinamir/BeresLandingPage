@@ -39,7 +39,7 @@ const FooterSection = () => {
           </div>
   
           {/* Bottom row */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-16 pt-8 text-sm">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-16 pt-8 text-sm ">
             <p className="!text-[#AEEA30] font-semibold">Designed by Beres</p>
             <div className="flex flex-wrap gap-8 mt-6 md:mt-0 text-gray-400">
               <a href="#" className="!text-[#AEEA30]">Privacy policy</a>

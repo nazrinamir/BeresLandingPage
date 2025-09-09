@@ -88,10 +88,16 @@ export default function BenefitSection() {
                   key={active}
                   src={benefits[active].img}
                   alt={benefits[active].title}
-                  initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -8, scale: 0.98 }}
-                  transition={{ duration: 0.25 }}
+                  initial={{ opacity: 0, y: 12, scale: 0.98, rotateY: 0 }}
+                  animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.98, rotateY: 0 }}
+                  whileHover={{
+                    rotateY: 180,  
+                  }}
+                  transition={{
+                    duration: 0.8,
+                    ease: "easeInOut",
+                  }}
                   className="w-[250px] md:w-[290px] h-auto rounded-2xl border border-[#E6E8EA] shadow-[0_10px_22px_rgba(0,0,0,0.12)] object-contain select-none"
                   draggable={false}
                 />
