@@ -21,11 +21,18 @@ export default function step() {
             Yeah, not kidding.
           </p>
 
-          {/* Image directly below the title */}
+          {/* Responsive images */}
+          {/* Mobile only */}
           <img
-            src="Group164.svg"
-            alt="Steps illustration"
-            className="mt-6 w-full h-full"
+            src="/Group165.svg"
+            alt="Steps mobile illustration"
+            className="mt-6 w-full h-full md:hidden"
+          />
+          {/* Desktop only */}
+          <img
+            src="/Group164.svg"
+            alt="Steps desktop illustration"
+            className="mt-6 w-full h-full hidden md:block"
           />
         </div>
       </div>
