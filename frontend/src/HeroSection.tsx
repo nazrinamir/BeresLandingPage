@@ -6,11 +6,11 @@ const HeroSection = () => {
   const { t } = useTranslation();
   return (
     <section id="home" className="text-white w-full py-20 bg-[#012219]">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 gap-8 mt-4">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 gap-4 md:gap-5 mt-4 w-full">
 
         {/* Left Content - smaller */}
         <div className="md:w-5/12 w-full mb-12 md:mb-0 md:ml-12 " data-aos="fade-right">
-          <div className="max-w-md w-full">
+          <div className="max-w-md mx-auto w-full">
             {/* Heading */}
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
               <img

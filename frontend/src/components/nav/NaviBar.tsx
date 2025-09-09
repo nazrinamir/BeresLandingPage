@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto">
-      <nav className="mx-auto max-w-4xl rounded-full border border-white/10 bg-black/30 backdrop-blur shadow-lg mt-4 h-full">
+      <nav className={`mx-auto max-w-4xl ${open ? 'rounded-3xl' : 'rounded-full'} border border-white/10 bg-black/30 backdrop-blur shadow-lg mt-4 h-full`}>
         <div className="flex items-center px-4 sm:px-5 py-1.5 gap-4 text-sm">
           {/* Brand Logo */}
           <a href="#home" className="flex items-center">
@@ -78,7 +78,7 @@ export default function Navbar() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-2 py-1 text-white/90 hover:bg-white/5"
+                    className="block px-2 py-1 text-white/90 hover:bg-white/5"
                   >
                     {l.label}
                   </a>

@@ -20,7 +20,7 @@ export default function FloatingContactButton() {
 
       {/* Modal Overlay */}
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 animate-fadeIn">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm animate-fadeIn">
           {/* Modal Content */}
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 relative animate-modalPop">
             {/* Close Button with SVG */}
@@ -78,7 +78,7 @@ export default function FloatingContactButton() {
       )}
 
       {/* Animations (Tailwind CSS custom classes) */}
-      <style jsx>{`
+      <style>{`
         .animate-float {
           animation: float 2.5s infinite ease-in-out;
         }
