@@ -1,7 +1,9 @@
 // components/HeroSection.tsx
 import MainButton from './components/button/MainButton';
+import { useTranslation } from './lang/useTranslation';
 
 const HeroSection = () => {
+  const { t } = useTranslation();
   return (
     <section id="home" className="text-white w-full py-20 bg-[#012219]">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 gap-8 mt-4">
@@ -20,19 +22,18 @@ const HeroSection = () => {
 
             {/* Paragraph */}
             <p className="text-lg !text-white mb-8 text-justify">
-              From product listing to payment gateway, we simplify the entire
-              selling process so you can act like a boss.
+                {t('hero.description')}
             </p>
 
             {/* Email Input + Button */}
             <div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t('hero.emailPlaceholder')}
                 className="flex-1 px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
               />
-              <button className="bg-[#AEEA30] text-black font-medium px-6 py-2 mr-2 rounded-full hover:bg-[#9cd426] transition">
-                Join Us
+              <button className="bg-[#AEEA30] text-black font-medium px-6 py-2 mr-1 rounded-full hover:bg-[#9cd426] transition">
+                {t('hero.joinUs')}
               </button>
             </div>
           </div>
