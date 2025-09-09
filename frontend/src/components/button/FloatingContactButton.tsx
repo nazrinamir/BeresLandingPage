@@ -12,7 +12,7 @@ export default function FloatingContactButton() {
         style={{ minWidth: 120 }}
         aria-label="Open contact form"
       >
-        Contact Us
+        <i className='bxr bx-phone'  ></i> 
       </button>
 
       {/* Modal Overlay */}

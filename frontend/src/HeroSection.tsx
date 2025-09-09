@@ -7,7 +7,7 @@ const HeroSection = () => {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 gap-8 mt-4">
 
         {/* Left Content - smaller */}
-        <div className="md:w-5/12 w-full mb-12 md:mb-0 md:ml-12" data-aos="fade-right">
+        <div className="md:w-5/12 w-full mb-12 md:mb-0 md:ml-12 " data-aos="fade-right">
           <div className="max-w-md w-full">
             {/* Heading */}
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
@@ -39,7 +39,7 @@ const HeroSection = () => {
         </div>
 
         {/* Right Illustration - bigger */}
-        <div className="md:w-7/12 w-full flex justify-center" data-aos="fade-left">
+        <div className="md:w-7/12 w-full md:flex justify-center hidden " data-aos="fade-left">
           <div className="overflow-hidden w-full h-full flex items-center justify-center">
             <img
               src={'/hero.svg'}
