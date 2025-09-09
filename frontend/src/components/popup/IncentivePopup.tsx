@@ -1,7 +1,7 @@
 import React from "react";
 
 const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
-  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+  <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
     <div className="relative flex flex-col items-center">
       {/* Fireworks AROUND image */}
       <div className="absolute -inset-24 pointer-events-none z-30">
