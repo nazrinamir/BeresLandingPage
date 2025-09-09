@@ -116,7 +116,7 @@ function App() {
       <Navbar />
 
       {/* Hero Section */}
-      <div className="rounded-b-2xl overflow-hidden">
+      <div className="rounded-b-3xl overflow-hidden">
         <HeroSection />
       </div>
 

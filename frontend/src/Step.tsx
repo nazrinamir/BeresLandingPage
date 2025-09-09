@@ -9,7 +9,7 @@ export default function step() {
         <img
           src="/invoice.svg"
           alt="Invoice"
-          className="hidden md:block absolute -top-28 -right-8 h-40 w-auto drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)] pointer-events-none select-none"
+          className="hidden md:block absolute -top-28 -right-8 h-48 w-auto drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)] pointer-events-none select-none"
         />
 
         {/* Title + subtitle */}

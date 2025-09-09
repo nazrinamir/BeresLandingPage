@@ -8,12 +8,12 @@ export default function FloatingContactButton() {
       {/* Floating Button */}
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-4 right-4 z-50 bg-[#65d546] text-white p-3 rounded-full shadow-xl hover:bg-[#4bb12e] hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-[#b6f5a7] animate-float"
+        className="fixed bottom-7 right-5 z-50 bg-[#65d546] text-white p-3 rounded-full shadow-xl hover:bg-[#4bb12e] hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-[#b6f5a7] animate-float"
 
         aria-label="Open contact form"
       >
         <div className="flex items-center justify-center">
-          <i className="bx bxs-phone text-2xl"></i>
+          <i className="bx bxs-phone md:text-[50px] text-[30px]"></i>
         </div>
 
       </button>
