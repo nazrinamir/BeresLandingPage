@@ -26,7 +26,7 @@ export default function BenefitSection() {
       <img
         src="/chatbubble.svg"
         alt=""
-        className="hidden md:block absolute left-0 top-52 h-[153px] w-auto drop-shadow-md pointer-events-none select-none ml-16 mt-10"
+        className="hidden md:block absolute left-0 top-52 h-48 w-auto drop-shadow-md pointer-events-none select-none ml-16 mt-10"
       />
 
       <div className="relative mx-auto max-w-6xl px-6 md:px-10">
@@ -60,12 +60,7 @@ export default function BenefitSection() {
                       transition={{ type: "spring", stiffness: 300, damping: 22 }}
                     >
                       <div
-                        className={[
-                          "text-[20px] md:text-[22px] whitespace-pre-line",
-                          isActive
-                            ? "font-extrabold text-[#0B1E18] leading-loosed"
-                            : "font-semibold text-[#BFC5CB] leading-loosed",
-                        ].join(" ")}
+                        className={["text-[20px] md:text-[22px] whitespace-pre-line", isActive ? "font-extrabold text-[#0B1E18] leading-loosed" : "font-semibold text-[#BFC5CB] leading-loosed",].join(" ")}
                       >
                         {b.title}
                       </div>
@@ -82,23 +77,17 @@ export default function BenefitSection() {
             </div>
 
             {/* RIGHT preview */}
-            <div className="md:pt-8 flex md:justify-start justify-center">
+            <div className="md:pt-8 flex md:justify-center justify-center w-full h-full">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={active}
                   src={benefits[active].img}
                   alt={benefits[active].title}
-                  initial={{ opacity: 0, y: 12, scale: 0.98, rotateY: 0 }}
-                  animate={{ opacity: 1, y: 0, scale: 1, rotateY: 0 }}
-                  exit={{ opacity: 0, y: -8, scale: 0.98, rotateY: 0 }}
-                  whileHover={{
-                    rotateY: 180,  
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    ease: "easeInOut",
-                  }}
-                  className="w-[250px] md:w-[290px] h-auto rounded-2xl border border-[#E6E8EA] shadow-[0_10px_22px_rgba(0,0,0,0.12)] object-contain select-none"
+                  initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                  transition={{ duration: 0.25 }}
+                  className="w-full md:w-full h-full rounded-2xl border border-[#E6E8EA] shadow-[0_10px_22px_rgba(0,0,0,0.12)] object-contain select-none"
                   draggable={false}
                 />
               </AnimatePresence>

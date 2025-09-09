@@ -19,12 +19,12 @@ export default function Navbar() {
             <img
               src="/bereslogo.svg" 
               alt="Beres Logo"
-              className="h-4 w-full"
+              className="h-6 w-full"
             />
           </a>
 
           {/* Desktop links */}
-          <ul className="hidden sm:flex items-center gap-5 mx-4">
+          <ul className="hidden sm:flex text-lg items-center gap-5 mx-4">
             {links.map((l) => (
               <li key={l.href}>
                 <a

@@ -23,7 +23,7 @@ export default function FeaturesGrid() {
         <img
           src="/cart.svg"
           alt="Cart"
-          className="hidden md:block absolute -top-10 right-0 h-32 w-auto drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)] pointer-events-none select-none"
+          className="hidden md:block absolute -top-10 right-0 h-48 w-auto drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)] pointer-events-none select-none"
         />
 
         {/* Title + subtitle */}

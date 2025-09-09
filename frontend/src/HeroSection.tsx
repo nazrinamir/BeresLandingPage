@@ -1,9 +1,25 @@
 // components/HeroSection.tsx
-import MainButton from './components/button/MainButton';
+import { useState } from 'react';
+import { WaitlistHelper } from './helper/waitlistHelper/waitlistHelper';
 import { useTranslation } from './lang/useTranslation';
+import { SuccessPopup } from './components/popup/SuccessPopup';
 
 const HeroSection = () => {
   const { t } = useTranslation();
+  const [email, setEmail] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSubmitWaitlist = async () => {
+    const waitlistHelper = new WaitlistHelper();
+    const response = await waitlistHelper.submit({
+      email: email,
+    });
+
+    if (response.success) {
+      setEmail('');
+      setShowPopup(true);
+    }
+  }
   return (
     <section id="home" className="text-white w-full py-20 bg-[#012219]">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 gap-4 md:gap-5 mt-4 w-full">
@@ -22,7 +38,7 @@ const HeroSection = () => {
 
             {/* Paragraph */}
             <p className="text-lg !text-white mb-8 text-justify">
-                {t('hero.description')}
+              {t('hero.description')}
             </p>
 
             {/* Email Input + Button */}
@@ -30,9 +46,11 @@ const HeroSection = () => {
               <input
                 type="email"
                 placeholder={t('hero.emailPlaceholder')}
-                className="flex-1 px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
+                className="w-full px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <button className="bg-[#AEEA30] text-black font-medium px-6 py-2 mr-1 rounded-full hover:bg-[#9cd426] transition">
+              <button onClick={handleSubmitWaitlist} className="bg-[#AEEA30] text-black font-medium px-4 py-2 mr-1 rounded-full hover:bg-[#9cd426] transition text-nowrap">
                 {t('hero.joinUs')}
               </button>
             </div>
@@ -50,6 +68,13 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      {showPopup && <SuccessPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />}
+      <button
+        className="fixed bottom-20 left-4 z-50 bg-blue-600 text-white px-4 py-2 rounded"
+        onClick={() => setShowPopup(true)}
+      >
+        Test Popup Success
+      </button>
     </section>
   );
 };
