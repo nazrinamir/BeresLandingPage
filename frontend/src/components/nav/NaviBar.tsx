@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto">
-      <nav className={`mx-auto max-w-4xl ${open ? 'rounded-3xl' : 'rounded-full'} border border-white/10 bg-black/30 backdrop-blur shadow-lg mt-4 h-full`}>
+      <nav className={`mx-auto max-w-4xl  ${open ? 'rounded-3xl' : 'rounded-full'} border border-white/10 bg-black/30 backdrop-blur shadow-lg mt-4 h-full`}>
         <div className="flex items-center px-4 sm:px-5 py-1.5 gap-4 text-sm">
           {/* Brand Logo */}
           <a href="#home" className="flex items-center">
@@ -43,7 +43,7 @@ export default function Navbar() {
               href="#waitlist"
               className="hidden sm:inline-flex h-8 items-center rounded-full bg-lime-400 px-3.5 font-semibold !text-black hover:bg-lime-300 transition"
             >
-              Join our wait list
+              Join our waitlist
             </a>
 
             {/* Mobile menu button */}
@@ -78,7 +78,7 @@ export default function Navbar() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block px-2 py-1 text-white/90 hover:bg-white/5"
+                    className="block px-2 py-1 !text-white hover:bg-white/5"
                   >
                     {l.label}
                   </a>
@@ -90,7 +90,7 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                   className="block rounded-full bg-lime-400 px-4 py-2 text-center font-semibold !text-black hover:bg-lime-300"
                 >
-                  Join our wait list
+                  Join our waitlist
                 </a>
               </li>
             </ul>

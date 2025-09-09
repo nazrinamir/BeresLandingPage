@@ -16,7 +16,7 @@ const HeroSection = () => {
               <img
                 src={'/deal.svg'}
                 alt="Deal"
-                className="w-[413.53px] h-[300.55px] object-contain"
+                className="w-[413.53px] h-[300.55px] object-contain p-6 md:p-0"
               />
             </h1>
 
