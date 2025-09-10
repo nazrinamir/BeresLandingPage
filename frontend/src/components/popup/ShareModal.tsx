@@ -31,7 +31,6 @@ export default function ShareModal({
     const tgLink = `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
     const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
     const xLink = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedText}`;
-    const msgrLink = isMobile ? `fb-messenger://share/?link=${encodedUrl}` : ""; // app deep link
 
     useEffect(() => {
         const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -94,7 +93,6 @@ export default function ShareModal({
     const targets = [
         { name: "WhatsApp", href: waLink, Icon: FaWhatsapp, color: "#25D366" },
         { name: "Telegram", href: tgLink, Icon: FaTelegramPlane, color: "#229ED9" },
-        ...(msgrLink ? [{ name: "Messenger", href: msgrLink, Icon: FaFacebookMessenger, color: "#0084FF" }] : []),
         { name: "Facebook", href: fbLink, Icon: FaFacebook, color: "#1877F2" },
         { name: "X / Twitter", href: xLink, Icon: FaTwitter, color: "#000000" },
     ];

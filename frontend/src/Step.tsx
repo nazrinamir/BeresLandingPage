@@ -72,6 +72,7 @@ export default function Step() {
                 ].map((b, i) => {
                   const isSurvey = b.label === "Complete a quick survey with us";
                   const isShare = b.label === "Share with your friends";
+                  const isIG = b.label === "Share our IG post";
 
                   const Inner = (
                     <>
@@ -89,23 +90,43 @@ export default function Step() {
                     </>
                   );
 
-                  return isSurvey ? (
-                    // Open survey in new tab
-                    <motion.a
-                      key={i}
-                      href="https://forms.office.com/r/v27frh4uhR"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={pillHover}
-                      whileTap={pillTap}
-                      transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
-                      className="group flex items-center gap-2 rounded-full bg-white px-2 h-10 transition overflow-hidden will-change-transform transform-gpu focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
-                      aria-label={b.label}
-                    >
-                      {Inner}
-                    </motion.a>
-                  ) : (
-                    // Default button (Share opens modal)
+                  if (isSurvey) {
+                    return (
+                      <motion.a
+                        key={i}
+                        href="https://forms.office.com/r/v27frh4uhR"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={pillHover}
+                        whileTap={pillTap}
+                        transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
+                        className="group flex items-center gap-2 rounded-full bg-white px-2 h-10 transition overflow-hidden will-change-transform transform-gpu focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+                        aria-label={b.label}
+                      >
+                        {Inner}
+                      </motion.a>
+                    );
+                  }
+
+                  if (isIG) {
+                    return (
+                      <motion.a
+                        key={i}
+                        href="https://www.instagram.com/beres.my/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={pillHover}
+                        whileTap={pillTap}
+                        transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
+                        className="group flex items-center gap-2 rounded-full bg-white px-2 h-10 transition overflow-hidden will-change-transform transform-gpu focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+                        aria-label={b.label}
+                      >
+                        {Inner}
+                      </motion.a>
+                    );
+                  }
+
+                  return (
                     <motion.button
                       key={i}
                       type="button"
@@ -123,8 +144,6 @@ export default function Step() {
                           console.log("Join the waitlist clicked");
                         } else if (b.label === "Tweet about us") {
                           console.log("Tweet about us clicked");
-                        } else if (b.label === "Share our IG post") {
-                          console.log("Share IG clicked");
                         }
                       }}
                     >
