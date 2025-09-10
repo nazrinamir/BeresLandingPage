@@ -144,19 +144,29 @@ export default function Step() {
                         </span>
 
                         {/* CTA capsule */}
-                        <button
-                          type="button"
-                          className="shrink-0 rounded-full bg-[#A7E34A] text-[#0B1E18] !text-[10px] md:text-xs font-extrabold px-3 py-1 border border-white hover:brightness-105 focus:outline-none whitespace-nowrap"
-                        >
-                          Click Here!
-                        </button>
+                        {b.label === "Complete a quick survey with us" ? (
+                          <a
+                            href="https://forms.office.com/r/v27frh4uhR"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="shrink-0 rounded-full bg-[#A7E34A] !text-[#0B1E18] !text-[10px] md:text-xs font-extrabold px-3 py-1 border border-white hover:brightness-105 focus:outline-none whitespace-nowrap"
+                          >
+                            Click Here!
+                          </a>
+                        ) : (
+                          <button
+                            type="button"
+                            className="shrink-0 rounded-full bg-[#A7E34A] text-[#0B1E18] !text-[10px] md:text-xs font-extrabold px-3 py-1 border border-white hover:brightness-105 focus:outline-none whitespace-nowrap"
+                          >
+                            Click Here!
+                          </button>
+                        )}
                       </motion.div>
                     ))}
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
