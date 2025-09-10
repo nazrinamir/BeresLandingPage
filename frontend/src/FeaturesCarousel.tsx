@@ -20,10 +20,22 @@ export default function FeaturesGrid() {
     <section id="features" className="bg-white py-20">
       <div className="relative mx-auto max-w-6xl px-6 md:px-10">
         {/* Cart sticker */}
-        <img
+        <motion.img
           src="/cart.svg"
           alt="Cart"
           className="hidden md:block absolute -top-10 right-0 h-48 w-auto drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)] pointer-events-none select-none"
+          animate={{
+            scale: [1, 0.9, 1],
+            rotate: [0, 0, 40, 40, 0],
+            borderRadius: ["0%", "0%", "20%", "20%", "0%"],
+          }}
+          transition={{
+            duration: 2,
+            ease: "easeInOut",
+            times: [0, 0.2, 0.5, 0.8, 1],
+            repeat: Infinity,
+            repeatDelay: 1,
+          }}
         />
 
         {/* Title + subtitle */}
