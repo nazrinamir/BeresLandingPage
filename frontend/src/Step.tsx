@@ -2,9 +2,13 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import IncentivePopup from "./components/popup/IncentivePopup";
+import ShareModal from "./components/popup/ShareModal";
+import OneToOnePopup from "./components/popup/OneToOnePopup";
 
 export default function Step() {
   const [showPopup, setShowPopup] = useState(false);
+  const [showShare, setShowShare] = useState(false);
+  const [showOneToOne, setShowOneToOne] = useState(false);
 
   // Hover/tap animations (no X shift to avoid horizontal scroll)
   const pillHover = {
@@ -41,17 +45,17 @@ export default function Step() {
             </div>
 
             {/* Right */}
-            {/* <div className="rounded-2xl bg-[#A7E34A] p-6 md:p-8 flex flex-col md:h-[260px]">
+            <div className="rounded-2xl bg-[#A7E34A] p-6 md:p-8 flex flex-col md:h-[260px]">
               <h3 className="text-[#0B1E18] font-bold !text-sm md:text-xl mb-4">
-                Feel like helping us? Here are some ways you can. There’s{" "}
+                The more you help us, the more{" "}
                 <button
                   type="button"
                   onClick={() => setShowPopup(true)}
-                  className="underline underline-offset-2 text-[#0B1E18] hover:opacity-80 focus:outline-none"
+                  className="underline underline-offset-2 text-[#0B1E18] hover:opacity-80 focus:outline-none !text-sm"
                 >
-                  incentive
+                  rewards
                 </button>{" "}
-                as well!
+                you get!
               </h3>
 
               <div
@@ -65,113 +69,88 @@ export default function Step() {
                   { icon: "/IG.svg", label: "Share our IG post" },
                   { icon: "/1to1.svg", label: "One-to-one session" },
                   { icon: "/Sharing.svg", label: "Share with your friends" },
-                ].map((b, i) => (
-                  <motion.button
-                    key={i}
-                    type="button"
-                    whileHover={pillHover}
-                    whileTap={pillTap}
-                    transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
-                    className="group flex items-center gap-2 rounded-full bg-white px-2 h-10 transition overflow-hidden will-change-transform transform-gpu focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
-                    aria-label={b.label}
-                    onClick={() => {
-                      if (b.label === "Join the waitlist") {
-                        console.log("Join the waitlist clicked");
-                      }
-                    }}
-                  >
-                    <span className="flex items-center justify-center -ml-1 flex-shrink-0">
-                      <img
-                        src={b.icon}
-                        alt=""
-                        className={`h-8 w-8 md:h-8 md:w-8 object-contain ${
-                          b.label === "Share with your friends" ? "scale-125" : ""
-                        }`}
-                      />
-                    </span>
-                    <span className="!text-xs md:text-sm font-semibold text-[#0B1E18] truncate">
-                      {b.label}
-                    </span>
-                  </motion.button>
-                ))}
-              </div>
-            </div> */}
-            {/* Right (tighter top/bottom spacing) */}
-            <div className="rounded-2xl bg-[#A7E34A] p-6 md:p-8 shadow-2xl flex flex-col">
-              <h3 className="text-[#0B1E18] font-extrabold !text-sm md:text-xl mb-1 md:mb-2">
-                The more you help us, the more{" "}
-                <button
-                  type="button"
-                  onClick={() => setShowPopup(true)}
-                  className="underline underline-offset-2 text-[#0B1E18] hover:opacity-80 focus:outline-none"
-                >
-                  rewards
-                </button>{" "}
-                you get!
-              </h3>
+                ].map((b, i) => {
+                  const isSurvey = b.label === "Complete a quick survey with us";
+                  const isShare = b.label === "Share with your friends";
 
-              <div className="w-full flex justify-center">
-                <div className="w-full max-w-2xl">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 mt-6">
-                    {[
-                      { icon: "/Waitlist.svg", label: "Join the waitlist" },
-                      { icon: "/1to1.svg", label: "One-to-one session" },
-                      { icon: "/Group.svg", label: "Complete a quick survey with us" },
-                      { icon: "/Sharing.svg", label: "Share with your friends" },
-                    ].map((b, i) => (
-                      <motion.div
-                        key={i}
-                        whileHover={{
-                          y: -4,
-                          scale: 1.01,
-                          boxShadow: "0 10px 20px rgba(0,0,0,0.12)",
-                        }}
-                        whileTap={{ scale: 0.98, y: -1 }}
-                        transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
-                        className="flex items-center w-full rounded-full bg-white h-12 px-3 gap-2 overflow-hidden"
-                      >
-                        {/* Left: icon + label */}
-                        <span className="flex items-center gap-2 min-w-0 flex-1">
-                          <img
-                            src={b.icon}
-                            alt=""
-                            className={`h-8 w-8 md:h-10 md:w-10 object-contain ${b.label === "Share with your friends" ? "scale-110" : ""
-                              }`}
-                          />
-                          <span className="!text-xs md:text-base font-semibold text-[#0B1E18] whitespace-normal break-words">
-                            {b.label}
-                          </span>
-                        </span>
+                  const Inner = (
+                    <>
+                      <span className="flex items-center justify-center -ml-1 flex-shrink-0">
+                        <img
+                          src={b.icon}
+                          alt=""
+                          className={`h-8 w-8 md:h-8 md:w-8 object-contain ${b.label === "Share with your friends" ? "scale-125" : ""
+                            }`}
+                        />
+                      </span>
+                      <span className="!text-xs md:text-sm font-semibold text-[#0B1E18] truncate">
+                        {b.label}
+                      </span>
+                    </>
+                  );
 
-                        {/* CTA capsule */}
-                        {b.label === "Complete a quick survey with us" ? (
-                          <a
-                            href="https://forms.office.com/r/v27frh4uhR"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="shrink-0 rounded-full bg-[#A7E34A] !text-[#0B1E18] !text-[10px] md:text-xs font-extrabold px-3 py-1 border border-white hover:brightness-105 focus:outline-none whitespace-nowrap"
-                          >
-                            Click Here!
-                          </a>
-                        ) : (
-                          <button
-                            type="button"
-                            className="shrink-0 rounded-full bg-[#A7E34A] text-[#0B1E18] !text-[10px] md:text-xs font-extrabold px-3 py-1 border border-white hover:brightness-105 focus:outline-none whitespace-nowrap"
-                          >
-                            Click Here!
-                          </button>
-                        )}
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
+                  return isSurvey ? (
+                    // Open survey in new tab
+                    <motion.a
+                      key={i}
+                      href="https://forms.office.com/r/v27frh4uhR"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={pillHover}
+                      whileTap={pillTap}
+                      transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
+                      className="group flex items-center gap-2 rounded-full bg-white px-2 h-10 transition overflow-hidden will-change-transform transform-gpu focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+                      aria-label={b.label}
+                    >
+                      {Inner}
+                    </motion.a>
+                  ) : (
+                    // Default button (Share opens modal)
+                    <motion.button
+                      key={i}
+                      type="button"
+                      whileHover={pillHover}
+                      whileTap={pillTap}
+                      transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
+                      className="group flex items-center gap-2 rounded-full bg-white px-2 h-10 transition overflow-hidden will-change-transform transform-gpu focus:outline-none focus-visible:ring-2 focus-visible:ring-black/20"
+                      aria-label={b.label}
+                      onClick={() => {
+                        if (isShare) {
+                          setShowShare(true);
+                        } else if (b.label === "One-to-one session") {
+                          setShowOneToOne(true);
+                        } else if (b.label === "Join the waitlist") {
+                          console.log("Join the waitlist clicked");
+                        } else if (b.label === "Tweet about us") {
+                          console.log("Tweet about us clicked");
+                        } else if (b.label === "Share our IG post") {
+                          console.log("Share IG clicked");
+                        }
+                      }}
+                    >
+                      {Inner}
+                    </motion.button>
+                  );
+                })}
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
+      {/* Modals (render ONCE, outside the map) */}
+      {showShare && (
+        <ShareModal
+          onClose={() => setShowShare(false)}
+          shareText="Beres — the easiest way to run your WhatsApp business. Check this out!"
+        />
+      )}
       {showPopup && <IncentivePopup onClose={() => setShowPopup(false)} />}
+      <OneToOnePopup
+        isOpen={showOneToOne}
+        onClose={() => setShowOneToOne(false)}
+      />
     </section>
   );
 }
