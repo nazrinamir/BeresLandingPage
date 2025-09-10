@@ -110,44 +110,50 @@ export default function Step() {
                 you get!
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 md:gap-x-6 h-full mt-6">
-                {[
-                  { icon: "/Waitlist.svg", label: "Join the waitlist" },
-                  { icon: "/1to1.svg", label: "One-to-one session" },
-                  { icon: "/Group.svg", label: "Complete a quick survey with us" },
-                  { icon: "/Sharing.svg", label: "Share with your friends" },
-                ].map((b, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ y: -4, scale: 1.01, boxShadow: "0 10px 20px rgba(0,0,0,0.12)" }}
-                    whileTap={{ scale: 0.98, y: -1 }}
-                    transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
-                    className="flex items-center rounded-full bg-white h-12 px-3 gap-2 overflow-hidden transform-gpu"
-                  >
-                    {/* Left: icon + label */}
-                    <span className="flex items-center gap-2 min-w-0">
-                      <span className="flex items-center justify-center -ml-1 flex-shrink-0">
-                        <img
-                          src={b.icon}
-                          alt=""
-                          className={`h-9 w-9 md:h-10 md:w-10 object-contain ${b.label === "Share with your friends" ? "scale-110" : ""
-                            }`}
-                        />
-                      </span>
-                      <span className="!text-xs md:text-sm font-semibold text-[#0B1E18] truncate">
-                        {b.label}
-                      </span>
-                    </span>
+              <div className="w-full flex justify-center">
+                <div className="w-full max-w-2xl">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 mt-6">
+                    {[
+                      { icon: "/Waitlist.svg", label: "Join the waitlist" },
+                      { icon: "/1to1.svg", label: "One-to-one session" },
+                      { icon: "/Group.svg", label: "Complete a quick survey with us" },
+                      { icon: "/Sharing.svg", label: "Share with your friends" },
+                    ].map((b, i) => (
+                      <motion.div
+                        key={i}
+                        whileHover={{
+                          y: -4,
+                          scale: 1.01,
+                          boxShadow: "0 10px 20px rgba(0,0,0,0.12)",
+                        }}
+                        whileTap={{ scale: 0.98, y: -1 }}
+                        transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
+                        className="flex items-center w-full rounded-full bg-white h-12 px-3 gap-2 overflow-hidden"
+                      >
+                        {/* Left: icon + label */}
+                        <span className="flex items-center gap-2 min-w-0 flex-1">
+                          <img
+                            src={b.icon}
+                            alt=""
+                            className={`h-8 w-8 md:h-10 md:w-10 object-contain ${b.label === "Share with your friends" ? "scale-110" : ""
+                              }`}
+                          />
+                          <span className="!text-xs md:text-base font-semibold text-[#0B1E18] whitespace-normal break-words">
+                            {b.label}
+                          </span>
+                        </span>
 
-                    {/* CTA capsule (kept snug) */}
-                    <button
-                      type="button"
-                      className="shrink-0 rounded-full bg-[#A7E34A] text-[#0B1E18] !text-[6px] md:!text-xs font-extrabold px-3 py-1 border border-white hover:brightness-105 focus:outline-none ml-2"
-                    >
-                      Click Here!
-                    </button>
-                  </motion.div>
-                ))}
+                        {/* CTA capsule */}
+                        <button
+                          type="button"
+                          className="shrink-0 rounded-full bg-[#A7E34A] text-[#0B1E18] !text-[10px] md:text-xs font-extrabold px-3 py-1 border border-white hover:brightness-105 focus:outline-none whitespace-nowrap"
+                        >
+                          Click Here!
+                        </button>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
