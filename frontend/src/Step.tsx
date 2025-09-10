@@ -65,6 +65,23 @@ export default function Step() {
     { icon: "/Sharing.svg", label: "Share with your friends", as: "button" }
   ]), []);
 
+  const scrollToWaitlist = () => {
+    // try the email input first
+    const emailEl = document.getElementById("waitlist-email") as HTMLInputElement | null;
+    if (emailEl) {
+      emailEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      // small delay helps iOS to focus after scroll
+      window.setTimeout(() => {
+        // preventScroll avoids another jump
+        emailEl.focus({ preventScroll: true } as any);
+      }, 350);
+      return;
+    }
+    // fallback: scroll to the hero section
+    const hero = document.getElementById("home");
+    hero?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <motion.section
       id="steps"
@@ -213,6 +230,25 @@ export default function Step() {
                       );
                     }
 
+                    if (b.label === "Join the waitlist") {
+                      return (
+                        <motion.button
+                          key={i}
+                          type="button"
+                          variants={item}
+                          whileHover={{ y: -6, scale: 1.03, boxShadow: "0 10px 18px rgba(0,0,0,0.18)" }}
+                          whileTap={{ scale: 0.98, y: -2 }}
+                          onMouseMove={tilt.onMove}
+                          onMouseLeave={tilt.onLeave}
+                          style={tilt.style}
+                          className={common}
+                          aria-label={b.label}
+                          onClick={scrollToWaitlist}       
+                        >
+                          {Inner}
+                        </motion.button>
+                      );
+                    }
                     return (
                       <motion.button
                         key={i}
@@ -235,6 +271,10 @@ export default function Step() {
                         {Inner}
                       </motion.button>
                     );
+
+
+
+
                   })}
                 </motion.div>
               </motion.div>
