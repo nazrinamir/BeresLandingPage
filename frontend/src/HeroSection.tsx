@@ -62,6 +62,7 @@ const HeroSection = () => {
             {/* Email Input + Button */}
             <div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full">
               <input
+                id="waitlist-email"
                 type="email"
                 placeholder={t('hero.emailPlaceholder')}
                 className="w-full px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
