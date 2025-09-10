@@ -17,7 +17,7 @@ export default function FeaturesGrid() {
   ];
 
   return (
-    <section id="features" className="bg-white py-20">
+    <section className="bg-white py-20">
       <div className="relative mx-auto max-w-6xl px-6 md:px-10">
         {/* Cart sticker */}
         <motion.img

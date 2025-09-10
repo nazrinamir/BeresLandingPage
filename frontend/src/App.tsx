@@ -119,7 +119,7 @@ function AppContent() {
       <ToastContainer />
 
       {/* Toast Test Buttons */}
-      <div className="fixed bottom-50 left-4 z-50 flex flex-col gap-2">
+      {/* <div className="fixed bottom-50 left-4 z-50 flex flex-col gap-2">
         <button
           className="bg-green-600 text-white px-3 py-2 rounded text-sm"
           onClick={showSuccessToast}
@@ -150,7 +150,7 @@ function AppContent() {
         >
           Test Popup
         </button>
-      </div>
+      </div> */}
     </div>
   )
 }

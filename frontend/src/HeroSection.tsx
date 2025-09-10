@@ -3,11 +3,18 @@ import { useState } from 'react';
 import { WaitlistHelper } from './helper/waitlistHelper/waitlistHelper';
 import { useTranslation } from './lang/useTranslation';
 import { SuccessPopup } from './components/popup/SuccessPopup';
+import { useToast } from './components/toast';
 
 const HeroSection = () => {
   const { t } = useTranslation();
+  const { addToast } = useToast();
   const [email, setEmail] = useState('');
   const [showPopup, setShowPopup] = useState(false);
+
+  const resetForm = () => {
+    setEmail('');
+    setShowPopup(false);
+  }
 
   const handleSubmitWaitlist = async () => {
     const waitlistHelper = new WaitlistHelper();
@@ -16,9 +23,20 @@ const HeroSection = () => {
     });
 
     if (response.success) {
-      setEmail('');
       setShowPopup(true);
+      addToast({
+        type: 'success',
+        message: response.message,
+        duration: 5000
+      });
+    } else {
+      addToast({
+        type: 'error',
+        message: response.message,
+        duration: 5000
+      });
     }
+    resetForm();
   }
   return (
     <section id="home" className="text-white w-full py-20 bg-[#012219]">

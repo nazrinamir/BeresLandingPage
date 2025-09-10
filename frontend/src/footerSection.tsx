@@ -15,7 +15,6 @@ const FooterSection = () => {
         {/* Logo always on top, full width */}
         <div className="flex items-center space-x-3 mb-10">
           <img src="/bereslogo.svg" alt="Beres Logo" className="h-full w-40" />
-          <h3 className="text-3xl font-extrabold text-white">Beres</h3>
         </div>
 
         <div className="flex flex-col md:flex-row gap-14 items-start">
@@ -46,7 +45,7 @@ const FooterSection = () => {
             <div className="flex flex-col space-y-4">
               <div className='rounded-md p-2'>
                 <a
-                  href="https://instagram.com/yourusername"
+                  href="https://www.instagram.com/beres.my/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="!text-white hover:text-[#E4405F] transition-colors duration-200"
