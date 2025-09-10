@@ -1,3 +1,4 @@
+// components/popup/IncentivePopup.tsx
 import React from "react";
 
 const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
@@ -17,12 +18,12 @@ const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
 
       {/* Popup image */}
       <img
-        src="/Group168.svg"
+        src="/Chop1.svg"
         alt="Special Incentive"
         className="relative w-[90vw] max-w-2xl rounded-2xl z-10"
       />
 
-      {/* Close button inside image */}
+      {/* Close button */}
       <button
         onClick={onClose}
         className="absolute top-4 right-4 text-white hover:text-red-400 text-[64px] leading-none z-40 font-bold"
@@ -31,30 +32,20 @@ const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
         X
       </button>
 
-      {/* Catch up now button overlapping bottom */}
-      <button
-        onClick={() => alert("Catch up now clicked!")}
-        className="absolute text-xs md:text-base -bottom-4 md:-bottom-4  bg-lime-400 text-black font-bold px-4 py-2 md:px-8 md:py-4 rounded-full shadow-md hover:bg-lime-500 transition z-40"
+      <a
+        href="https://forms.office.com/r/v27frh4uhR"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute text-xs md:text-base -bottom-4 md:-bottom-4 bg-lime-400 !text-black font-bold px-4 py-2 md:px-8 md:py-4 rounded-full shadow-md hover:bg-lime-500 transition z-40"
       >
-        <strong>
-          Catch Up Now!
-        </strong>
-
-      </button>
+        <strong>Catch Up Now!</strong>
+      </a>
     </div>
 
     {/* Firework CSS */}
     <style>{`
-      .firework {
-        position: absolute;
-        width: 12px; 
-        height: 12px;
-        background: transparent;
-        border-radius: 50%;
-        filter: drop-shadow(0 0 4px rgba(255,255,255,0.8));
-        opacity: 0;
-      }
-
+      .firework { position:absolute; width:12px; height:12px; background:transparent; border-radius:50%;
+        filter:drop-shadow(0 0 4px rgba(255,255,255,0.8)); opacity:0; }
       .f1 { animation: burst 1.5s linear infinite; }
       .f2 { animation: burst 1.5s linear 0.3s infinite; }
       .f3 { animation: burst 1.5s linear 0.6s infinite; }
@@ -63,32 +54,10 @@ const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
       .f6 { animation: burst 1.5s linear 1.5s infinite; }
       .f7 { animation: burst 1.5s linear 1.8s infinite; }
       .f8 { animation: burst 1.5s linear 2.1s infinite; }
-
       @keyframes burst {
-        0% {
-          box-shadow:
-            0 0 #fff,
-            0 0 #fff,
-            0 0 #fff,
-            0 0 #fff;
-          opacity: 1;
-        }
-        50% {
-          box-shadow:
-            0 -100px #ffea00,
-            80px -80px #ff4d4f,
-            100px 0 #40a9ff,
-            -80px 80px #73d13d;
-          opacity: 1;
-        }
-        100% {
-          box-shadow:
-            0 -140px #ffea00,
-            120px -120px #ff4d4f,
-            140px 0 #40a9ff,
-            -120px 120px #73d13d;
-          opacity: 0;
-        }
+        0% { box-shadow:0 0 #fff,0 0 #fff,0 0 #fff,0 0 #fff; opacity:1; }
+        50% { box-shadow:0 -100px #ffea00,80px -80px #ff4d4f,100px 0 #40a9ff,-80px 80px #73d13d; opacity:1; }
+        100%{ box-shadow:0 -140px #ffea00,120px -120px #ff4d4f,140px 0 #40a9ff,-120px 120px #73d13d; opacity:0; }
       }
     `}</style>
   </div>
