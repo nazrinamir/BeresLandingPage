@@ -19,7 +19,7 @@ const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
       <img
         src="/Group168.svg"
         alt="Special Incentive"
-        className="relative w-[90vw] max-w-2xl rounded-2xl shadow-2xl z-10"
+        className="relative w-[90vw] max-w-2xl rounded-2xl z-10"
       />
 
       {/* Close button inside image */}

@@ -1,6 +1,14 @@
 import { FaInstagram, FaFacebook } from 'react-icons/fa';
+import TermPopup from './components/popup/termPopup';
+import { useState } from 'react';
+import PrivacyPopup from './components/popup/privacyPopup';
+import ImprintPopup from './components/popup/ImprintPopup';
 
 const FooterSection = () => {
+  const [showTerms, setShowTerms] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showImprint, setShowImprint] = useState(false);
+  
   return (
     <footer className="bg-[#032016] text-gray-300 py-20 rounded-t-3xl">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -66,13 +74,16 @@ const FooterSection = () => {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-16 pt-8 text-sm">
           <p className="!text-[#AEEA30] font-semibold">Designed by Beres</p>
           <div className="flex flex-wrap gap-8 mt-6 md:mt-0 text-gray-400">
-            <a href="#" className="!text-[#AEEA30]">Privacy policy</a>
-            <a href="#" className="!text-[#AEEA30]">Terms of use</a>
-            <a href="#" className="!text-[#AEEA30]">Imprint</a>
+            <button onClick={() => setShowPrivacy(true)} className="!text-[#AEEA30]">Privacy policy</button>
+            <button onClick={() => setShowTerms(true)} className="!text-[#AEEA30]">Terms of use</button>
+            <button onClick={() => setShowImprint(true)} className="!text-[#AEEA30]">Imprint</button>
             <span className="!text-[#AEEA30]"> © 2025 Beres. All rights reserved.</span>
           </div>
         </div>
       </div>
+      <TermPopup isOpen={showTerms} onClose={() => setShowTerms(false)} />
+      <PrivacyPopup isOpen={showPrivacy} onClose={() => setShowPrivacy(false)} />
+      <ImprintPopup isOpen={showImprint} onClose={() => setShowImprint(false)} />
     </footer>
   );
 };

@@ -88,7 +88,7 @@ export default function Navbar() {
                 <a
                   href="#waitlist"
                   onClick={() => setOpen(false)}
-                  className="block rounded-full bg-lime-400 px-4 py-2 text-center font-semibold !text-black hover:bg-lime-300"
+                  className="block rounded-full bg-[#AEEA30] px-4 py-2 text-center font-semibold !text-black hover:bg-[#9DD428]"
                 >
                   Join our waitlist
                 </a>
