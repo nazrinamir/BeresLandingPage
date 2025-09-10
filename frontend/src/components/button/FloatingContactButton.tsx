@@ -13,7 +13,7 @@ export default function FloatingContactButton() {
         aria-label="Open contact form"
       >
         <div className="flex items-center justify-center">
-          <img src="/1to1.svg" alt="1to1" className="w-15 h-15" />
+          <img src="/1to1.svg" alt="1to1" className="w-10 h-10 md:w-15 md:h-15 " />
         </div>
       </button >
 

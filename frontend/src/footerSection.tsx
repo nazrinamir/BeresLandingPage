@@ -45,7 +45,7 @@ const FooterSection = () => {
             <div className="flex flex-col space-y-4">
               <div className='rounded-md p-2'>
                 <a
-                  href="https://instagram.com/yourusername"
+                  href="https://www.instagram.com/beres.my/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="!text-white hover:text-[#E4405F] transition-colors duration-200"
