@@ -27,7 +27,7 @@ export default function FeaturesGrid() {
 
   return (
     <MotionConfig transition={{ type: "spring", stiffness: 260, damping: 24 }}>
-      <section id="features" className="bg-white py-20">
+      <section className="bg-white py-20">
         <div className="relative mx-auto max-w-6xl px-6 md:px-10">
           <motion.img
             src="/cart.svg"
