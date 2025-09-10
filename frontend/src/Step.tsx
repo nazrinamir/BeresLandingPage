@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import IncentivePopup from "./components/popup/IncentivePopup";
 import ShareModal from "./components/popup/ShareModal";
-import OneToOnePopup from "./components/popup/OneToOnePopup";
+import OneToOnePopup from "./components/popup/onetoonePopup";
 
 export default function Step() {
   const [showPopup, setShowPopup] = useState(false);

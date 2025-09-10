@@ -12,6 +12,7 @@ import Step from './Step';
 import FooterSection from './footerSection';
 import { ToastProvider, useToast } from './components/toast/ToastContext';
 import ToastContainer from './components/toast/ToastContainer';
+import BenefitSectionMobile from './BenefitSectionMobile';
 
 
 function AppContent() {
@@ -99,8 +100,12 @@ function AppContent() {
       </div>
 
       {/* Benefit Section */}
-      <div className=' bg-[#EFEFEF]'>
+      <div className='md:block hidden bg-[#EFEFEF]'>
         <BenefitSection />
+      </div>
+
+      <div className='md:hidden block'>
+        <BenefitSectionMobile />
       </div>
 
       {/* Step Section */}

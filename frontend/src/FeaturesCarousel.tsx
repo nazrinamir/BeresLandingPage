@@ -18,23 +18,23 @@ export default function FeaturesGrid() {
   const stackPose = useMemo(
     () => ([
       { x: -10, y: -10, r: -6, s: 1.0 },
-      { x:   8, y:  -4, r:  4, s: 0.98 },
-      { x:  -6, y:   8, r: -2, s: 0.96 },
-      { x:  12, y:  12, r:  7, s: 0.94 },
+      { x: 8, y: -4, r: 4, s: 0.98 },
+      { x: -6, y: 8, r: -2, s: 0.96 },
+      { x: 12, y: 12, r: 7, s: 0.94 },
     ].slice(0, items.length)),
     [items.length]
   );
 
   return (
     <MotionConfig transition={{ type: "spring", stiffness: 260, damping: 24 }}>
-      <section className="bg-white py-20">
-        <div className="relative mx-auto max-w-6xl px-6 md:px-10">
+      <section className="bg-white py-20 ">
+        <div className="relative mx-auto max-w-6xl px-6 md:px-10 ">
           <motion.img
             src="/cart.svg"
             alt="Cart"
             className="hidden md:block absolute -top-10 right-0 h-48 w-auto drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)] pointer-events-none select-none"
-            animate={{ scale: [1,.9,1], rotate: [0,0,40,40,0], borderRadius: ["0%","0%","20%","20%","0%"] }}
-            transition={{ duration: 2, ease: "easeInOut", times: [0,.2,.5,.8,1], repeat: Infinity, repeatDelay: 1 }}
+            animate={{ scale: [1, .9, 1], rotate: [0, 0, 40, 40, 0], borderRadius: ["0%", "0%", "20%", "20%", "0%"] }}
+            transition={{ duration: 2, ease: "easeInOut", times: [0, .2, .5, .8, 1], repeat: Infinity, repeatDelay: 1 }}
           />
 
           <div className="mb-10 md:mb-14 text-left">
@@ -48,12 +48,7 @@ export default function FeaturesGrid() {
 
           <motion.div layout className="relative mx-auto">
             <div
-              className={
-                expanded
-                  ? "grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto"
-                  : "relative mx-auto max-w-[720px] min-h-[420px] sm:min-h-[520px] flex items-center justify-center"
-              }
-            >
+              className={expanded ? "grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto" : "relative mx-auto max-w-[720px] min-h-[420px] sm:min-h-[520px] flex items-center justify-center"}>
               {items.map((f, i) => {
                 const pose = stackPose[i] ?? { x: 0, y: 0, r: 0, s: 1 };
                 return (
