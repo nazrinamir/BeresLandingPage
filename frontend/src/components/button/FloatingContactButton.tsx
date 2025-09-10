@@ -1,7 +1,9 @@
 import { useState } from "react";
+import OneToOnePopup from "../popup/onetoonePopup";
 
 export default function FloatingContactButton() {
   const [open, setOpen] = useState(false);
+  const [showOneToOnePopup, setShowOneToOnePopup] = useState(false);
 
   return (
     <>
@@ -22,7 +24,10 @@ export default function FloatingContactButton() {
 
       {/* Modal Overlay */}
       {
-        open && (<></>
+        open && (<OneToOnePopup
+          isOpen={open}
+          onClose={() => setOpen(false)}
+        />
 
         )
       }
