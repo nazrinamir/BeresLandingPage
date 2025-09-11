@@ -92,7 +92,7 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 relative animate-modalPop">
                 {/* Close Button */}
                 <button
-                    className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors focus:outline-none focus:ring-2 focus:ring-red-300 rounded-full p-1"
+                    className="absolute top-4 right-4 text-gray-400 hover:text-[#012219] transition-colors focus:outline-none focus:ring-2 focus:ring-[#AEEA30]/30 rounded-full p-1"
                     onClick={onClose}
                     aria-label="Close contact form"
                     type="button"
@@ -103,17 +103,18 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                 </button>
 
                 {/* Header */}
-                <div className="flex flex-col items-center mb-8">
+                <div className="flex flex-col items-center mb-3 bg-gradient-to-r from-[#012219] to-[#0B1E18] text-white relative">
                     {/* Meeting Icon */}
-                    <div className="mb-4 p-3 bg-blue-100 rounded-full">
-                        <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-blue-600">
+                    <div className="mb-4 p-3 bg-[#AEEA30]/20 rounded-full">
+                        <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#AEEA30]">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
-                    <h2 className="text-2xl font-bold text-gray-800 text-center mb-2">Schedule One-to-One Meeting</h2>
+                    
+                    <h2 className="text-2xl font-bold !text-[#ffffff] text-center mb-2">Schedule One-to-One Meeting</h2>
                     <p className="text-gray-600 text-sm text-center leading-relaxed">
                         Let's discuss how we can help grow your business. Fill out the form below and we'll get back to you soon.
                     </p>
@@ -129,8 +130,8 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                             value={formData.name}
                             onChange={(e) => handleInputChange('name', e.target.value)}
                             className={`w-full bg-gray-50 border rounded-xl px-4 py-3 shadow-sm transition placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.name
-                                    ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
-                                    : 'border-gray-200 focus:border-blue-400 focus:ring-blue-100'
+                                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
+                                : 'border-gray-200 focus:border-[#AEEA30] focus:ring-[#AEEA30]/20'
                                 }`}
                             disabled={isSubmitting}
                         />
@@ -145,8 +146,8 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                             value={formData.phone}
                             onChange={(e) => handleInputChange('phone', e.target.value)}
                             className={`w-full bg-gray-50 border rounded-xl px-4 py-3 shadow-sm transition placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.phone
-                                    ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
-                                    : 'border-gray-200 focus:border-blue-400 focus:ring-blue-100'
+                                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
+                                : 'border-gray-200 focus:border-[#AEEA30] focus:ring-[#AEEA30]/20'
                                 }`}
                             disabled={isSubmitting}
                         />
@@ -161,8 +162,8 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                             value={formData.email}
                             onChange={(e) => handleInputChange('email', e.target.value)}
                             className={`w-full bg-gray-50 border rounded-xl px-4 py-3 shadow-sm transition placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.email
-                                    ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
-                                    : 'border-gray-200 focus:border-blue-400 focus:ring-blue-100'
+                                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
+                                : 'border-gray-200 focus:border-[#AEEA30] focus:ring-[#AEEA30]/20'
                                 }`}
                             disabled={isSubmitting}
                         />
@@ -177,8 +178,8 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                             value={formData.business}
                             onChange={(e) => handleInputChange('business', e.target.value)}
                             className={`w-full bg-gray-50 border rounded-xl px-4 py-3 shadow-sm transition placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.business
-                                    ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
-                                    : 'border-gray-200 focus:border-blue-400 focus:ring-blue-100'
+                                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
+                                : 'border-gray-200 focus:border-[#AEEA30] focus:ring-[#AEEA30]/20'
                                 }`}
                             disabled={isSubmitting}
                         />
@@ -190,8 +191,8 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                         type="submit"
                         disabled={isSubmitting}
                         className={`w-full py-3 rounded-xl font-bold text-base shadow-lg transition-all duration-200 focus:outline-none focus:ring-4 ${isSubmitting
-                                ? 'bg-gray-400 cursor-not-allowed'
-                                : 'bg-[#65d546] hover:bg-[#4bb12e] text-white focus:ring-[#b6f5a7] hover:shadow-xl transform hover:-translate-y-0.5'
+                            ? 'bg-gray-400 cursor-not-allowed text-white'
+                            : 'bg-gradient-to-r from-[#AEEA30] to-[#A7E34A] hover:from-[#9cd426] hover:to-[#82C341] text-black focus:ring-[#AEEA30]/30 hover:shadow-xl transform hover:-translate-y-0.5'
                             }`}
                     >
                         {isSubmitting ? (

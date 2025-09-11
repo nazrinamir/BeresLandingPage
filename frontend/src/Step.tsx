@@ -6,11 +6,13 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring } from "fram
 import IncentivePopup from "./components/popup/IncentivePopup";
 import ShareModal from "./components/popup/ShareModal";
 import OneToOnePopup from "./components/popup/onetoonePopup";
+import WaitlistPopup from "./components/popup/waitlistPopup";
 
 export default function Step() {
   const [showPopup, setShowPopup] = useState(false);
   const [showShare, setShowShare] = useState(false);
   const [showOneToOne, setShowOneToOne] = useState(false);
+  const [showWaitlistPopup, setShowWaitlistPopup] = useState(false);
 
   // Scroll-based parallax for the sticker
   const { scrollY } = useScroll();
@@ -86,6 +88,10 @@ export default function Step() {
     const hero = document.getElementById("home");
     hero?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const handlewaitlistpopup = () => {
+    setShowWaitlistPopup(true);
+  }
 
   return (
     <motion.section id="steps" className="bg-white py-20">
@@ -238,7 +244,7 @@ export default function Step() {
                           style={tilt.style}
                           className={common}
                           aria-label={b.label}
-                          onClick={scrollToWaitlist}
+                          onClick={handlewaitlistpopup}
                         >
                           {Inner}
                         </motion.button>
@@ -275,6 +281,11 @@ export default function Step() {
           <motion.div />
         </div>
       </div>
+
+      <WaitlistPopup
+        isOpen={showWaitlistPopup}
+        onClose={() => setShowWaitlistPopup(false)}
+      />
 
       {/* Modals */}
       {showShare && (
