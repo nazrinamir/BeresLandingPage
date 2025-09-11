@@ -83,16 +83,31 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
         }
     };
 
+    // Form field configuration
+    const formFields = [
+        { key: 'name' as keyof FormData, type: 'text', placeholder: 'Your Full Name' },
+        { key: 'phone' as keyof FormData, type: 'tel', placeholder: 'Phone Number' },
+        { key: 'email' as keyof FormData, type: 'email', placeholder: 'Email Address' },
+        { key: 'business' as keyof FormData, type: 'text', placeholder: 'Business/Company Name' }
+    ];
+
+    const getInputClassName = (fieldKey: keyof FormData) => {
+        return `w-full bg-gray-50 border rounded-xl px-4 py-2 text-sm shadow-sm transition placeholder-gray-400 focus:outline-none focus:ring-2 ${errors[fieldKey]
+            ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
+            : 'border-gray-200 focus:border-[#AEEA30] focus:ring-[#AEEA30]/20'
+            }`;
+    };
+
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fadeIn p-4"
             onClick={handleBackdropClick}
         >
             {/* Modal Content */}
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 relative animate-modalPop">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md relative animate-modalPop overflow-hidden ">
                 {/* Close Button */}
                 <button
-                    className="absolute top-4 right-4 text-gray-400 hover:text-[#012219] transition-colors focus:outline-none focus:ring-2 focus:ring-[#AEEA30]/30 rounded-full p-1"
+                    className="absolute top-4 right-4 text-white hover:text-[#AEEA30] transition-colors focus:outline-none focus:ring-2 focus:ring-[#AEEA30]/30 rounded-full p-1 z-10"
                     onClick={onClose}
                     aria-label="Close contact form"
                     type="button"
@@ -103,7 +118,7 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                 </button>
 
                 {/* Header */}
-                <div className="flex flex-col items-center mb-3 bg-gradient-to-r from-[#012219] to-[#0B1E18] text-white relative">
+                <div className="flex flex-col items-center py-8 px-8 bg-gradient-to-r from-[#012219] to-[#0B1E18] text-white relative rounded-t-2xl">
                     {/* Meeting Icon */}
                     <div className="mb-4 p-3 bg-[#AEEA30]/20 rounded-full">
                         <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#AEEA30]">
@@ -113,78 +128,30 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                             <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                     </div>
-                    
+
                     <h2 className="text-2xl font-bold !text-[#ffffff] text-center mb-2">Schedule One-to-One Meeting</h2>
-                    <p className="text-gray-600 text-sm text-center leading-relaxed">
+                    <p className="text-gray-200 text-sm text-center leading-relaxed">
                         Let's discuss how we can help grow your business. Fill out the form below and we'll get back to you soon.
                     </p>
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="space-y-5">
-                    {/* Name Field */}
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Your Full Name"
-                            value={formData.name}
-                            onChange={(e) => handleInputChange('name', e.target.value)}
-                            className={`w-full bg-gray-50 border rounded-xl px-4 py-3 shadow-sm transition placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.name
-                                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
-                                : 'border-gray-200 focus:border-[#AEEA30] focus:ring-[#AEEA30]/20'
-                                }`}
-                            disabled={isSubmitting}
-                        />
-                        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
-                    </div>
-
-                    {/* Phone Field */}
-                    <div>
-                        <input
-                            type="tel"
-                            placeholder="Phone Number"
-                            value={formData.phone}
-                            onChange={(e) => handleInputChange('phone', e.target.value)}
-                            className={`w-full bg-gray-50 border rounded-xl px-4 py-3 shadow-sm transition placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.phone
-                                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
-                                : 'border-gray-200 focus:border-[#AEEA30] focus:ring-[#AEEA30]/20'
-                                }`}
-                            disabled={isSubmitting}
-                        />
-                        {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
-                    </div>
-
-                    {/* Email Field */}
-                    <div>
-                        <input
-                            type="email"
-                            placeholder="Email Address"
-                            value={formData.email}
-                            onChange={(e) => handleInputChange('email', e.target.value)}
-                            className={`w-full bg-gray-50 border rounded-xl px-4 py-3 shadow-sm transition placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.email
-                                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
-                                : 'border-gray-200 focus:border-[#AEEA30] focus:ring-[#AEEA30]/20'
-                                }`}
-                            disabled={isSubmitting}
-                        />
-                        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-                    </div>
-
-                    {/* Business Field */}
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Business/Company Name"
-                            value={formData.business}
-                            onChange={(e) => handleInputChange('business', e.target.value)}
-                            className={`w-full bg-gray-50 border rounded-xl px-4 py-3 shadow-sm transition placeholder-gray-400 focus:outline-none focus:ring-2 ${errors.business
-                                ? 'border-red-300 focus:border-red-400 focus:ring-red-100'
-                                : 'border-gray-200 focus:border-[#AEEA30] focus:ring-[#AEEA30]/20'
-                                }`}
-                            disabled={isSubmitting}
-                        />
-                        {errors.business && <p className="text-red-500 text-xs mt-1">{errors.business}</p>}
-                    </div>
+                <form onSubmit={handleSubmit} className="space-y-5 p-8 text-black">
+                    {formFields.map((field) => (
+                        <div key={field.key}>
+                            <input
+                                type={field.type}
+                                placeholder={field.placeholder}
+                                value={formData[field.key]}
+                                onChange={(e) => handleInputChange(field.key, e.target.value)}
+                                className={getInputClassName(field.key)}
+                                disabled={isSubmitting}
+                            />
+                            {errors[field.key] && (
+                                <p className="text-red-500 text-xs mt-1">{errors[field.key]}</p>
+                            )}
+                        </div>
+                    ))}
 
                     {/* Submit Button */}
                     <button
@@ -207,8 +174,8 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                 </form>
 
                 {/* Footer Note */}
-                <p className="text-xs text-gray-500 text-center mt-4">
-                    We'll contact you within 24 hours to schedule your meeting.
+                <p className="text-xs text-gray-500 text-center mt-1 p-2">
+                    Beres team will contact you to schedule your meeting. <br />See you soon!
                 </p>
             </div>
         </div>

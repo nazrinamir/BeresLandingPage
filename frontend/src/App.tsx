@@ -147,6 +147,7 @@ function AppContent() {
         <FooterSection />
       </footer>
       <FloatingContactButton />
+      
       {showPopup && <IncentivePopup onClose={() => setShowPopup(false)} />}
 
       {/* Toast Container */}

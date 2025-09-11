@@ -88,12 +88,12 @@ const HeroSection = () => {
         </div>
       </div>
       {showPopup && <SuccessPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />}
-      <button
+      {/* <button
         className="fixed bottom-20 left-4 z-50 bg-blue-600 text-white px-4 py-2 rounded"
         onClick={() => setShowPopup(true)}
       >
         Test Popup Success
-      </button>
+      </button> */}
     </section>
   );
 };

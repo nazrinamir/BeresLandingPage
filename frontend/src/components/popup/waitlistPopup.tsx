@@ -142,9 +142,9 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="p-6">
+                <form onSubmit={handleSubmit} className="p-6 text-black">
                     {/* Email Field - Required */}
-                    <div>
+                    <div className='mb-4'>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                             Email Address <span className="text-red-500">*</span>
                         </label>
@@ -164,7 +164,7 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                         )}
                     </div>
 
-                    Name Fields - Optional
+                    {/* Name Fields - Optional */}
                     {/* <div className="grid grid-cols-2 gap-3">
                         <div>
                             <label htmlFor="first_name" className="block text-sm font-medium text-gray-700 mb-2">
