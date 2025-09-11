@@ -6,7 +6,11 @@ import { SuccessPopup } from './components/popup/SuccessPopup';
 import { useToast } from './components/toast';
 import ScrollIndicator from './components/button/ScrollIndicator';
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  isLoading?: boolean;
+}
+
+const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
   const { t } = useTranslation();
   const { addToast } = useToast();
   const [email, setEmail] = useState('');
@@ -89,8 +93,8 @@ const HeroSection = () => {
         </div>
       </div>
       
-      {/* Scroll Indicator - visible on smaller screens (mobile, tablet, and smaller laptops) */}
-      <ScrollIndicator targetId="features" />
+      {/* Scroll Indicator - only show when not loading */}
+      <ScrollIndicator targetId="features" isVisible={!isLoading} />
       
       {showPopup && <SuccessPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />}
       {/* <button
