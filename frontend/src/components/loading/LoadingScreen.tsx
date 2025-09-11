@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Rive } from '@rive-app/canvas';
 
 interface LoadingScreenProps {
   isLoading: boolean;
 }
 
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
+
+  // Replace the useRive hook with useRef and useEffect
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      const rive = new Rive({
+        src: '/loadingBeresRive.riv',
+        canvas: canvasRef.current,
+        autoplay: true,
+      });
+
+      return () => rive.cleanup();
+    }
+  }, []);
+
+  
   return (
     <AnimatePresence>
       {isLoading && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ 
+          exit={{
             opacity: 0,
             scale: 1.1,
             transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
@@ -22,23 +40,23 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
             {/* Beres Logo Animation */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ 
-                scale: 1, 
+              animate={{
+                scale: 1,
                 opacity: 1,
-                transition: { 
-                  duration: 0.6, 
+                transition: {
+                  duration: 0.6,
                   ease: [0.22, 1, 0.36, 1],
-                  delay: 0.2 
+                  delay: 0.2
                 }
               }}
               className="relative"
             >
-              <img 
-                src="/bereslogo.svg" 
-                alt="Beres Logo" 
+              <img
+                src="/bereslogo.svg"
+                alt="Beres Logo"
                 className="w-24 h-24 md:w-32 md:h-32"
               />
-              
+
               {/* Pulsing ring around logo */}
               <motion.div
                 className="absolute inset-0 rounded-full border-2 border-[#A7E34A]"
@@ -54,16 +72,17 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
               />
             </motion.div>
 
+
             {/* Loading Text */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
-              animate={{ 
-                y: 0, 
+              animate={{
+                y: 0,
                 opacity: 1,
-                transition: { 
-                  duration: 0.6, 
+                transition: {
+                  duration: 0.6,
                   ease: [0.22, 1, 0.36, 1],
-                  delay: 0.4 
+                  delay: 0.4
                 }
               }}
               className="text-center"
@@ -79,12 +98,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
             {/* Loading Dots Animation */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ 
+              animate={{
                 opacity: 1,
-                transition: { 
-                  duration: 0.6, 
+                transition: {
+                  duration: 0.6,
                   ease: [0.22, 1, 0.36, 1],
-                  delay: 0.6 
+                  delay: 0.6
                 }
               }}
               className="flex space-x-2"
@@ -110,13 +129,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
             {/* Progress Bar */}
             <motion.div
               initial={{ width: 0, opacity: 0 }}
-              animate={{ 
-                width: "100%", 
+              animate={{
+                width: "100%",
                 opacity: 1,
-                transition: { 
-                  duration: 0.6, 
+                transition: {
+                  duration: 0.6,
                   ease: [0.22, 1, 0.36, 1],
-                  delay: 0.8 
+                  delay: 0.8
                 }
               }}
               className="w-48 h-1 bg-gray-700 rounded-full overflow-hidden"

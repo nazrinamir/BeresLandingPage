@@ -1,10 +1,9 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './App.css'
 import 'boxicons/css/boxicons.min.css';
 import Navbar from "./components/nav/NaviBar";
 import FloatingContactButton from './components/button/FloatingContactButton';
 import IncentivePopup from './components/popup/IncentivePopup';
-import { useEffect } from 'react';
 import HeroSection from './HeroSection';
 import BenefitSection from './BenefitSection';
 import FeaturesCarousel from './FeaturesCarousel';
@@ -14,12 +13,28 @@ import { ToastProvider, useToast } from './components/toast/ToastContext';
 import ToastContainer from './components/toast/ToastContainer';
 import BenefitSectionMobile from './BenefitSectionMobile';
 import LoadingScreen from './components/loading/LoadingScreen';
-
+// Add this import for Rive
+import { Rive } from '@rive-app/canvas';
 
 function AppContent() {
   const [showPopup, setShowPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { addToast } = useToast();
+
+  // Replace the useRive hook with useRef and useEffect
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (canvasRef.current) {
+      const rive = new Rive({
+        src: '/loadingBeresRive.riv',
+        canvas: canvasRef.current,
+        autoplay: true,
+      });
+
+      return () => rive.cleanup();
+    }
+  }, []);
 
   // Loading screen logic
   useEffect(() => {
@@ -80,7 +95,7 @@ function AppContent() {
     <div className="relative min-h-screen text-white w-full">
       {/* Loading Screen */}
       <LoadingScreen isLoading={isLoading} />
-      
+
       {/* Navigation */}
       <Navbar />
 
@@ -99,7 +114,7 @@ function AppContent() {
         <BenefitSection />
       </div>
 
-      <div className='md:hidden block'>
+      <div id='benefits' className='md:hidden block'>
         <BenefitSectionMobile />
       </div>
 

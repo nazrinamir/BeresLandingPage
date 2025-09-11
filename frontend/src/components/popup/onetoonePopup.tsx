@@ -197,7 +197,7 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                 </button>
 
                 {/* Header */}
-                <div className="flex flex-col items-center py-8 px-8 bg-gradient-to-r from-[#012219] to-[#0B1E18] text-white relative rounded-t-2xl">
+                <div className="flex flex-col items-center py-8 px-8 bg-gradient-to-r from-[#012b20] to-[#0B1E18] text-white relative rounded-t-2xl">
                     {/* Meeting Icon */}
                     <div className="mb-4 p-3 bg-[#AEEA30]/20 rounded-full">
                         <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#AEEA30]">
@@ -227,7 +227,7 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                                 disabled={isSubmitting}
                             />
                             {errors[field.key] && (
-                                <p className="text-red-500 text-xs mt-1">{errors[field.key]}</p>
+                                <p className="text-red-500 md:text-[12px] text-[10px] mt-0.5">{errors[field.key]}</p>
                             )}
                         </div>
                     ))}
