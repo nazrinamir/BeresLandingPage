@@ -61,12 +61,12 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
             </h1>
 
             {/* Paragraph */}
-            <motion.p className="text-lg !text-white mb-8 text-justify" whileHover={{ scale: 1.2 }}>
+            <p className="text-lg !text-white mb-8 text-justify" >
               {t('hero.description')}
-            </motion.p>
+            </p>
 
             {/* Email Input + Button */}
-            <motion.div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full" whileHover={{ scale: 1.2 }}>
+            <div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full">
               <input
                 id="waitlist-email"
                 type="email"
@@ -78,7 +78,7 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
               <button onClick={handleSubmitWaitlist} className="bg-[#AEEA30] text-black font-medium px-4 py-2 mr-1 rounded-full hover:bg-[#9cd426] transition text-nowrap">
                 {t('hero.joinUs')}
               </button>
-            </motion.div>
+            </div>
           </div>
         </div>
 
