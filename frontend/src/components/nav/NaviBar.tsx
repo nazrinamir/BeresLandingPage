@@ -15,7 +15,7 @@ export default function Navbar() {
   return (<>
     <WaitlistPopup
       isOpen={showWaitlistPopup}
-      onClose={() => setOpen(false)}
+      onClose={() => setShowWaitlistPopup(false)}
     />
     <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto">
 
