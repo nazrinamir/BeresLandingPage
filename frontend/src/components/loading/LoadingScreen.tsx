@@ -72,7 +72,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
                 Beres
               </h2>
               <p className="text-[#A7E34A] text-sm md:text-base">
-                The easiest way to run your WhatsApp business
+                The easiest way to run your business
               </p>
             </motion.div>
 
