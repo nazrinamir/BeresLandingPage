@@ -164,8 +164,8 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                         )}
                     </div>
 
-                    {/* Name Fields - Optional */}
-                    <div className="grid grid-cols-2 gap-3">
+                    Name Fields - Optional
+                    {/* <div className="grid grid-cols-2 gap-3">
                         <div>
                             <label htmlFor="first_name" className="block text-sm font-medium text-gray-700 mb-2">
                                 First Name
@@ -194,10 +194,10 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                                 placeholder="Doe"
                             />
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Phone Field - Optional */}
-                    <div>
+                    {/* <div>
                         <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                             Phone Number
                         </label>
@@ -210,10 +210,10 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                             placeholder="+1 (555) 123-4567"
                         />
-                    </div>
+                    </div> */}
 
                     {/* Business Field - Optional */}
-                    <div>
+                    {/* <div>
                         <label htmlFor="business" className="block text-sm font-medium text-gray-700 mb-2">
                             Business/Company
                         </label>
@@ -226,7 +226,7 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                             className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                             placeholder="Your company name"
                         />
-                    </div>
+                    </div> */}
 
                     {/* Submit Button */}
                     <button

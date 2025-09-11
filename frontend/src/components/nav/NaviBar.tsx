@@ -1,5 +1,6 @@
 // components/Navbar.tsx
 import { useState } from "react";
+import WaitlistPopup from "../popup/waitlistPopup";
 
 const links = [
   { label: "Features", href: "#features" },
@@ -10,14 +11,19 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  return (
+  return (<>
+    <WaitlistPopup
+      isOpen={open}
+      onClose={() => setOpen(false)}
+    />
     <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto">
+
       <nav className={`mx-auto max-w-4xl  ${open ? 'rounded-3xl' : 'rounded-full'} border border-white/10 bg-black/30 backdrop-blur shadow-lg mt-4 h-full`}>
         <div className="flex items-center px-4 sm:px-5 py-1.5 gap-4 text-sm">
           {/* Brand Logo */}
           <a href="#home" className="flex items-center">
             <img
-              src="/bereslogo.svg" 
+              src="/bereslogo.svg"
               alt="Beres Logo"
               className="h-5.5 w-full"
             />
@@ -39,12 +45,14 @@ export default function Navbar() {
 
           <div className="ml-auto flex items-center gap-2">
             {/* CTA */}
-            <a
-              href="#waitlist"
+            <button
+              onClick={() => setOpen(true)}
               className="hidden sm:inline-flex h-8 items-center rounded-full text-md bg-lime-400 px-3.5 font-semibold !text-black hover:bg-lime-300 transition"
             >
               Join our waitlist
-            </a>
+            </button>
+
+
 
             {/* Mobile menu button */}
             <button
@@ -94,9 +102,12 @@ export default function Navbar() {
                 </a>
               </li>
             </ul>
+
           </div>
         )}
       </nav>
     </div>
+  </>
+
   );
 }

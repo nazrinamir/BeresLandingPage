@@ -28,8 +28,8 @@ export default function FeaturesGrid() {
   const spring = prefersReduced
     ? { duration: 0 }
     : (isMobile
-        ? { type: "spring" as const, stiffness: 120, damping: 30, mass: 1.0 }
-        : { type: "spring" as const, stiffness: 180, damping: 26, mass: 0.9 });
+      ? { type: "spring" as const, stiffness: 120, damping: 30, mass: 1.0 }
+      : { type: "spring" as const, stiffness: 180, damping: 26, mass: 0.9 });
 
   // Observe section visibility
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -90,7 +90,7 @@ export default function FeaturesGrid() {
 
   return (
     <MotionConfig transition={spring}>
-      <section ref={sectionRef} className="bg-white py-20">
+      <section id="features" ref={sectionRef} className="bg-white py-20">
         <div className="relative mx-auto max-w-6xl px-6 md:px-10">
           <motion.img
             src="/cart.svg"
@@ -160,8 +160,8 @@ export default function FeaturesGrid() {
                     whileHover={
                       !isMobile && !prefersReduced
                         ? (expanded
-                            ? { y: -6, scale: 1.02, boxShadow: "0 15px 25px rgba(0,0,0,0.22)" }
-                            : { scale: pose.s + 0.015 })
+                          ? { y: -6, scale: 1.02, boxShadow: "0 15px 25px rgba(0,0,0,0.22)" }
+                          : { scale: pose.s + 0.015 })
                         : undefined
                     }
                   >
