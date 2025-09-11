@@ -75,7 +75,6 @@ const FooterSection = () => {
           <div className="flex flex-wrap gap-8 mt-6 md:mt-0 text-gray-400">
             <button onClick={() => setShowPrivacy(true)} className="!text-[#AEEA30]">Privacy policy</button>
             <button onClick={() => setShowTerms(true)} className="!text-[#AEEA30]">Terms of use</button>
-            <button onClick={() => setShowImprint(true)} className="!text-[#AEEA30]">Imprint</button>
             <span className="!text-[#AEEA30]"> © 2025 Beres. All rights reserved.</span>
           </div>
         </div>
