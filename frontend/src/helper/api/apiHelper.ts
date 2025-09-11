@@ -30,3 +30,31 @@ export const submitWaitlist = async (data: any, baseUrl: string) => {
         };
     }
 }
+
+export const submitMeeting = async (data: any, baseUrl: string) => {
+    try {
+    const response = await fetch(`${baseUrl}/meetings`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    
+    const result: IResponse = await response.json();
+
+    return {
+        success: result.success,
+        message: result.message,
+        data: result.data,
+    };
+    
+    } catch (error) {
+        return {
+            success: false,
+            message: 'Error submitting meeting: ' + error,
+            data: null,
+        };
+    }
+}
+
