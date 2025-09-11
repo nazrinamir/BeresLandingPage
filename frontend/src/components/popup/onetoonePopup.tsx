@@ -183,7 +183,7 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
             onClick={handleBackdropClick}
         >
             {/* Modal Content */}
-            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md relative animate-modalPop overflow-hidden ">
+            <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md relative animate-modalPop ">
                 {/* Close Button */}
                 <button
                     className="absolute top-4 right-4 text-white hover:text-[#AEEA30] transition-colors focus:outline-none focus:ring-2 focus:ring-[#AEEA30]/30 rounded-full p-1 z-10"
@@ -197,7 +197,7 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                 </button>
 
                 {/* Header */}
-                <div className="flex flex-col items-center py-8 px-8 bg-gradient-to-r from-[#012b20] to-[#0B1E18] text-white relative rounded-t-2xl">
+                <div className="flex flex-col items-center py-8 px-8 bg-gradient-to-r from-[#012b20] to-[#0B1E18] text-white relative rounded-t-xl">
                     {/* Meeting Icon */}
                     <div className="mb-4 p-3 bg-[#AEEA30]/20 rounded-full">
                         <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#AEEA30]">

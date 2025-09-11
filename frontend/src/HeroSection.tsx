@@ -84,13 +84,13 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
 
         {/* Right Illustration - bigger */}
         <div className="md:w-7/12 w-full md:flex justify-center hidden " data-aos="fade-left">
-          <motion.div className="overflow-hidden w-full h-full flex items-center justify-center" whileHover={{ scale: 1.2 }} whileTap={{ scale: 2 }}>
+          <div className="overflow-hidden w-full h-full flex items-center justify-center">
             <img
               src={'/hero.svg'}
               alt="Hero"
               className="w-[633px] h-[602px] object-contain"
             />
-          </motion.div>
+          </div>
         </div>
       </div>
       
