@@ -86,7 +86,7 @@ function AppContent() {
 
       {/* Hero Section */}
       <div className="rounded-b-3xl overflow-hidden">
-        <HeroSection />
+        <HeroSection isLoading={isLoading} />
       </div>
 
       {/* Features Section */}

@@ -51,6 +51,36 @@
   animation: fadeInUp 0.8s ease-out;
 }
 
+/* Scroll indicator animations */
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-scrollBounce {
+  animation: scrollBounce 2s infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-scrollPulse {
+  animation: scrollPulse 2s infinite;
+}
+
 .poppins {
   font-family: 'Poppins', sans-serif;
 }

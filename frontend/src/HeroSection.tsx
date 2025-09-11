@@ -4,8 +4,13 @@ import { WaitlistHelper } from './helper/waitlistHelper/waitlistHelper';
 import { useTranslation } from './lang/useTranslation';
 import { SuccessPopup } from './components/popup/SuccessPopup';
 import { useToast } from './components/toast';
+import ScrollIndicator from './components/button/ScrollIndicator';
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  isLoading?: boolean;
+}
+
+const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
   const { t } = useTranslation();
   const { addToast } = useToast();
   const [email, setEmail] = useState('');
@@ -39,7 +44,7 @@ const HeroSection = () => {
     resetForm();
   }
   return (
-    <section id="home" className="text-white w-full py-20 bg-[#012219]">
+    <section id="home" className="text-white w-full py-20 bg-[#012219] relative">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 gap-4 md:gap-5 mt-4 w-full">
 
         {/* Left Content - smaller */}
@@ -87,6 +92,10 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      
+      {/* Scroll Indicator - only show when not loading */}
+      <ScrollIndicator targetId="features" isVisible={!isLoading} />
+      
       {showPopup && <SuccessPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />}
       {/* <button
         className="fixed bottom-20 left-4 z-50 bg-blue-600 text-white px-4 py-2 rounded"
