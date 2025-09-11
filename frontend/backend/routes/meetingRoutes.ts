@@ -26,10 +26,29 @@ router.post('/', async (req: Request, res: Response) => {
       });
     }
 
+    // Phone validation - only digits allowed (optional + at beginning)
+    if (phone && phone.trim()) {
+      const phoneRegex = /^\+?[0-9]+$/;
+      if (!phoneRegex.test(phone.trim())) {
+        return res.status(400).json({
+          success: false,
+          message: 'Phone number must contain only digits'
+        });
+      }
+      
+      const cleanPhone = phone.replace(/^\+/, '');
+      if (cleanPhone.length < 8 || cleanPhone.length > 15) {
+        return res.status(400).json({
+          success: false,
+          message: 'Phone number must be between 8 and 15 digits'
+        });
+      }
+    }
+
     const meeting = await meetingService.createMeeting({
       full_name,
       email,
-      phone,
+      phone: phone?.trim() ,
       business,
     });
 
@@ -195,10 +214,29 @@ router.put('/:id', async (req: Request, res: Response) => {
       }
     }
 
+    // Phone validation - only digits allowed (optional + at beginning)
+    if (phone && phone.trim()) {
+      const phoneRegex = /^\+?[0-9]+$/;
+      if (!phoneRegex.test(phone.trim())) {
+        return res.status(400).json({
+          success: false,
+          message: 'Phone number must contain only digits'
+        });
+      }
+      
+      const cleanPhone = phone.replace(/^\+/, '');
+      if (cleanPhone.length < 8 || cleanPhone.length > 15) {
+        return res.status(400).json({
+          success: false,
+          message: 'Phone number must be between 8 and 15 digits'
+        });
+      }
+    }
+
     const updatedMeeting = await meetingService.updateMeeting(id, {
       full_name,
       email,
-      phone,
+      phone: phone?.trim() || undefined,
       business,
     });
 

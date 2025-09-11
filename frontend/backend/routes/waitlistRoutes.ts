@@ -26,6 +26,25 @@ router.post('/', async (req: Request, res: Response) => {
       });
     }
 
+    // Phone validation - only digits allowed (optional + at beginning)
+    if (phone && phone.trim()) {
+      const phoneRegex = /^\+?[0-9]+$/;
+      if (!phoneRegex.test(phone.trim())) {
+        return res.status(400).json({
+          success: false,
+          message: 'Phone number must contain only digits'
+        });
+      }
+      
+      const cleanPhone = phone.replace(/^\+/, '');
+      if (cleanPhone.length < 8 || cleanPhone.length > 15) {
+        return res.status(400).json({
+          success: false,
+          message: 'Phone number must be between 8 and 15 digits'
+        });
+      }
+    }
+
     const waitlistEntry = await waitlistService.addToWaitlist({
       first_name,
       last_name,

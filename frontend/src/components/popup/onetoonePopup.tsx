@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { MeetingHelper } from '../../helper/meetingHelper/meetingHelper';
+import { useToast } from '../toast';
 
 interface OneToOnePopupProps {
     isOpen: boolean;
@@ -6,7 +8,7 @@ interface OneToOnePopupProps {
 }
 
 interface FormData {
-    name: string;
+    full_name: string;
     phone: string;
     email: string;
     business: string;
@@ -14,29 +16,90 @@ interface FormData {
 
 const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
     const [formData, setFormData] = useState<FormData>({
-        name: '',
+        full_name: '',
         phone: '',
         email: '',
         business: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [errors, setErrors] = useState<Partial<FormData>>({});
+    const { addToast } = useToast();
 
     if (!isOpen) return null;
 
     const validateForm = (): boolean => {
         const newErrors: Partial<FormData> = {};
 
-        if (!formData.name.trim()) newErrors.name = 'Name is required';
-        if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
+        if (!formData.full_name.trim()) {
+            newErrors.full_name = 'Name is required';
+            addToast({
+                type: 'warning',
+                message: 'Name is required',
+                duration: 5000
+            });
+        }
+
+        // Phone validation - only digits allowed
+        if (!formData.phone.trim()) {
+            newErrors.phone = 'Phone is required';
+            addToast({
+                type: 'warning',
+                message: 'Phone is required',
+                duration: 5000
+            });
+        } else {
+            // Regex to check if phone contains only digits (and optional + at the beginning)
+            const phoneRegex = /^\+?[0-9]+$/;
+            if (!phoneRegex.test(formData.phone)) {
+                newErrors.phone = 'Phone number must contain only digits';
+                addToast({
+                    type: 'warning',
+                    message: 'Phone number must contain only digits',
+                    duration: 5000
+                });
+            } else if (formData.phone.replace(/^\+/, '').length < 8) {
+                newErrors.phone = 'Phone number must be at least 8 digits';
+                addToast({
+                    type: 'error',
+                    message: 'Phone number must be at least 8 digits',
+                    duration: 5000
+                });
+            } else if (formData.phone.replace(/^\+/, '').length > 15) {
+                newErrors.phone = 'Phone number must be at most 15 digits';
+                addToast({
+                    type: 'error',
+                    message: 'Phone number must be at most 15 digits',
+                    duration: 5000
+                });
+            }
+        }
+
         if (!formData.email.trim()) {
             newErrors.email = 'Email is required';
+            addToast({
+                type: 'warning',
+                message: 'Email is required',
+                duration: 5000
+            });
         } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
             newErrors.email = 'Email is invalid';
+            addToast({
+                type: 'error',
+                message: 'Email is invalid',
+                duration: 5000
+            });
         }
-        if (!formData.business.trim()) newErrors.business = 'Business is required';
+
+        if (!formData.business.trim()) { newErrors.business = 'Business is required' 
+            addToast({
+                type: 'warning',
+                message: 'Business is required',
+                duration: 5000
+            });
+        }
 
         setErrors(newErrors);
+
         return Object.keys(newErrors).length === 0;
     };
 
@@ -49,28 +112,44 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
 
         try {
             // Add your API call here
-            console.log('Form submitted:', formData);
+            const meetingHelper = new MeetingHelper();
+            const response = await meetingHelper.submit(formData);
 
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            console.log(response);
 
             // Reset form and close modal on success
-            setFormData({ name: '', phone: '', email: '', business: '' });
+            setFormData({ full_name: '', phone: '', email: '', business: '' });
             onClose();
 
             // You might want to show a success message here
-            alert('Meeting request submitted successfully!');
+            addToast({
+                type: 'success',
+                message: 'Meeting request submitted successfully!',
+                duration: 5000
+            });
 
         } catch (error) {
             console.error('Error submitting form:', error);
-            alert('Error submitting form. Please try again.');
+            addToast({
+                type: 'error',
+                message: 'Error submitting form. Please try again.',
+                duration: 5000
+            });
         } finally {
             setIsSubmitting(false);
         }
     };
 
     const handleInputChange = (field: keyof FormData, value: string) => {
-        setFormData(prev => ({ ...prev, [field]: value }));
+        // Special handling for phone field - only allow digits and +
+        if (field === 'phone') {
+            // Remove any non-digit characters except + at the beginning
+            const cleanedValue = value.replace(/[^\d+]/g, '').replace(/(?!^)\+/g, '');
+            setFormData(prev => ({ ...prev, [field]: cleanedValue }));
+        } else {
+            setFormData(prev => ({ ...prev, [field]: value }));
+        }
+
         // Clear error when user starts typing
         if (errors[field]) {
             setErrors(prev => ({ ...prev, [field]: undefined }));
@@ -85,7 +164,7 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
 
     // Form field configuration
     const formFields = [
-        { key: 'name' as keyof FormData, type: 'text', placeholder: 'Your Full Name' },
+        { key: 'full_name' as keyof FormData, type: 'text', placeholder: 'Your Full Name' },
         { key: 'phone' as keyof FormData, type: 'tel', placeholder: 'Phone Number' },
         { key: 'email' as keyof FormData, type: 'email', placeholder: 'Email Address' },
         { key: 'business' as keyof FormData, type: 'text', placeholder: 'Business/Company Name' }
@@ -156,6 +235,7 @@ const OneToOnePopup: React.FC<OneToOnePopupProps> = ({ isOpen, onClose }) => {
                     {/* Submit Button */}
                     <button
                         type="submit"
+                        onClick={handleSubmit}
                         disabled={isSubmitting}
                         className={`w-full py-3 rounded-xl font-bold text-base shadow-lg transition-all duration-200 focus:outline-none focus:ring-4 ${isSubmitting
                             ? 'bg-gray-400 cursor-not-allowed text-white'
