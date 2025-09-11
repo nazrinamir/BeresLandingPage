@@ -165,13 +165,13 @@ export default function FeaturesGrid() {
                         : undefined
                     }
                   >
-                    <h3 className="text-[15px] font-extrabold text-[#0B1E18] leading-snug text-left">
+                    <h3 className="text-[15px] font-extrabold text-[#0B1E18] leading-snug text-left min-h-[40px] md:min-h-[44px]">
                       {f.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed !text-[#4A4A4A] text-justify">
+                    <p className="mt-2 text-sm leading-relaxed !text-[#4A4A4A] text-left min-h-[72px] md:min-h-[80px]">
                       {f.desc}
                     </p>
-                    <div className="mt-4 h-28 md:h-32 rounded-lg bg-[#0B1E18] flex items-center justify-center overflow-hidden">
+                    <div className="mt-auto pt-4 h-28 md:h-32 rounded-lg bg-[#0B1E18] flex items-center justify-center overflow-hidden">
                       <img src={f.img} alt="" className="w-full h-full object-contain pointer-events-none select-none" />
                     </div>
                   </motion.article>

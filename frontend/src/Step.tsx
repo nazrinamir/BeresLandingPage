@@ -150,16 +150,16 @@ export default function Step() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             />
 
-            <div className="mt-20 grid grid-cols-1 md:[grid-template-columns:2fr_3fr] gap-2">
-              {/* Left card (slides up) */}
+            <div className="mt-16 grid grid-cols-1 md:[grid-template-columns:2fr_3fr] gap-2">
               <motion.div
-                className="rounded-2xl bg-[#08231B] md:h-[260px] flex items-center justify-center overflow-hidden"
+                className="rounded-2xl bg-[#08231B] h-40 md:h-[260px] flex items-center justify-center overflow-hidden"
                 initial={{ y: 24, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ type: "spring", stiffness: 320, damping: 30 }}
               >
-                <img src="/Frame8.svg" alt="Extra illustration" className="w-full h-full object-contain" />
+                <img src="/Frame8.svg" alt="Extra illustration" className="h-full w-auto object-contain md:hidden" />
+                <img src="/BeresDontRush.svg" alt="Extra illustration" className="h-full w-auto object-contain hidden md:block" />
               </motion.div>
 
               {/* Right: chips with stagger + tilt */}
