@@ -1,4 +1,6 @@
 // components/FeaturesGrid.tsx
+"use client";
+
 import React, { useMemo, useState } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import IncentivePopup from "./components/popup/IncentivePopup";
@@ -55,23 +57,27 @@ export default function Step() {
     return { style: { rotateX: rx, rotateY: ry, z: tz }, onMove, onLeave };
   }
 
+  // --- X/Twitter share intent ---
+  const TWEET_TEXT = "Beres — the easiest way to run your WhatsApp business. Check this out!";
+  const SITE_URL = typeof window !== "undefined" ? window.location.href : "https://beres.my";
+  const tweetIntent = `https://x.com/intent/tweet?text=${encodeURIComponent(TWEET_TEXT)}&url=${encodeURIComponent(SITE_URL)}`;
+
   const buttons = useMemo(() => ([
-    { icon: "/Waitlist.svg", label: "Join the waitlist", as: "button" },
-    { icon: "/Group134.svg", label: "Tweet about us", as: "button" },
-    { icon: "/Group.svg", label: "Complete a quick survey with us", as: "a", href: "https://forms.office.com/r/v27frh4uhR" },
-    { icon: "/IG.svg", label: "Share our IG post", as: "a", href: "https://www.instagram.com/beres.my/" },
-    { icon: "/1to1.svg", label: "One-to-one session", as: "button" },
-    { icon: "/Sharing.svg", label: "Share with your friends", as: "button" }
-  ]), []);
+    { icon: "/Waitlist.svg", label: "Join the waitlist", as: "button" as const },
+    // changed to an anchor with X intent URL
+    { icon: "/Group134.svg", label: "Tweet about us", as: "a" as const, href: tweetIntent },
+    { icon: "/Group.svg", label: "Complete a quick survey with us", as: "a" as const, href: "https://forms.office.com/r/v27frh4uhR" },
+    { icon: "/IG.svg", label: "Share our IG post", as: "a" as const, href: "https://www.instagram.com/beres.my/" },
+    { icon: "/1to1.svg", label: "One-to-one session", as: "button" as const },
+    { icon: "/Sharing.svg", label: "Share with your friends", as: "button" as const }
+  ]), [tweetIntent]);
 
   const scrollToWaitlist = () => {
     // try the email input first
     const emailEl = document.getElementById("waitlist-email") as HTMLInputElement | null;
     if (emailEl) {
       emailEl.scrollIntoView({ behavior: "smooth", block: "center" });
-      // small delay helps iOS to focus after scroll
       window.setTimeout(() => {
-        // preventScroll avoids another jump
         emailEl.focus({ preventScroll: true } as any);
       }, 350);
       return;
@@ -82,10 +88,7 @@ export default function Step() {
   };
 
   return (
-    <motion.section
-      id="steps"
-      className="bg-white py-20"
-    >
+    <motion.section id="steps" className="bg-white py-20">
       <div className="relative mx-auto max-w-6xl px-6 md:px-10">
 
         {/* Parallax sticker */}
@@ -99,13 +102,7 @@ export default function Step() {
         />
 
         {/* Wrap the rest with the reveal mask */}
-        <div
-          variants={sectionVariants}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.25 }}
-        >
-
+        <div variants={sectionVariants} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.25 }}>
           {/* Headline */}
           <div className="mb-10 md:mb-14 text-left">
             <motion.h2
@@ -148,7 +145,6 @@ export default function Step() {
             />
 
             <div className="mt-20 grid grid-cols-1 md:[grid-template-columns:2fr_3fr] gap-2">
-
               {/* Left card (slides up) */}
               <motion.div
                 className="rounded-2xl bg-[#08231B] md:h-[260px] flex items-center justify-center overflow-hidden"
@@ -212,7 +208,7 @@ export default function Step() {
                       return (
                         <motion.a
                           key={i}
-                          href={b.href!}
+                          href={(b as any).href}
                           target="_blank"
                           rel="noopener noreferrer"
                           variants={item}
@@ -242,12 +238,13 @@ export default function Step() {
                           style={tilt.style}
                           className={common}
                           aria-label={b.label}
-                          onClick={scrollToWaitlist}       
+                          onClick={scrollToWaitlist}
                         >
                           {Inner}
                         </motion.button>
                       );
                     }
+
                     return (
                       <motion.button
                         key={i}
@@ -263,17 +260,12 @@ export default function Step() {
                         onClick={() => {
                           if (b.label === "Share with your friends") setShowShare(true);
                           else if (b.label === "One-to-one session") setShowOneToOne(true);
-                          else if (b.label === "Join the waitlist") console.log("Join the waitlist clicked");
-                          else if (b.label === "Tweet about us") console.log("Tweet about us clicked");
+                          else if (b.label === "Tweet about us") window.open(tweetIntent, "_blank", "noopener,noreferrer");
                         }}
                       >
                         {Inner}
                       </motion.button>
                     );
-
-
-
-
                   })}
                 </motion.div>
               </motion.div>

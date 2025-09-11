@@ -13,42 +13,68 @@ import FooterSection from './footerSection';
 import { ToastProvider, useToast } from './components/toast/ToastContext';
 import ToastContainer from './components/toast/ToastContainer';
 import BenefitSectionMobile from './BenefitSectionMobile';
+import LoadingScreen from './components/loading/LoadingScreen';
 
 
 function AppContent() {
   const [showPopup, setShowPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { addToast } = useToast();
 
+  // Loading screen logic
   useEffect(() => {
+    const loadApp = async () => {
+      // Minimum loading time for better UX
+      const minLoadingTime = 2000; // 2 seconds
+      const startTime = Date.now();
+
+      // Wait for all images to load
+      const imagePromises = Array.from(document.querySelectorAll('img'))
+        .map((img) => {
+          if (img.complete) return Promise.resolve();
+          return new Promise((resolve) => {
+            img.onload = resolve;
+            img.onerror = resolve; // Continue even if image fails to load
+          });
+        });
+
+      // Wait for minimum time and all images
+      await Promise.all([
+        new Promise(resolve => setTimeout(resolve, minLoadingTime)),
+        Promise.all(imagePromises)
+      ]);
+
+      // Ensure minimum loading time has passed
+      const elapsedTime = Date.now() - startTime;
+      if (elapsedTime < minLoadingTime) {
+        await new Promise(resolve => setTimeout(resolve, minLoadingTime - elapsedTime));
+      }
+
+      setIsLoading(false);
+    };
+
+    loadApp();
+  }, []);
+
+  useEffect(() => {
+    // Only start popup logic after loading is complete
+    if (isLoading) return;
+
     let timer: ReturnType<typeof setTimeout>;
     let triggered = false;
 
-    // Timer for 30 seconds
+    // Start 30-second timer immediately after loading finishes
     timer = setTimeout(() => {
       if (!triggered) {
         setShowPopup(true);
         triggered = true;
-        window.removeEventListener('scroll', onScroll);
       }
     }, 30000);
 
-    // Scroll handler
-    const onScroll = () => {
-      if (!triggered && window.scrollY > 100) { // adjust scrollY threshold as needed
-        setShowPopup(true);
-        triggered = true;
-        clearTimeout(timer);
-        window.removeEventListener('scroll', onScroll);
-      }
-    };
-
-    window.addEventListener('scroll', onScroll);
-
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('scroll', onScroll);
     };
-  }, []);
+  }, [isLoading]); // Add isLoading as dependency
 
 
   // Toast test functions
@@ -86,6 +112,9 @@ function AppContent() {
 
   return (
     <div className="relative min-h-screen text-white w-full">
+      {/* Loading Screen */}
+      <LoadingScreen isLoading={isLoading} />
+      
       {/* Navigation */}
       <Navbar />
 

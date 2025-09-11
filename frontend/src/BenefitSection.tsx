@@ -25,7 +25,7 @@ export default function BenefitSection() {
     if (isPaused || hovered !== null) return;
     const id = setInterval(() => {
       setSelected((prev) => (prev + 1) % benefits.length);
-    }, 2200); 
+    }, 2200);
     return () => clearInterval(id);
   }, [isPaused, hovered, benefits.length]);
 
@@ -36,10 +36,12 @@ export default function BenefitSection() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <img
+      <motion.img
         src="/chatbubble.svg"
         alt=""
         className="hidden md:block absolute left-0 top-52 h-48 w-auto drop-shadow-md pointer-events-none select-none ml-16 mt-10"
+        animate={{ scale: [1, .9, 1], rotate: [0, 0, 40, 40, 0], borderRadius: ["0%", "0%", "20%", "20%", "0%"] }}
+        transition={{ duration: 2, ease: "easeInOut", times: [0, .2, .5, .8, 1], repeat: Infinity, repeatDelay: 1 }}
       />
 
       <div className="relative mx-auto max-w-6xl px-6 md:px-10">
