@@ -10,11 +10,12 @@ const links = [
 1
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [showWaitlistPopup, setShowWaitlistPopup] = useState(false);
 
   return (<>
     <WaitlistPopup
-      isOpen={open}
-      onClose={() => setOpen(false)}
+      isOpen={showWaitlistPopup}
+      onClose={() => setShowWaitlistPopup(false)}
     />
     <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto">
 
@@ -46,7 +47,7 @@ export default function Navbar() {
           <div className="ml-auto flex items-center gap-2">
             {/* CTA */}
             <button
-              onClick={() => setOpen(true)}
+              onClick={() => setShowWaitlistPopup(true)}
               className="hidden sm:inline-flex h-8 items-center rounded-full text-md bg-lime-400 px-3.5 font-semibold !text-black hover:bg-lime-300 transition"
             >
               Join our waitlist
@@ -95,7 +96,7 @@ export default function Navbar() {
               <li>
                 <a
                   href="#waitlist"
-                  onClick={() => setOpen(false)}
+                  onClick={() => {setShowWaitlistPopup(true);setOpen(false);}}
                   className="block rounded-full bg-[#AEEA30] px-4 py-2 text-center font-semibold !text-black hover:bg-[#9DD428]"
                 >
                   Join our waitlist

@@ -76,40 +76,6 @@ function AppContent() {
     };
   }, [isLoading]); // Add isLoading as dependency
 
-
-  // Toast test functions
-  const showSuccessToast = () => {
-    addToast({
-      type: 'success',
-      message: 'Success! Your action was completed successfully.',
-      duration: 5000
-    });
-  };
-
-  const showErrorToast = () => {
-    addToast({
-      type: 'error',
-      message: 'Error! Something went wrong. Please try again.',
-      duration: 5000
-    });
-  };
-
-  const showWarningToast = () => {
-    addToast({
-      type: 'warning',
-      message: 'Warning! Please check your input and try again.',
-      duration: 5000
-    });
-  };
-
-  const showInfoToast = () => {
-    addToast({
-      type: 'info',
-      message: 'Info: Here\'s some helpful information for you.',
-      duration: 5000
-    });
-  };
-
   return (
     <div className="relative min-h-screen text-white w-full">
       {/* Loading Screen */}
@@ -147,44 +113,12 @@ function AppContent() {
         <FooterSection />
       </footer>
       <FloatingContactButton />
+
       {showPopup && <IncentivePopup onClose={() => setShowPopup(false)} />}
 
       {/* Toast Container */}
       <ToastContainer />
 
-      {/* Toast Test Buttons */}
-      {/* <div className="fixed bottom-50 left-4 z-50 flex flex-col gap-2">
-        <button
-          className="bg-green-600 text-white px-3 py-2 rounded text-sm"
-          onClick={showSuccessToast}
-        >
-          Success Toast
-        </button>
-        <button
-          className="bg-red-600 text-white px-3 py-2 rounded text-sm"
-          onClick={showErrorToast}
-        >
-          Error Toast
-        </button>
-        <button
-          className="bg-yellow-600 text-white px-3 py-2 rounded text-sm"
-          onClick={showWarningToast}
-        >
-          Warning Toast
-        </button>
-        <button
-          className="bg-blue-600 text-white px-3 py-2 rounded text-sm"
-          onClick={showInfoToast}
-        >
-          Info Toast
-        </button>
-        <button
-          className="bg-purple-600 text-white px-3 py-2 rounded text-sm"
-          onClick={() => setShowPopup(true)}
-        >
-          Test Popup
-        </button>
-      </div> */}
     </div>
   )
 }
