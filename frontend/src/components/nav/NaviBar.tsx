@@ -17,10 +17,10 @@ export default function Navbar() {
       isOpen={showWaitlistPopup}
       onClose={() => setShowWaitlistPopup(false)}
     />
-    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto drop-shadow-[0_0_5px_#012219] backdrop-blur-lg rounded-3xl ">
+    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto drop-shadow-[0_0_10px_#012219] backdrop-blur-sm rounded-3xl ">
 
       <nav className={`mx-auto max-w-4xl transition-all duration-300 ease-in-out rounded-3xl border border-white/10 bg-[#012219]/50 py-1 shadow-lg h-full overflow-hidden`}>
-        <div className="flex items-center px-4 sm:px-5 py-1.5 gap-4 text-sm">
+        <div className="flex items-center px-4 sm:px-4 py-1.5 gap-4 text-sm">
           {/* Brand Logo */}
           <a href="#home" className="flex items-center">
             <img

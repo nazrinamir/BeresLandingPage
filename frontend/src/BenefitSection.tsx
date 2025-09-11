@@ -1,120 +1,146 @@
-// components/BenefitSection.tsx
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// components/BenefitSectionMobile.tsx
+// "use client"  // add this if you're on Next.js App Router
+
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useTranslation } from "./lang/useTranslation";
 
-type Benefit = { title: string; img: string };
+type Slide = { title: string; img: string };
+
+const mod = (n: number, m: number) => ((n % m) + m) % m;
 
 export default function BenefitSection() {
-  const [selected, setSelected] = useState(0);
-  const [hovered, setHovered] = useState<number | null>(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const { t } = useTranslation();
+    const { t } = useTranslation();
 
-  const benefits: Benefit[] = [
-    { title: t("benefits.items.0"), img: "/StraightfromWhatsApp.svg" },
-    { title: t("benefits.items.1"), img: "/OrdersonAutopilot.svg" },
-    { title: t("benefits.items.2"), img: "/YourBusiness.svg" },
-    { title: t("benefits.items.3"), img: "/Bye-bye.svg" },
-    { title: t("benefits.items.4"), img: "/ServeBetter.svg" },
-  ];
+    // Slides
+    const slides: Slide[] = [
+        { title: t("benefits.items.0"), img: "/StraightfromWhatsApp.svg" },
+        { title: t("benefits.items.1"), img: "/OrdersonAutopilot.svg" },
+        { title: t("benefits.items.2"), img: "/YourBusiness.svg" },
+        { title: t("benefits.items.3"), img: "/Bye-bye.svg" },
+        { title: t("benefits.items.4"), img: "/ServeBetter.svg" },
+    ];
 
-  const active = hovered ?? selected;
+    const [index, setIndex] = useState(0);
+    const [paused, setPaused] = useState(false);
 
-  useEffect(() => {
-    if (isPaused || hovered !== null) return;
-    const id = setInterval(() => {
-      setSelected((prev) => (prev + 1) % benefits.length);
-    }, 2200);
-    return () => clearInterval(id);
-  }, [isPaused, hovered, benefits.length]);
+    // Auto-play
+    useEffect(() => {
+        if (paused) return;
+        const id = setInterval(() => setIndex((i) => (i + 1) % slides.length), 2500);
+        return () => clearInterval(id);
+    }, [paused, slides.length]);
 
-  return (
-    <section
-      id="benefits"
-      className="relative bg-[#F3F4F6] py-20"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <motion.img
-        src="/chatbubble.svg"
-        alt=""
-        className="hidden md:block absolute left-0 top-52 h-48 w-auto drop-shadow-md pointer-events-none select-none ml-16 mt-10"
-        animate={{ scale: [1, .9, 1], rotate: [0, 0, 40, 40, 0], borderRadius: ["0%", "0%", "20%", "20%", "0%"] }}
-        transition={{ duration: 2, ease: "easeInOut", times: [0, .2, .5, .8, 1], repeat: Infinity, repeatDelay: 1 }}
-      />
+    const prev = () => setIndex((i) => mod(i - 1, slides.length));
+    const next = () => setIndex((i) => mod(i + 1, slides.length));
 
-      <div className="relative mx-auto max-w-6xl px-6 md:px-10">
-        {/* Title + subtitle */}
-        <div className="mb-10 md:mb-14 text-left">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E18]">
-            {t("benefits.title")}
-          </h2>
-          <p className="text-2xl md:text-3xl mt-1 text-gray-400">
-            {t("benefits.subtitle")}
-          </p>
-        </div>
+    // Position helper: -1 (left), 0 (center), +1 (right), others hidden
+    const posOf = (i: number) => {
+        const left = mod(index - 1, slides.length);
+        const right = mod(index + 1, slides.length);
+        if (i === index) return 0;
+        if (i === left) return -1;
+        if (i === right) return 1;
+        return 2; // offstage
+    };
 
-        {/* Content grid */}
-        <div className="mx-auto max-w-5xl px-0 md:px-0 flex justify-center">
-          <div className="grid md:grid-cols-[360px_380px] gap-x-12 items-start">
-            {/* LEFT list */}
-            <div className="text-left max-w-[360px]">
-              <ul className="space-y-6 max-w-[280px]">
-                {benefits.map((b, i) => {
-                  const isActive = i === active;
-                  const isSelected = i === selected;
-                  return (
-                    <motion.li
-                      key={i}
-                      onMouseEnter={() => setHovered(i)}
-                      onMouseLeave={() => setHovered(null)}
-                      onClick={() => setSelected(i)}
-                      className="cursor-pointer"
-                      whileHover={{ x: 4 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                    >
-                      <div
-                        className={[
-                          "text-[20px] md:text-[22px] whitespace-pre-line",
-                          isActive
-                            ? "font-extrabold text-[#0B1E18] leading-loosed"
-                            : "font-semibold text-[#BFC5CB] leading-loosed",
-                        ].join(" ")}
-                      >
-                        {b.title}
-                      </div>
-                      {isSelected && (
-                        <motion.div
-                          layoutId="benefit-underline"
-                          className="h-[2px] w-24 bg-[#AEEA30] rounded-full mt-1"
+    // Drag end → decide swipe
+    const onDragEnd = (_: any, info: { offset: { x: number }; velocity: { x: number } }) => {
+        const power = Math.abs(info.offset.x) + Math.abs(info.velocity.x) * 200;
+        if (power > 180) {
+            info.offset.x < 0 ? next() : prev();
+        }
+    };
+
+    // Card sizes and spacing (px)
+    const CARD_W = 400; // width of one card
+    const GAP = 49;     // distance between cards when peeking
+    const STEP = CARD_W + GAP;
+
+    return (
+        <section
+            id="benefits"
+            className="relative bg-[#f8f3f3] py-16 md:block hidden select-none overflow-x-hidden shadow-inner"
+            onPointerDown={() => setPaused(true)}
+            onPointerUp={() => setPaused(false)}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+        >
+            <div className="mx-auto  px-6">
+                {/* Title */}
+                <div className="mb-8 text-center">
+                    <h2 className="text-2xl font-extrabold text-[#0B1E18]">
+                        {t("benefits.title")}
+                    </h2>
+                    <p className="text-lg mt-1 text-gray-500">{t("benefits.subtitle")}</p>
+                </div>
+
+                {/* Carousel viewport */}
+                <div className="relative h-[500px] overflow-visible">
+                    {/* Slides */}
+                    {slides.map((s, i) => {
+                        const p = posOf(i); // -1,0,1,2
+                        const isCenter = p === 0;
+                        const isSide = Math.abs(p) === 1;
+
+                        return (
+                            <motion.div
+                                key={i}
+                                className="absolute top-0 left-1/2 -translate-x-1/2"
+                                style={{ width: CARD_W, height: CARD_W+100, touchAction: "pan-y" }}
+                                drag={isCenter ? "x" : false}
+                                dragConstraints={{ left: 0, right: 0 }}
+                                onDragEnd={onDragEnd}
+                                whileTap={{ scale: isCenter ? 0.98 : 1 }}
+                                animate={{
+                                    x: p === 2 ? (p > 0 ? STEP * 2 : -STEP * 2) : p * STEP,
+                                    scale: isCenter ? 1 : 0.9,
+                                    opacity: p === 2 ? 0 : 1,
+                                    zIndex: isCenter ? 3 : isSide ? 2 : 1,
+                                }}
+                                transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                            >
+                                {/* Center card (white with image) */}
+                                {isCenter ? (
+                                    <div className="w-full h-full bg-[#f8f4f4] rounded-2xl border border-[#E6E8EA] shadow-[0_10px_22px_rgba(0,0,0,0.12)] p-5 grid place-items-center">
+                                        <div className="text-lg text-black font-extrabold leading-snug">{s.title}</div>
+                                        <img
+                                            src={s.img}
+                                            alt={s.title}
+                                            className="w-full h-full !bg-[#f8f4f4] object-contain"
+                                            draggable={false}
+                                        />
+                                    </div>
+                                ) : (
+                                    // Side cards (dark with title)
+                                    <div className="w-full h-full rounded-2xl bg-[#f8f4f4]  text-white grid place-items-center blur-xs px-6 text-center">
+                                        <div className="text-lg font-extrabold leading-snug text-black">{s.title}</div>
+                                        <img
+                                            src={s.img}
+                                            alt={s.title}
+                                            className="w-full h-full !bg-[#f8f4f4]  object-contain "
+                                            draggable={false}
+                                        />
+                                    </div>
+                                )}
+                            </motion.div>
+                        );
+                    })}
+                </div>
+
+                {/* Dots */}
+                <div className="mt-6 flex items-center justify-center gap-2">
+                    {slides.map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setIndex(i)}
+                            className={`h-2 rounded-full transition-all ${i === index ? "w-5 bg-[#0B1E18]" : "w-2 bg-[#C9D1D9]"
+                                }`}
+                            aria-label={`Go to slide ${i + 1}`}
                         />
-                      )}
-                    </motion.li>
-                  );
-                })}
-              </ul>
+                    ))}
+                </div>
             </div>
-
-            {/* RIGHT preview */}
-            <div className="md:pt-8 flex md:justify-center justify-center w-full h-full">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={active}
-                  src={benefits[active].img}
-                  alt={benefits[active].title}
-                  initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -8, scale: 0.98 }}
-                  transition={{ duration: 0.25 }}
-                  className="w-full md:w-full h-full rounded-2xl border border-[#E6E8EA] shadow-[0_10px_22px_rgba(0,0,0,0.12)] object-contain select-none"
-                  draggable={false}
-                />
-              </AnimatePresence>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+        </section>
+    );
 }

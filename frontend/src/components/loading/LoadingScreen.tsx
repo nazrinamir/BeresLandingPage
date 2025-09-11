@@ -51,17 +51,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
               }}
               className="relative"
             >
-              <img
-                src="/bereslogo.svg"
-                alt="Beres Logo"
-                className="w-24 h-24 md:w-32 md:h-32"
-              />
+              <img src="/loading_gif.gif" alt="Beres Loading" className='w-50 h-50 rounded-full' />
 
               {/* Pulsing ring around logo */}
               <motion.div
                 className="absolute inset-0 rounded-full border-2 border-[#A7E34A]"
                 animate={{
-                  scale: [1, 1.2, 1],
+                  scale: [1, 1.1, 1],
                   opacity: [0.7, 0.3, 0.7],
                 }}
                 transition={{

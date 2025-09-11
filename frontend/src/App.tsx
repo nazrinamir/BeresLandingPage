@@ -111,7 +111,7 @@ function AppContent() {
 
       {/* Benefit Section */}
       <div className='md:block hidden bg-[#EFEFEF]'>
-        <BenefitSection />
+        <BenefitSection /> 
       </div>
 
       <div id='benefits' className='md:hidden block'>
