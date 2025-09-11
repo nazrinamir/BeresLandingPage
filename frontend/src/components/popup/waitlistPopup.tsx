@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { WaitlistSubmitUseCase } from '../../useCase/waitlist/WaitlistSubmitUseCase';
 import { useToast } from '../toast/ToastContext';
+import { WaitlistHelper } from '../../helper/waitlistHelper/waitlistHelper';
 
 interface WaitlistPopupProps {
     isOpen: boolean;
@@ -61,7 +62,8 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
         setIsLoading(true);
 
         try {
-            const response = await waitlistUseCase.execute(formData);
+            const waitlistHelper = new WaitlistHelper();
+            const response = await waitlistHelper.submit(formData);
 
             if (response.success) {
                 addToast({

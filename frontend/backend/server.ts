@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { initializeDatabase } from './config/database';
 import waitlistRoutes from './routes/waitlistRoutes';
+import meetingRoutes from './routes/meetingRoutes';
 
 // Load environment variables
 dotenv.config();
@@ -21,12 +22,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/waitlist', waitlistRoutes);
+app.use('/api/meetings', meetingRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {
   res.json({ 
     success: true, 
-    message: 'Waitlist Backend API is running!',
+    message: 'Backend API is running!',
     timestamp: new Date().toISOString(),
   });
 });

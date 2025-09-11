@@ -2,8 +2,7 @@ import { WaitlistSubmitUseCase } from "../../useCase/waitlist/WaitlistSubmitUseC
 
 export class WaitlistHelper {
 
-    constructor() {
-    }
+    constructor() {}
 
     async submit(data: any): Promise<any> {
         const waitlistSubmitUseCase = new WaitlistSubmitUseCase();
