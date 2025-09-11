@@ -5,6 +5,7 @@ import { useTranslation } from './lang/useTranslation';
 import { SuccessPopup } from './components/popup/SuccessPopup';
 import { useToast } from './components/toast';
 import ScrollIndicator from './components/button/ScrollIndicator';
+import { motion } from 'framer-motion';
 
 interface HeroSectionProps {
   isLoading?: boolean;
@@ -60,12 +61,12 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
             </h1>
 
             {/* Paragraph */}
-            <p className="text-lg !text-white mb-8 text-justify">
+            <motion.p className="text-lg !text-white mb-8 text-justify" whileHover={{ scale: 1.2 }}>
               {t('hero.description')}
-            </p>
+            </motion.p>
 
             {/* Email Input + Button */}
-            <div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full">
+            <motion.div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full" whileHover={{ scale: 1.2 }}>
               <input
                 id="waitlist-email"
                 type="email"
@@ -77,19 +78,19 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
               <button onClick={handleSubmitWaitlist} className="bg-[#AEEA30] text-black font-medium px-4 py-2 mr-1 rounded-full hover:bg-[#9cd426] transition text-nowrap">
                 {t('hero.joinUs')}
               </button>
-            </div>
+            </motion.div>
           </div>
         </div>
 
         {/* Right Illustration - bigger */}
         <div className="md:w-7/12 w-full md:flex justify-center hidden " data-aos="fade-left">
-          <div className="overflow-hidden w-full h-full flex items-center justify-center">
+          <motion.div className="overflow-hidden w-full h-full flex items-center justify-center" whileHover={{ scale: 1.2 }} whileTap={{ scale: 2 }}>
             <img
               src={'/hero.svg'}
               alt="Hero"
               className="w-[633px] h-[602px] object-contain"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
       
