@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { IconType } from "react-icons";
-import { FaWhatsapp, FaTelegramPlane, FaFacebook, FaFacebookMessenger, FaTwitter } from "react-icons/fa";
+import { FaWhatsapp, FaTelegramPlane, FaFacebook, FaTwitter } from "react-icons/fa";
 
 type ShareModalProps = {
     onClose: () => void;
@@ -18,10 +17,9 @@ export default function ShareModal({
     const url = useMemo(() => shareUrl ?? "http://192.168.1.64:5173/", [shareUrl]);
 
     const [copied, setCopied] = useState(false);
-    const canNativeShare = typeof navigator !== "undefined" && !!navigator.share;
-    const canCopy = typeof navigator !== "undefined" && !!navigator.clipboard?.writeText;
-    const isMobile =
-        typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    // const canNativeShare = typeof navigator !== "undefined" && !!navigator.share;
+    // const canCopy = typeof navigator !== "undefined" && !!navigator.clipboard?.writeText;
+    // const isMobile = typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     const encodedUrl = encodeURIComponent(url);
     const encodedText = encodeURIComponent(shareText);
@@ -43,13 +41,13 @@ export default function ShareModal({
         };
     }, [onClose]);
 
-    const handleNativeShare = async () => {
-        try {
-            if (!canNativeShare) return;
-            await navigator.share({ title: "Beres", text: shareText, url });
-            onClose();
-        } catch { }
-    };
+    // const handleNativeShare = async () => {
+    //     try {
+    //         if (!canNativeShare) return;
+    //         await navigator.share({ title: "Beres", text: shareText, url });
+    //         onClose();
+    //     } catch { }
+    // };
 
     const handleCopy = async () => {
         // Fallback for HTTP / older browsers (works on iOS Safari)

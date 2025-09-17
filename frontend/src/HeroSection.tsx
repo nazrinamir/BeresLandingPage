@@ -5,7 +5,6 @@ import { useTranslation } from './lang/useTranslation';
 import { SuccessPopup } from './components/popup/SuccessPopup';
 import { useToast } from './components/toast';
 import ScrollIndicator from './components/button/ScrollIndicator';
-import { motion } from 'framer-motion';
 
 interface HeroSectionProps {
   isLoading?: boolean;

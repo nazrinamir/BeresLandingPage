@@ -1,5 +1,4 @@
-// components/FeaturesGrid.tsx
-import React, { useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
+import { useEffect, useMemo, useRef, useState, useLayoutEffect } from "react";
 import { motion, MotionConfig, useInView, useReducedMotion } from "framer-motion";
 import { useTranslation } from "./lang/useTranslation";
 
@@ -117,7 +116,7 @@ export default function FeaturesGrid() {
               className="absolute -left-[9999px] -top-[9999px] w-full"
             >
               <div className="grid grid-cols-1 gap-6 max-w-3xl mx-auto">
-                {items.map((f, i) => (
+                {items.map((i) => (
                   <div key={`probe-${i}`} className="rounded-xl bg-[#F0F0F0] p-5">
                     <div className="h-28 rounded-lg bg-[#0B1E18]" />
                   </div>

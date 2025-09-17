@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { WaitlistSubmitUseCase } from '../../useCase/waitlist/WaitlistSubmitUseCase';
 import { useToast } from '../toast/ToastContext';
 import { WaitlistHelper } from '../../helper/waitlistHelper/waitlistHelper';
 
@@ -20,7 +19,7 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
     const [errors, setErrors] = useState<Record<string, string>>({});
     const { addToast } = useToast();
 
-    const waitlistUseCase = new WaitlistSubmitUseCase();
+    // const waitlistUseCase = new WaitlistSubmitUseCase();
 
     // Close modal on Escape key press
     React.useEffect(() => {

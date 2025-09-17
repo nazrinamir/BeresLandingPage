@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring, type Variants } from "framer-motion";
 import IncentivePopup from "./components/popup/IncentivePopup";
 import ShareModal from "./components/popup/ShareModal";
 import OneToOnePopup from "./components/popup/onetoonePopup";
@@ -20,21 +20,24 @@ export default function Step() {
   const stickerR = useTransform(scrollY, [0, 600], [0, 8]);     // slight rotate
 
   // Section reveal (clipPath mask) à la Ahadi feel
-  const sectionVariants = {
+  const sectionVariants: Variants = {
     initial: { opacity: 0, clipPath: "inset(12% 12% 12% 12% round 24px)" },
     animate: {
       opacity: 1,
       clipPath: "inset(0% 0% 0% 0% round 24px)",
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+      transition: {
+        duration: 0.8,
+        ease: [0.22, 1, 0.36, 1]
+      }
     }
   };
 
   // Staggered chips
-  const list = {
+  const list: Variants = {
     initial: {},
     animate: { transition: { staggerChildren: 0.06, delayChildren: 0.15 } }
   };
-  const item = {
+  const item: Variants = {
     initial: { y: 16, opacity: 0, scale: 0.98 },
     animate: {
       y: 0, opacity: 1, scale: 1,
@@ -74,20 +77,20 @@ export default function Step() {
     { icon: "/Sharing.svg", label: "Share with your friends", as: "button" as const }
   ]), [tweetIntent]);
 
-  const scrollToWaitlist = () => {
-    // try the email input first
-    const emailEl = document.getElementById("waitlist-email") as HTMLInputElement | null;
-    if (emailEl) {
-      emailEl.scrollIntoView({ behavior: "smooth", block: "center" });
-      window.setTimeout(() => {
-        emailEl.focus({ preventScroll: true } as any);
-      }, 350);
-      return;
-    }
-    // fallback: scroll to the hero section
-    const hero = document.getElementById("home");
-    hero?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  // const scrollToWaitlist = () => {
+  //   // try the email input first
+  //   const emailEl = document.getElementById("waitlist-email") as HTMLInputElement | null;
+  //   if (emailEl) {
+  //     emailEl.scrollIntoView({ behavior: "smooth", block: "center" });
+  //     window.setTimeout(() => {
+  //       emailEl.focus({ preventScroll: true } as any);
+  //     }, 350);
+  //     return;
+  //   }
+  //   // fallback: scroll to the hero section
+  //   const hero = document.getElementById("home");
+  //   hero?.scrollIntoView({ behavior: "smooth", block: "start" });
+  // };
 
   const handlewaitlistpopup = () => {
     setShowWaitlistPopup(true);
@@ -108,7 +111,7 @@ export default function Step() {
         />
 
         {/* Wrap the rest with the reveal mask */}
-        <div variants={sectionVariants} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.25 }}>
+        <motion.div variants={sectionVariants} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.25 }}>
           {/* Headline */}
           <div className="mb-10 md:mb-14 text-left">
             <motion.h2
@@ -255,7 +258,7 @@ export default function Step() {
                       <motion.button
                         key={i}
                         type="button"
-                        variants={item}
+                        variants={item as Variants}
                         whileHover={{ y: -6, scale: 1.03, boxShadow: "0 10px 18px rgba(0,0,0,0.18)" }}
                         whileTap={{ scale: 0.98, y: -2 }}
                         onMouseMove={tilt.onMove}
@@ -279,7 +282,7 @@ export default function Step() {
             </div>
           </div>
           <motion.div />
-        </div>
+        </motion.div>
       </div>
 
       <WaitlistPopup
