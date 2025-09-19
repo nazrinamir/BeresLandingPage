@@ -103,12 +103,12 @@ const FooterSection = () => {
           <p className="!text-[#AEEA30] font-semibold">Designed by Beres</p>
           <div className="flex flex-wrap gap-8 mt-6 md:mt-0 text-gray-400">
             {/* Bonus: prominent CTA in footer */}
-            <button
+            {/* <button
               onClick={openWaitlist}
               className="bg-[#AEEA30] text-black px-4 py-2 rounded-lg font-semibold hover:brightness-95 active:scale-[0.98] transition"
             >
               Join our waitlist
-            </button>
+            </button> */}
             <button onClick={() => setShowPrivacy(true)} className="!text-[#AEEA30]">Privacy policy</button>
             <button onClick={() => setShowTerms(true)} className="!text-[#AEEA30]">Terms of use</button>
             <span className="!text-[#AEEA30]"> © 2025 Beres. All rights reserved.</span>
