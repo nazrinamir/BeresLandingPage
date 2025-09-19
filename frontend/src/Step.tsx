@@ -192,7 +192,7 @@ export default function Step() {
                 className="h-full w-auto object-contain md:hidden"
               />
               <img
-                src="/BeresDontRush.svg"
+                src="/Beres_dont_rush.png"
                 alt="Extra illustration"
                 className="h-full w-auto object-contain hidden md:block"
               />
