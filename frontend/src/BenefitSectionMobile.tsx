@@ -53,9 +53,11 @@ export default function BenefitSectionMobile() {
     };
 
     // Card sizes and spacing (px)
-    const CARD_W = 280; // width of one card
-    const GAP = 24;     // distance between cards when peeking
+    const CARD_W = 340;  // wider
+    const CARD_H = 440;  // add height
+    const GAP = 28;      // spacing between cards
     const STEP = CARD_W + GAP;
+
 
     return (
         <section
@@ -87,7 +89,7 @@ export default function BenefitSectionMobile() {
                             <motion.div
                                 key={i}
                                 className="absolute top-0 left-1/2 -translate-x-1/2"
-                                style={{ width: CARD_W, height: 360, touchAction: "pan-y" }}
+                                style={{ width: CARD_W, height: CARD_H, touchAction: "pan-y" }}
                                 drag={isCenter ? "x" : false}
                                 dragConstraints={{ left: 0, right: 0 }}
                                 onDragEnd={onDragEnd}
@@ -107,7 +109,7 @@ export default function BenefitSectionMobile() {
                                         <img
                                             src={s.img}
                                             alt={s.title}
-                                            className="w-full h-full !bg-white object-contain"
+                                            className="w-full h-full object-contain"
                                             draggable={false}
                                         />
                                     </div>
@@ -129,7 +131,7 @@ export default function BenefitSectionMobile() {
                 </div>
 
                 {/* Dots */}
-                <div className="mt-6 flex items-center justify-center gap-2">
+                <div className="mt-10 flex items-center justify-center gap-2">
                     {slides.map((_, i) => (
                         <button
                             key={i}
