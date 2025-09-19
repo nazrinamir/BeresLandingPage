@@ -60,23 +60,30 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
             </h1>
 
             {/* Paragraph */}
-            <p className="text-lg !text-white mb-8 text-justify" >
+            <p className="text-sm md:text-lg !text-white mb-8 
+               text-justify 
+               max-w-xs mx-auto md:max-w-none">
               {t('hero.description')}
             </p>
 
             {/* Email Input + Button */}
-            <div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full">
-              <input
-                id="waitlist-email"
-                type="email"
-                placeholder={t('hero.emailPlaceholder')}
-                className="w-full px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <button onClick={handleSubmitWaitlist} className="bg-[#AEEA30] text-black font-medium px-4 py-2 mr-1 rounded-full hover:bg-[#9cd426] transition text-nowrap">
-                {t('hero.joinUs')}
-              </button>
+            <div className="w-full mx-auto max-w-sm md:max-w-full">
+              <div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full">
+                <input
+                  id="waitlist-email"
+                  type="email"
+                  placeholder={t('hero.emailPlaceholder')}
+                  className="w-full px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <button
+                  onClick={handleSubmitWaitlist}
+                  className="bg-[#AEEA30] text-black font-medium px-4 py-2 mr-1 rounded-full hover:bg-[#9cd426] transition text-nowrap"
+                >
+                  {t('hero.joinUs')}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -92,10 +99,10 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
           </div>
         </div>
       </div>
-      
+
       {/* Scroll Indicator - only show when not loading */}
       <ScrollIndicator targetId="features" isVisible={!isLoading} />
-      
+
       {showPopup && <SuccessPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />}
       {/* <button
         className="fixed bottom-20 left-4 z-50 bg-blue-600 text-white px-4 py-2 rounded"
