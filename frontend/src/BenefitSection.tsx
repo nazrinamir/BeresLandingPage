@@ -59,7 +59,7 @@ export default function BenefitSection() {
 
     return (
         <section
-            id="benefits"
+           
             className="relative bg-[#f8f3f3] py-16 md:block hidden select-none overflow-x-hidden shadow-inner"
             onPointerDown={() => setPaused(true)}
             onPointerUp={() => setPaused(false)}

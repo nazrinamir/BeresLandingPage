@@ -108,14 +108,16 @@ function AppContent() {
         <FeaturesCarousel />
       </div>
 
-      {/* Benefit Section */}
-      <div className='md:block hidden bg-[#EFEFEF]'>
-        <BenefitSection /> 
-      </div>
+      <section id="benefits" className="scroll-mt-52">
+        <div className="md:block hidden bg-[#EFEFEF]">
+          <BenefitSection />
+        </div>
 
-      <div id='benefits' className='md:hidden block'>
-        <BenefitSectionMobile />
-      </div>
+        <div className="md:hidden block">
+          <BenefitSectionMobile />
+        </div>
+      </section>
+
 
       {/* Step Section */}
       <div >

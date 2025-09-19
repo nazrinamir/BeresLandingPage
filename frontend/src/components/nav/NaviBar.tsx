@@ -2,11 +2,39 @@
 import { useState } from "react";
 import WaitlistPopup from "../popup/waitlistPopup";
 
+// Navbar.tsx
 const links = [
   { label: "Features", href: "#features" },
   { label: "Benefits", href: "#benefits" },
   { label: "Steps", href: "#steps" },
 ];
+
+function scrollToHash(href: string) {
+  const id = href.replace('#', '');
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const nav = document.getElementById('site-nav');
+  const navRect = nav?.getBoundingClientRect();
+  const navHeight = navRect ? navRect.height : 0;
+
+  // Because the nav is positioned at top-6 (24px) from the top, include that too.
+  const extraGap = 24; // equals Tailwind top-6
+  const offset = navHeight + extraGap;
+
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({ top, behavior: 'smooth' });
+}
+
+const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  if (href.startsWith('#')) {
+    e.preventDefault();
+    scrollToHash(href);
+    setOpen(false);
+  }
+};
+
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -17,7 +45,7 @@ export default function Navbar() {
       isOpen={showWaitlistPopup}
       onClose={() => setShowWaitlistPopup(false)}
     />
-    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto drop-shadow-[0_0_10px_#012219] backdrop-blur-sm rounded-3xl ">
+    <div id="site-nav" className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto drop-shadow-[0_0_10px_#012219] backdrop-blur-sm rounded-3xl ">
 
       <nav className={`mx-auto max-w-4xl transition-all duration-300 ease-in-out rounded-3xl border border-white/10 bg-[#012219]/50 py-1 shadow-lg h-full overflow-hidden`}>
         <div className="flex items-center px-4 sm:px-4 py-1.5 gap-4 text-sm">
@@ -36,6 +64,7 @@ export default function Navbar() {
               <li key={l.href}>
                 <a
                   href={l.href}
+                  onClick={(e) => handleLinkClick(e, l.href)}
                   className="!text-white/80 hover:text-white leading-none"
                 >
                   {l.label}
@@ -43,6 +72,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
 
           <div className="ml-auto flex items-center gap-2">
             {/* CTA */}
@@ -109,7 +139,7 @@ export default function Navbar() {
                 >
                   <a
                     href={l.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => handleLinkClick(e, l.href)}
                     className="block px-2 py-1 !text-white hover:bg-white/5 rounded-lg transition-colors duration-200"
                   >
                     {l.label}
