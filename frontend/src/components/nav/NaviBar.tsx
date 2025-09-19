@@ -27,18 +27,19 @@ function scrollToHash(href: string) {
   window.scrollTo({ top, behavior: 'smooth' });
 }
 
-const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-  if (href.startsWith('#')) {
-    e.preventDefault();
-    scrollToHash(href);
-    setOpen(false);
-  }
-};
+ 
 
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [showWaitlistPopup, setShowWaitlistPopup] = useState(false);
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      scrollToHash(href);
+      setOpen(false);
+    }
+  };
 
   return (<>
     <WaitlistPopup

@@ -105,7 +105,7 @@ const FooterSection = () => {
       <TermPopup isOpen={showTerms} onClose={() => setShowTerms(false)} />
       <PrivacyPopup isOpen={showPrivacy} onClose={() => setShowPrivacy(false)} />
       <ImprintPopup isOpen={showImprint} onClose={() => setShowImprint(false)} />
-      <WaitlistPopup isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} id="waitlist-popup" />
+      <WaitlistPopup isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </footer>
   );
 };
