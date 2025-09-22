@@ -10,17 +10,16 @@ use Illuminate\Http\Request;
 class MeetingController extends Controller
 {
 
-    public function index(){
-        
+    public function index()
+    {
+
         $meetings = meetingModel::query()->get();
         return response()->json($meetings);
     }
-    
+
     public function insertMeetingOneOnOne(Request $request)
     {
-        $request->validate(meetingRequest::rules());
-
         $meeting = meetingModel::create($request->all());
-        return response()->json($meeting);
+        return response()->json(['success' => true, 'message' => 'Meeting created successfully', 'data' => $meeting]);
     }
 }

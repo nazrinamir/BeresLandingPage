@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('meeting', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('business');
+            $table->string('full_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('business')->nullable();
             $table->timestamps();
         });
     }
