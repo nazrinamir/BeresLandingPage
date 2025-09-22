@@ -33,7 +33,7 @@ export const submitWaitlist = async (data: any, baseUrl: string) => {
 
 export const submitMeeting = async (data: any, baseUrl: string) => {
     try {
-    const response = await fetch(`${baseUrl}/meetings`, {
+    const response = await fetch(`${baseUrl}/meeting`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
