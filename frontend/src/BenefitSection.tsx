@@ -1,9 +1,7 @@
-// components/BenefitSectionMobile.tsx
-// "use client"  // add this if you're on Next.js App Router
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "./lang/useTranslation";
+import { ChevronLeft, ChevronRight } from "lucide-react"; // ⬅️ install lucide-react if not yet
 
 type Slide = { title: string; img: string };
 
@@ -54,19 +52,18 @@ export default function BenefitSection() {
 
     // Card sizes and spacing (px)
     const CARD_W = 400; // width of one card
-    const GAP = 49;     // distance between cards when peeking
+    const GAP = 49; // distance between cards when peeking
     const STEP = CARD_W + GAP;
 
     return (
         <section
-           
             className="relative bg-[#f8f3f3] py-16 md:block hidden select-none overflow-x-hidden shadow-inner"
             onPointerDown={() => setPaused(true)}
             onPointerUp={() => setPaused(false)}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
         >
-            <div className="mx-auto  px-6">
+            <div className="mx-auto px-6">
                 {/* Title */}
                 <div className="mb-8 text-center">
                     <h2 className="text-2xl font-extrabold text-[#0B1E18]">
@@ -87,7 +84,12 @@ export default function BenefitSection() {
                             <motion.div
                                 key={i}
                                 className="absolute top-0 left-1/2 -translate-x-1/2"
-                                style={{ width: CARD_W, height: CARD_W+100, touchAction: "pan-y" }}
+                                style={{
+                                    width: CARD_W,
+                                    height: CARD_W + 100,
+                                    touchAction: "pan-y",
+                                    pointerEvents: isCenter ? "auto" : "none", // only center card interactive
+                                }}
                                 drag={isCenter ? "x" : false}
                                 dragConstraints={{ left: 0, right: 0 }}
                                 onDragEnd={onDragEnd}
@@ -100,7 +102,6 @@ export default function BenefitSection() {
                                 }}
                                 transition={{ type: "spring", stiffness: 300, damping: 28 }}
                             >
-                                {/* Center card (white with image) */}
                                 {isCenter ? (
                                     <div className="w-full h-full bg-[#f8f4f4] rounded-2xl border border-[#E6E8EA] shadow-[0_10px_22px_rgba(0,0,0,0.12)] p-5 grid place-items-center">
                                         <div className="text-lg text-black font-extrabold leading-snug">{s.title}</div>
@@ -112,13 +113,13 @@ export default function BenefitSection() {
                                         />
                                     </div>
                                 ) : (
-                                    // Side cards (dark with title)
-                                    <div className="w-full h-full rounded-2xl bg-[#f8f4f4]  text-white grid place-items-center blur-xs px-6 text-center">
+                                    // Side cards: keep blur
+                                    <div className="w-full h-full rounded-2xl bg-[#f8f4f4] grid place-items-center px-6 text-center blur-sm">
                                         <div className="text-lg font-extrabold leading-snug text-black">{s.title}</div>
                                         <img
                                             src={s.img}
                                             alt={s.title}
-                                            className="w-full h-full !bg-[#f8f4f4]  object-contain "
+                                            className="w-full h-full !bg-[#f8f4f4] object-contain"
                                             draggable={false}
                                         />
                                     </div>
@@ -126,6 +127,22 @@ export default function BenefitSection() {
                             </motion.div>
                         );
                     })}
+                    
+                    {/* Arrow Buttons */}
+                    <button
+                        onClick={prev}
+                        className="absolute top-1/2 left-2 -translate-y-1/2 p-2 rounded-full bg-white shadow-md hover:bg-gray-100"
+                        aria-label="Previous slide"
+                    >
+                        <ChevronLeft className="w-6 h-6 text-gray-700" />
+                    </button>
+                    <button
+                        onClick={next}
+                        className="absolute top-1/2 right-2 -translate-y-1/2 p-2 rounded-full bg-white shadow-md hover:bg-gray-100"
+                        aria-label="Next slide"
+                    >
+                        <ChevronRight className="w-6 h-6 text-gray-700" />
+                    </button>
                 </div>
 
                 {/* Dots */}

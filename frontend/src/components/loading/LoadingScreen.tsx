@@ -83,7 +83,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
               }}
               className="text-center"
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+              <h2 className="text-2xl md:text-3xl font-bold !text-white mb-2">
                 Beres
               </h2>
               <p className="text-[#A7E34A] text-sm md:text-base">
