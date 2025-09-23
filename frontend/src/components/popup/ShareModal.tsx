@@ -14,7 +14,7 @@ export default function ShareModal({
     shareText = "Beres — the easiest way to run your WhatsApp business. Check this out!",
 }: ShareModalProps) {
     // Always use your LAN URL unless one is passed in
-    const url = useMemo(() => shareUrl ?? "http://192.168.1.64:5173/", [shareUrl]);
+    const url = useMemo(() => shareUrl ?? "beres.com.my", [shareUrl]);
 
     const [copied, setCopied] = useState(false);
     // const canNativeShare = typeof navigator !== "undefined" && !!navigator.share;
