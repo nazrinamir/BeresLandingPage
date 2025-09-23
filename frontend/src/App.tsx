@@ -13,6 +13,7 @@ import { ToastProvider } from './components/toast/ToastContext';
 import ToastContainer from './components/toast/ToastContainer';
 import BenefitSectionMobile from './BenefitSectionMobile';
 import LoadingScreen from './components/loading/LoadingScreen';
+import SectionDetails from "./Sectiondetails";
 // Add this import for Rive
 import { Rive } from '@rive-app/canvas';
 
@@ -98,9 +99,12 @@ function AppContent() {
       {/* Navigation */}
       <Navbar />
 
-      {/* Hero Section */}
-      <div className="rounded-b-3xl overflow-hidden">
-        <HeroSection isLoading={isLoading} />
+      {/* Hero + Section Details on continuous green background */}
+      <div className="bg-[#A7E34A]">
+        <div className="rounded-b-3xl overflow-hidden">
+          <HeroSection isLoading={isLoading} />
+        </div>
+        <SectionDetails />
       </div>
 
       {/* Features Section */}
