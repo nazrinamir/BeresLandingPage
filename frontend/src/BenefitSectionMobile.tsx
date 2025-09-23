@@ -104,7 +104,7 @@ export default function BenefitSectionMobile() {
                             >
                                 {/* Center card (white with image) */}
                                 {isCenter ? (
-                                    <div className="w-full h-full bg-white rounded-2xl border border-[#E6E8EA] shadow-[0_10px_22px_rgba(0,0,0,0.12)] p-5 grid place-items-center">
+                                    <div className="w-full h-full !bg-[#f8f4f4] rounded-2xl border border-[#E6E8EA] shadow-[0_10px_22px_rgba(0,0,0,0.12)] p-5 grid place-items-center">
                                         <div className="text-lg text-black font-extrabold leading-snug">{s.title}</div>
                                         <img
                                             src={s.img}
@@ -115,12 +115,12 @@ export default function BenefitSectionMobile() {
                                     </div>
                                 ) : (
                                     // Side cards (dark with title)
-                                    <div className="w-full h-full rounded-2xl bg-white text-white grid place-items-center px-6 text-center">
+                                    <div className="w-full h-full rounded-2xl !bg-[#f8f4f4] text-[#f8f4f4] grid place-items-center px-6 text-center">
                                         {/* <div className="text-lg font-extrabold leading-snug">{s.title}</div> */}
                                         <img
                                             src={s.img}
                                             alt={s.title}
-                                            className="w-full h-full !bg-white object-contain blur-xs"
+                                            className="w-full h-full !bg-[#f8f4f4] object-contain blur-xs"
                                             draggable={false}
                                         />
                                     </div>
