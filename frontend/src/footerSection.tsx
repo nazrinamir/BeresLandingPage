@@ -32,7 +32,7 @@ const FooterSection = () => {
           <img src="/bereslogo.svg" alt="Beres Logo" className="h-full w-40" />
         </div>
 
-         <div className="grid grid-cols-1 md:grid-cols-[1.25fr_1fr_auto] gap-10 md:gap-12 text-center md:text-left md:items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[1.25fr_1fr_auto] gap-10 md:gap-12 text-center md:text-left md:items-start">
           {/* Left: Description */}
           <div className="w-full">
             <p className="leading-relaxed text-left !text-white mx-auto md:mx-0 max-w-lg md:max-w-md lg:max-w-lg text-sm md:text-base md:pr-8">
@@ -78,7 +78,7 @@ const FooterSection = () => {
                 <FaInstagram className="w-6 h-6 md:w-7 md:h-7" />
               </a>
               <a
-                href="https://facebook.com/yourpage"
+                href="https://www.instagram.com/beresmy/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="!text-white hover:text-[#1877F2] transition-colors duration-200"
