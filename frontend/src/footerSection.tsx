@@ -48,7 +48,7 @@ const FooterSection = () => {
             <ul className="space-y-2 text-sm text-center md:text-base">
               <li><a href="#features" className="!text-white hover:text-[#AEEA30] transition-colors">Features</a></li>
               <li><a href="#benefits" className="!text-white hover:text-[#AEEA30] transition-colors">Benefits</a></li>
-              <li><a href="#" className="!text-white hover:text-[#AEEA30] transition-colors">Prize</a></li>
+              {/* <li><a href="#" className="!text-white hover:text-[#AEEA30] transition-colors">Prize</a></li> */}
               <li><a href="#steps" className="!text-white hover:text-[#AEEA30] transition-colors">Steps</a></li>
               <li>
                 <button
