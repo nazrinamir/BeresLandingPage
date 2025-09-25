@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\waitlistRequest;
 use App\Models\waitlistModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WaitlistMail;
 
 class WaitlistController extends Controller
 {
@@ -17,10 +19,15 @@ class WaitlistController extends Controller
 
     public function insertWaitlist(waitlistRequest $request)
     {
-
         $waitlist = waitlistModel::create($request->all());
 
-        return response()->json(['success' => true, 'message' => 'Waitlist created successfully', 'data' => $waitlist]);
+        // Send email to the submitted email
+        Mail::to($waitlist->email)->send(new WaitlistMail());
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Waitlist created successfully & confirmation email sent',
+            'data' => $waitlist
+        ]);
     }
 }
-    
