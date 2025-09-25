@@ -69,7 +69,7 @@ const FooterSection = () => {
             {/* Row on mobile (smaller icons), column on desktop */}
             <div className="flex items-center gap-6 md:flex-col md:gap-0 md:space-y-4">
               <a
-                href="https://www.instagram.com/beres.my/"
+                href="https://www.instagram.com/beresmy/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="!text-white hover:text-[#E4405F] transition-colors duration-200"
@@ -78,7 +78,7 @@ const FooterSection = () => {
                 <FaInstagram className="w-6 h-6 md:w-7 md:h-7" />
               </a>
               <a
-                href="https://www.instagram.com/beresmy/"
+                href="https://www.facebook.com/profile.php?id=61581070502587"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="!text-white hover:text-[#1877F2] transition-colors duration-200"

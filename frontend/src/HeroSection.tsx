@@ -45,8 +45,7 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
   }
   return (
     <section id="home" className="text-white w-full py-20 bg-[#012219] relative">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 gap-4 md:gap-5 mt-4 w-full">
-
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 gap-2 md:gap-3 mt-4 w-full">
         {/* Left Content - smaller */}
         <div className="md:w-5/12 w-full mb-12 md:mb-0 md:ml-12 " data-aos="fade-right">
           <div className="max-w-md mx-auto w-full">
@@ -89,12 +88,12 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
         </div>
 
         {/* Right Illustration - bigger */}
-        <div className="md:w-7/12 w-full md:flex justify-center hidden " data-aos="fade-left">
-          <div className="overflow-hidden w-full h-full flex items-center justify-center">
+        <div className="md:w-7/12 w-full md:flex justify-start hidden " data-aos="fade-left">
+          <div className="overflow-hidden w-full h-full flex items-center justify-start">
             <img
-              src={'/hero.svg'}
+              src={'/hero1.png'}
               alt="Hero"
-              className="w-[633px] h-[602px] object-contain"
+              className="w-full max-w-[680px] h-auto object-contain"
             />
           </div>
         </div>
