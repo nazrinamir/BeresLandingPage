@@ -125,7 +125,7 @@ export default function FeaturesGrid() {
 
           <div className="mb-10 md:mb-14 text-left">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E18]">{t("features.title")}</h2>
-            <p className="text-2xl md:text-3xl mt-1 text-gray-400">{t("features.subtitle")}</p>
+            <p className="text-base sm:text-lg md:text-2xl mt-2 text-gray-400">{t("features.subtitle")}</p>
           </div>
 
           {/* Invisible probe: measures the final grid height on mobile */}

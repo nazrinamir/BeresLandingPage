@@ -1,7 +1,7 @@
 // components/FeaturesGrid.tsx
 "use client";
 
-import React, { useMemo, useState} from "react";
+import React, { useMemo, useState } from "react";
 import {
   motion,
   useScroll,
@@ -111,18 +111,8 @@ export default function Step() {
           alt="Invoice"
           className="hidden md:block absolute -top-28 -right-8 h-48 w-auto drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)] pointer-events-none select-none"
           style={{ y: stickerY, rotate: stickerR }}
-          animate={{
-            scale: [1, 0.9, 1],
-            rotate: [0, 0, 40, 40, 0],
-            borderRadius: ["0%", "0%", "20%", "20%", "0%"],
-          }}
-          transition={{
-            duration: 2,
-            ease: "easeInOut",
-            times: [0, 0.2, 0.5, 0.8, 1],
-            repeat: Infinity,
-            repeatDelay: 1,
-          }}
+          animate={{ scale: [1, 0.9, 1], rotate: [0, 0, 40, 40, 0], borderRadius: ["0%", "0%", "20%", "20%", "0%"] }}
+          transition={{ duration: 2, ease: "easeInOut", times: [0, 0.2, 0.5, 0.8, 1], repeat: Infinity, repeatDelay: 1 }}
         />
 
         {/* ===== HEADLINE OUTSIDE THE MASK (cannot be clipped) ===== */}
