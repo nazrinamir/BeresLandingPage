@@ -4,7 +4,7 @@
 import React, { useMemo, useState } from "react";
 import {
   motion,
-  useScroll,
+  // useScroll,
   useTransform,
   useMotionValue,
   useSpring,
@@ -22,9 +22,9 @@ export default function Step() {
   const [showWaitlistPopup, setShowWaitlistPopup] = useState(false);
 
   // Parallax sticker
-  const { scrollY } = useScroll();
-  const stickerY = useTransform(scrollY, [0, 600], [0, -40]);
-  const stickerR = useTransform(scrollY, [0, 600], [0, 8]);
+  // const { scrollY } = useScroll();
+  // const stickerY = useTransform(scrollY, [0, 600], [0, -40]);
+  // const stickerR = useTransform(scrollY, [0, 600], [0, 8]);
 
   // Keep your original mask for the BLUE area only
   const sectionVariants: Variants = {
