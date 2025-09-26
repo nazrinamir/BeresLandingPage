@@ -64,9 +64,8 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
                max-w-xs mx-auto md:max-w-none">
               {t('hero.description')}
             </p>
-
             {/* Email Input + Button */}
-            <div className="w-full mx-auto max-w-sm md:max-w-full">
+            <div className="w-full mx-auto max-w-xl">
               <div className="flex items-center bg-white rounded-full overflow-hidden shadow w-full">
                 <input
                   id="waitlist-email"
@@ -82,6 +81,17 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
                 >
                   {t('hero.joinUs')}
                 </button>
+              </div>
+
+              {/* Sentence row */}
+              <div className="mt-3 w-full flex justify-center">
+                <div className="flex items-center gap-x-2">
+                  <img src="/Star1.png" alt="" className="w-4 h-4" />
+                  <p className="text-base !text-[#FFBB00]">
+                    Stay in the loop for our launch drop soon!
+                  </p>
+                  <img src="/Star2.png" alt="" className="w-4 h-4" />
+                </div>
               </div>
             </div>
           </div>
