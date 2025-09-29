@@ -88,7 +88,7 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
                 <div className="flex items-center gap-x-2">
                   <img src="/Star1.png" alt="" className="w-4 h-4" />
                   <p className="text-base !text-[#FFBB00]">
-                    Stay in the loop for our launch drop soon!
+                     Our system will launch soon!
                   </p>
                   <img src="/Star2.png" alt="" className="w-4 h-4" />
                 </div>
