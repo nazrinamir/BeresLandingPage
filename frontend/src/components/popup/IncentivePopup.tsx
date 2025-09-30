@@ -13,11 +13,18 @@ const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
         <div className="firework f8 bottom-0 right-0" />
       </div>
 
-      {/* Popup image */}
+      {/* Popup image Computer*/}
       <img
         src="/Chop1.svg"
         alt="Special Incentive"
-        className="relative w-[90vw] max-w-2xl rounded-2xl z-10"
+        className="relative w-[90vw] max-w-2xl rounded-2xl z-10 hidden md:block"
+      />
+
+      {/* Popup image Mobile*/}
+      <img
+        src="/Chop3.svg"
+        alt="Special Incentive"
+        className="relative w-[90vw] max-w-2xl rounded-2xl z-10 block md:hidden"
       />
 
       {/* Close button */}
