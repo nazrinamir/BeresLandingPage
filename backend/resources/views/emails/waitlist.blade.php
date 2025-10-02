@@ -100,8 +100,8 @@
           <tr>
             <td align="center" style="padding:40px 20px 40px 20px;">
               <p
-                style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:18px; color:#FFFFFF; text-decoration:underline;">
-                <a href="https://beres.com.my" style="color:#FFFFFF; text-decoration:underline;">
+                style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:18px; color:#cfe6da; text-decoration:underline;">
+                <a href="https://beres.com.my" style="color:#cfe6da; text-decoration:underline;">
                   Beres.com.my
                 </a>
               </p>
