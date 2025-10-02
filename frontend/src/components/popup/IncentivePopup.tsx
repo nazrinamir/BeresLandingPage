@@ -22,7 +22,7 @@ const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
 
       {/* Popup image Mobile*/}
       <img
-        src="/Chop3.svg"
+        src="/IncentiveMobile.svg"
         alt="Special Incentive"
         className="relative w-[90vw] max-w-2xl rounded-2xl z-10 block md:hidden"
       />
