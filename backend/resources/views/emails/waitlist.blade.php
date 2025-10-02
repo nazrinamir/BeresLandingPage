@@ -51,9 +51,9 @@
 
           <!-- 4) Body paragraph (40 above title, 0 below) -->
           <tr>
-            <td align="left" style="padding:40px 32px 0 32px;">
+            <td align="center" style="padding:40px 32px 0 32px;">
               <p
-                style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;text-align:left;">
+                style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
                 <strong>Beres</strong> is a new tool for small entrepreneurs to run your business
                 without touching your phone. We’ll reach you from time to time with fresh updates.
               </p>
@@ -62,7 +62,7 @@
 
           <!-- 5) One-liner (40 above body, 0 below) -->
           <tr>
-            <td align="left" style="padding:40px 32px 0 32px;">
+            <td align="center" style="padding:40px 32px 0 32px;">
               <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;">
                 Share to your buddies and stay tuned!
               </p>
