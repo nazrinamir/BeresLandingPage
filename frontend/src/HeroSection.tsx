@@ -15,34 +15,54 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
   const { addToast } = useToast();
   const [email, setEmail] = useState('');
   const [showPopup, setShowPopup] = useState(false);
+  const [isJoined, setIsJoined] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const resetForm = () => {
     setEmail('');
     setShowPopup(false);
+    setIsJoined(false);
+    setIsSubmitting(false);
   }
 
   const handleSubmitWaitlist = async () => {
-    const waitlistHelper = new WaitlistHelper();
-    const response = await waitlistHelper.submit({
-      email: email,
-    });
+    if (isSubmitting) return; // Prevent multiple submissions
 
-    if (response.success) {
-      setShowPopup(true);
-      addToast({
-        type: 'success',
-        message: response.message,
-        duration: 5000
+    setIsSubmitting(true);
+    setIsJoined(true);
+
+    try {
+      const waitlistHelper = new WaitlistHelper();
+      const response = await waitlistHelper.submit({
+        email: email,
       });
-    } else {
+
+      if (response.success) {
+        setShowPopup(true);
+        addToast({
+          type: 'success',
+          message: response.message,
+          duration: 5000
+        });
+
+      } else {
+        addToast({
+          type: 'error',
+          message: response.message,
+          duration: 5000
+        });
+      }
+    } catch (error) {
       addToast({
         type: 'error',
-        message: response.message,
+        message: 'An error occurred. Please try again.',
         duration: 5000
       });
+    } finally {
+      resetForm();
     }
-    resetForm();
   }
+
   return (
     <section id="home" className="text-white w-full py-20 bg-[#012219] relative">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 gap-2 md:gap-3 mt-4 w-full">
@@ -77,9 +97,35 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
                 />
                 <button
                   onClick={handleSubmitWaitlist}
-                  className="bg-[#AEEA30] text-black font-medium px-4 py-2 mr-1 rounded-full hover:bg-[#9cd426] transition text-nowrap"
+                  disabled={isSubmitting}
+                  className={`font-medium px-4 py-2 mr-1 rounded-full transition text-nowrap flex items-center justify-center gap-2 ${isSubmitting
+                    ? 'bg-gray-400 text-gray-600 cursor-wait'
+                    : 'bg-[#AEEA30] text-black hover:bg-[#9cd426]'
+                    }`}
                 >
-                  {t('hero.joinUs')}
+                  {isSubmitting && (
+                    <svg
+                      className="animate-spin h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                  )}
+                  {isSubmitting ? 'Joining...' : (isJoined ? <></> : t('hero.joinUs'))}
                 </button>
               </div>
 
@@ -88,7 +134,7 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
                 <div className="flex items-center gap-x-2">
                   <img src="/Star1.png" alt="" className="w-4 h-4" />
                   <p className="text-base !text-[#FFBB00]">
-                     Our system will launch soon!
+                    Our system will launch soon!
                   </p>
                   <img src="/Star2.png" alt="" className="w-4 h-4" />
                 </div>
