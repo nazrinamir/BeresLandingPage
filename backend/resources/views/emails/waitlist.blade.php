@@ -98,7 +98,7 @@
 
           <tr>
             <td align="center" style="padding:40px 20px 40px 20px;">
-              <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:18px;!important;!color:#cfe6da;">
+              <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:18px;!important;color:#FFFFFF!important;">
                 Beres.com.my
               </p>  
             </td>
