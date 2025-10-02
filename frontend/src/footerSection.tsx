@@ -1,4 +1,4 @@
-import { FaInstagram, FaFacebook } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa';
 import TermPopup from './components/popup/termPopup';
 import PrivacyPopup from './components/popup/privacyPopup';
 import ImprintPopup from './components/popup/ImprintPopup';
@@ -85,6 +85,15 @@ const FooterSection = () => {
                 aria-label="Follow us on Facebook"
               >
                 <FaFacebook className="w-6 h-6 md:w-7 md:h-7" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/beres-my/about/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="!text-white hover:text-[#1877F2] transition-colors duration-200"
+                aria-label="Follow us on Linkedin"
+              >
+                <FaLinkedin className="w-6 h-6 md:w-7 md:h-7" />
               </a>
             </div>
           </div>
