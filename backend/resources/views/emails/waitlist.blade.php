@@ -74,11 +74,6 @@
                       src="http://cdn.mcauto-images-production.sendgrid.net/3e487ea7fce08e48/bc52ee33-2f03-4ec9-8176-863d89f9d101/26x26.png"
                       width="24" alt="Facebook" style="display:block;filter:invert(87%);"></a>
                   </td>
-                  <!-- <td style="padding:0 12px;">
-                    <a href="https://x.com/"><img
-                      src="http://cdn.mcauto-images-production.sendgrid.net/3e487ea7fce08e48/2fc0f2e1-2011-4fba-920f-09dc384699d5/26x26.png"
-                      width="24" alt="X" style="display:block;filter:invert(87%);"></a>
-                  </td> -->
                   <td style="padding:0 12px;">
                     <!-- Instagram -->
                     <a href="https://www.instagram.com/beresmy/"><img
@@ -98,7 +93,7 @@
 
           <tr>
             <td align="center" style="padding:40px 20px 40px 20px;">
-              <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:18px;!important;color:#FFFFFF!important;">
+              <p style="margin:0; font-family:Arial,Helvetica,sans-serif; font-size:12px; line-height:18px;!important;color:#cfe6da;">
                 Beres.com.my
               </p>  
             </td>
