@@ -76,7 +76,7 @@
                 <tr>
                   <td style="padding:0 12px;">
                     <!-- Facebook -->
-                    <a href="https://www.facebook.com/profile.php?id=61581070502587"><img
+                    <a href="https://www.facebook.com/people/Beres/61581070502587/"><img
                         src="http://cdn.mcauto-images-production.sendgrid.net/3e487ea7fce08e48/bc52ee33-2f03-4ec9-8176-863d89f9d101/26x26.png"
                         width="24" alt="Facebook" style="display:block;filter:invert(87%);"></a>
                   </td>
