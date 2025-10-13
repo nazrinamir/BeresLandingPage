@@ -4,6 +4,7 @@ import PrivacyPopup from './components/popup/privacyPopup';
 import ImprintPopup from './components/popup/ImprintPopup';
 import WaitlistPopup from './components/popup/waitlistPopup';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const FooterSection = () => {
   const [showTerms, setShowTerms] = useState(false);
@@ -11,17 +12,33 @@ const FooterSection = () => {
   const [showImprint, setShowImprint] = useState(false);
   const [showWaitlist, setShowWaitlist] = useState(false);
 
-  // Auto-open if URL has #waitlist or ?waitlist=1
+  // Auto-open if URL has #waitlist, #privacy-policy, or ?waitlist=1
   useEffect(() => {
     const url = new URL(window.location.href);
     if (url.hash === '#waitlist' || url.searchParams.get('waitlist') === '1') {
       setShowWaitlist(true);
+    }
+    if (url.hash === '#privacy-policy') {
+      setShowPrivacy(true);
     }
   }, []);
 
   const openWaitlist = (e?: React.MouseEvent) => {
     if (e) e.preventDefault();
     setShowWaitlist(true);
+  };
+
+  const openPrivacyPolicy = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    setShowPrivacy(true);
+    // Update URL to reflect the open state
+    window.history.pushState(null, '', '#privacy-policy');
+  };
+
+  const closePrivacyPolicy = () => {
+    setShowPrivacy(false);
+    // Remove hash from URL when closing
+    window.history.pushState(null, '', window.location.pathname);
   };
 
   return (
@@ -103,7 +120,9 @@ const FooterSection = () => {
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between items-center gap-4 md:gap-0 text-xs md:text-sm">
           <p className="!text-[#AEEA30] font-semibold">Designed by Beres</p>
           <div className="flex flex-wrap justify-center md:justify-end gap-6 md:gap-8">
-            <button onClick={() => setShowPrivacy(true)} className="!text-[#AEEA30]">Privacy policy</button>
+            <button onClick={openPrivacyPolicy} className="!text-[#AEEA30]">
+              Privacy policy
+            </button>
             <button onClick={() => setShowTerms(true)} className="!text-[#AEEA30]">Terms of use</button>
             <span className="!text-[#AEEA30]">© 2025 Beres. All rights reserved.</span>
           </div>
@@ -112,7 +131,7 @@ const FooterSection = () => {
 
       {/* Popups */}
       <TermPopup isOpen={showTerms} onClose={() => setShowTerms(false)} />
-      <PrivacyPopup isOpen={showPrivacy} onClose={() => setShowPrivacy(false)} />
+      <PrivacyPopup isOpen={showPrivacy} onClose={closePrivacyPolicy} />
       <ImprintPopup isOpen={showImprint} onClose={() => setShowImprint(false)} />
       <WaitlistPopup isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </footer>
