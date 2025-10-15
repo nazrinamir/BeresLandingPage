@@ -44,8 +44,8 @@ export default function FeaturesGrid() {
     prefersReduced
       ? { duration: 0 }
       : (isMobile
-          ? { type: "spring" as const, stiffness: 120, damping: 30, mass: 1.0, bounce: 0, restDelta: 0.5 }
-          : { type: "spring" as const, stiffness: 180, damping: 26, mass: 0.9, bounce: 0, restDelta: 0.5 });
+        ? { type: "spring" as const, stiffness: 120, damping: 30, mass: 1.0, bounce: 0, restDelta: 0.5 }
+        : { type: "spring" as const, stiffness: 180, damping: 26, mass: 0.9, bounce: 0, restDelta: 0.5 });
 
   // Observe section visibility
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -123,10 +123,25 @@ export default function FeaturesGrid() {
             transition={{ duration: 2, ease: "easeInOut", times: [0, 0.2, 0.5, 0.8, 1], repeat: Infinity, repeatDelay: 1 }}
           /> */}
 
-          <div className="mb-10 md:mb-14 text-left">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E18]">{t("features.title")}</h2>
-            <p className="text-base sm:text-lg md:text-2xl mt-2 text-gray-400">{t("features.subtitle")}</p>
+          <div className="mb-10 md:mb-14 text-center">
+            <span
+              className="
+              inline-block
+              border border-[#012219]
+              text-[#012219]
+              bg-[#E2FBD7]
+              text-sm md:text-xl
+              font-semibold
+              px-5 py-2
+              rounded-full
+              tracking-wide
+              shadow-[0_0_0_1px_rgba(1,34,25,0.05)]
+            "
+            >
+              {t("features.title")}
+            </span>
           </div>
+
 
           {/* Invisible probe: measures the final grid height on mobile */}
           {isMobile && (
@@ -152,12 +167,12 @@ export default function FeaturesGrid() {
                 isMobile
                   ? { minHeight: gridHeight }
                   : {
-                      minHeight: expanded ? undefined : 520,
-                      // fixed width only when collapsed (prevents subpixel rounding thrash)
-                      ...(expanded
-                        ? {}
-                        : { width: collapsedWidthPx, maxWidth: collapsedWidthPx }),
-                    }
+                    minHeight: expanded ? undefined : 520,
+                    // fixed width only when collapsed (prevents subpixel rounding thrash)
+                    ...(expanded
+                      ? {}
+                      : { width: collapsedWidthPx, maxWidth: collapsedWidthPx }),
+                  }
               }
             >
               {items.map((f, i) => {
