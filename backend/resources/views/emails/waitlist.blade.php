@@ -76,30 +76,30 @@
                 <tr>
                   <!-- Facebook -->
                   <td style="padding:0 8px;">
-                    <a href="https://facebook.com/beresmy" style="display:inline-block;width:28px;height:28px;line-height:28px;
+                    <a href="https://www.facebook.com/people/Beres/61581070502587/" style="display:inline-block;width:28px;height:28px;line-height:28px;
                     border-radius:50%;background-color:#3b5998;color:#ffffff;
                     text-align:center;font-family:Arial,Helvetica,sans-serif;
                     font-weight:bold;font-size:16px;text-decoration:none;">
-                      F
+                      f
                     </a>
                   </td>
 
                   <!-- Instagram -->
                   <td style="padding:0 8px;">
-                    <a href="https://instagram.com/beresmy" style="display:inline-block;width:28px;height:28px;line-height:28px;
+                    <a href="https://www.instagram.com/beresmy/" style="display:inline-block;width:28px;height:28px;line-height:28px;
                     border-radius:50%;background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);
                     color:#ffffff;text-align:center;font-family:Arial,Helvetica,sans-serif;
                     font-weight:bold;font-size:16px;text-decoration:none;">
-                      I
+                      i
                     </a>
                   </td>
 
                   <!-- LinkedIn -->
                   <td style="padding:0 8px;">
-                    <a href="https://linkedin.com/company/beres-my" style="display:inline-block;width:28px;height:28px;line-height:28px;
+                    <a href="https://www.linkedin.com/company/beres-my/about/" style="display:inline-block;width:28px;height:28px;line-height:28px;
                     border-radius:50%;background-color:#0077b5;color:#ffffff;
                     text-align:center;font-family:Arial,Helvetica,sans-serif;
-                    font-weight:bold;font-size:14px;text-decoration:none;">
+                    font-weight:bold;font-size:16px;text-decoration:none;">
                       in
                     </a>
                   </td>
