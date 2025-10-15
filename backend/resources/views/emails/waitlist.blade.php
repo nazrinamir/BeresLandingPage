@@ -74,17 +74,34 @@
             <td align="center" style="padding:40px 0 0 0;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding:0 12px;">
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com/people/Beres/61581070502587/" style="color:#cfe6da;text-decoration:none;font-size:24px;display:block;">📘</a>
+                  <!-- Facebook -->
+                  <td style="padding:0 8px;">
+                    <a href="https://www.facebook.com/people/Beres/61581070502587/" style="display:inline-block;width:28px;height:28px;line-height:28px;
+                    border-radius:50%;background-color:#3b5998;color:#ffffff;
+                    text-align:center;font-family:Arial,Helvetica,sans-serif;
+                    font-weight:bold;font-size:16px;text-decoration:none;">
+                      f
+                    </a>
                   </td>
-                  <td style="padding:0 12px;">
-                    <!-- Instagram -->
-                    <a href="https://www.instagram.com/beresmy/" style="color:#cfe6da;text-decoration:none;font-size:24px;display:block;">📷</a>
+
+                  <!-- Instagram -->
+                  <td style="padding:0 8px;">
+                    <a href="https://www.instagram.com/beresmy/" style="display:inline-block;width:28px;height:28px;line-height:28px;
+                    border-radius:50%;background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);
+                    color:#ffffff;text-align:center;font-family:Arial,Helvetica,sans-serif;
+                    font-weight:bold;font-size:16px;text-decoration:none;">
+                      i
+                    </a>
                   </td>
-                  <td style="padding:0 12px;">
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/company/beres-my/about/" style="color:#cfe6da;text-decoration:none;font-size:24px;display:block;">💼</a>
+
+                  <!-- LinkedIn -->
+                  <td style="padding:0 8px;">
+                    <a href="https://www.linkedin.com/company/beres-my/about/" style="display:inline-block;width:28px;height:28px;line-height:28px;
+                    border-radius:50%;background-color:#0077b5;color:#ffffff;
+                    text-align:center;font-family:Arial,Helvetica,sans-serif;
+                    font-weight:bold;font-size:16px;text-decoration:none;">
+                      in
+                    </a>
                   </td>
                 </tr>
               </table>
