@@ -99,7 +99,7 @@
           </tr>
 
           <!-- Footer -->
-          <tr>
+          <!-- <tr>
             <td align="center" style="padding:20px 20px 40px 20px;">
               <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#cfe6da;">
                 <a href="https://beres.com.my" style="color:#cfe6da;text-decoration:underline;">
@@ -107,7 +107,7 @@
                 </a>
               </p>
             </td>
-          </tr>
+          </tr> -->
 
         </table>
       </td>
