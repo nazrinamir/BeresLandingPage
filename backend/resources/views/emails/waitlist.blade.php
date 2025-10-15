@@ -31,13 +31,13 @@
           </tr>
 
           <!-- 2) Hero image (flush) -->
-          <tr>
+          <!-- <tr>
             <td align="center" style="padding:0;">
               <img
                 src="http://cdn.mcauto-images-production.sendgrid.net/3e487ea7fce08e48/84e7a66c-a427-4412-b273-e05cc9722659/570x280.png"
                 alt="Group" style="display:block;width:100%;height:auto;border:0;">
             </td>
-          </tr>
+          </tr> -->
 
           <!-- 3) Title (40 above image, 0 below) -->
           <tr>
