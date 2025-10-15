@@ -54,26 +54,16 @@
             <td align="center" style="padding:40px 32px 0 32px;">
               <p
                 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
-                 Welcome to the Beres Inner Circle!
+                Welcome to the Beres Inner Circle!
               </p>
             </td>
           </tr>
 
-          <!-- 5) Body paragraph (40 above title, 0 below) -->
           <tr>
             <td align="center" style="padding:40px 32px 0 32px;">
               <p
                 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
-                 You're officially one of the first to join Beres!
-              </p>
-            </td>
-          </tr>
-
-          <!-- 6) Body paragraph (40 above title, 0 below) -->
-          <tr>
-            <td align="center" style="padding:40px 32px 0 32px;">
-              <p
-                style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
+                You're officially one of the first to join <strong>Beres!</strong><br><br>
                 Beres is a tool that helps small entrepreneurs manage their business straight from WhatsApp.
               </p>
             </td>
