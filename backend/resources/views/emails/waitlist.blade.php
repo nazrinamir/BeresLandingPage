@@ -22,13 +22,13 @@
           style="width:600px;max-width:600px;background:#0f2a20;border-radius:8px;overflow:hidden;">
 
           <!-- 1) Logo (40 top, 40 bottom) -->
-          <tr>
+          <!-- <tr>
             <td align="center" style="padding:40px 24px 40px 24px;">
               <img
                 src="http://cdn.mcauto-images-production.sendgrid.net/3e487ea7fce08e48/c0ad386f-b82e-49bd-838f-fce8d92fae15/158x40.png"
                 width="120" alt="Beres" style="display:block;max-width:120px;border:0;">
             </td>
-          </tr>
+          </tr> -->
 
           <!-- 2) Hero image (flush) -->
           <!-- <tr>
