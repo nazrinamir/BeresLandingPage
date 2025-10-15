@@ -54,22 +54,51 @@
             <td align="center" style="padding:40px 32px 0 32px;">
               <p
                 style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
-                <strong>Beres</strong> is a new tool for small entrepreneurs to run your business
-                without touching your phone. We’ll reach you from time to time with fresh updates.
+                 Welcome to the Beres Inner Circle!
               </p>
             </td>
           </tr>
 
-          <!-- 5) One-liner (40 above body, 0 below) -->
+          <!-- 5) Body paragraph (40 above title, 0 below) -->
+          <tr>
+            <td align="center" style="padding:40px 32px 0 32px;">
+              <p
+                style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
+                 You're officially one of the first to join Beres!
+              </p>
+            </td>
+          </tr>
+
+          <!-- 6) Body paragraph (40 above title, 0 below) -->
+          <tr>
+            <td align="center" style="padding:40px 32px 0 32px;">
+              <p
+                style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
+                Beres is a tool that helps small entrepreneurs manage their business straight from WhatsApp.
+              </p>
+            </td>
+          </tr>
+
+          <!-- 7) Body paragraph (40 above title, 0 below) -->
+          <tr>
+            <td align="center" style="padding:40px 32px 0 32px;">
+              <p
+                style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
+                We'll keep you updated with early access invites and exclusive sneak peeks before launch.
+              </p>
+            </td>
+          </tr>
+
+          <!-- 8) One-liner (40 above body, 0 below) -->
           <tr>
             <td align="center" style="padding:40px 32px 0 32px;">
               <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:22px;color:#cfe6da;">
-                Share to your buddies and stay tuned!
+                Follow us for updates
               </p>
             </td>
           </tr>
 
-          <!-- 6) Social icons (40 above one-liner, 0 below) -->
+          <!-- 9) Social icons (40 above one-liner, 0 below) -->
           <tr>
             <td align="center" style="padding:40px 0 0 0;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0">
