@@ -15,16 +15,16 @@
   <!-- Outer wrapper -->
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff;">
     <tr>
-      <td align="center" style="padding:40px 12px;">
+      <td align="center" style="padding:60px 12px;">
         <!-- Card -->
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"
           style="width:600px;max-width:600px;background:#0f2a20;border-radius:8px;overflow:hidden;">
 
           <!-- Title -->
           <tr>
-            <td align="center" style="padding:48px 32px 12px 32px;">
+            <td align="center" style="padding:80px 32px 20px 32px;">
               <h1 style="margin:0;font-family:Arial,Helvetica,sans-serif;
-                         font-size:24px;line-height:32px;color:#b6ff57;
+                         font-size:24px;line-height:34px;color:#b6ff57;
                          font-weight:700;text-align:center;">
                 You’re part of our inner circle!
               </h1>
@@ -33,31 +33,31 @@
 
           <!-- Body -->
           <tr>
-            <td align="center" style="padding:10px 40px 0 40px;">
+            <td align="center" style="padding:40px 48px 0 48px;">
               <p style="margin:0;font-family:Arial,Helvetica,sans-serif;
-                        font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
+                        font-size:14px;line-height:24px;color:#cfe6da;text-align:center;">
                 Welcome to the Beres Inner Circle! 🛒
               </p>
 
-              <p style="margin:20px 0 0 0;font-family:Arial,Helvetica,sans-serif;
-                        font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
+              <p style="margin:32px 0 0 0;font-family:Arial,Helvetica,sans-serif;
+                        font-size:14px;line-height:24px;color:#cfe6da;text-align:center;">
                 You’re officially one of the first to join <strong>Beres!</strong><br>
                 Beres is a tool that helps small entrepreneurs manage their business straight from WhatsApp.
               </p>
 
-              <p style="margin:20px 0 0 0;font-family:Arial,Helvetica,sans-serif;
-                        font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
+              <p style="margin:32px 0 0 0;font-family:Arial,Helvetica,sans-serif;
+                        font-size:14px;line-height:24px;color:#cfe6da;text-align:center;">
                 We’ll keep you updated with early access invites and exclusive sneak peeks before launch.
               </p>
 
-              <p style="margin:20px 0 0 0;font-family:Arial,Helvetica,sans-serif;
-                        font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
+              <p style="margin:32px 0 0 0;font-family:Arial,Helvetica,sans-serif;
+                        font-size:14px;line-height:24px;color:#cfe6da;text-align:center;">
                 Spread the word by telling your friends to join the waitlist at
                 <a href="https://beres.com.my" style="color:#b6ff57;text-decoration:none;font-weight:600;">Beres.com.my</a>.
               </p>
 
-              <p style="margin:32px 0 0 0;font-family:Arial,Helvetica,sans-serif;
-                        font-size:14px;line-height:22px;color:#cfe6da;text-align:center;">
+              <p style="margin:48px 0 0 0;font-family:Arial,Helvetica,sans-serif;
+                        font-size:14px;line-height:24px;color:#cfe6da;text-align:center;">
                 Follow us for updates
               </p>
             </td>
@@ -65,13 +65,13 @@
 
           <!-- Social icons -->
           <tr>
-            <td align="center" style="padding:16px 0 48px 0;">
+            <td align="center" style="padding:24px 0 80px 0;">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <!-- Facebook -->
-                  <td style="padding:0 8px;">
+                  <td style="padding:0 10px;">
                     <a href="https://www.facebook.com/people/Beres/61581070502587/"
-                       style="display:inline-block;width:28px;height:28px;line-height:28px;
+                       style="display:inline-block;width:32px;height:32px;line-height:32px;
                               border-radius:50%;background-color:#3b5998;color:#ffffff;
                               text-align:center;font-family:Arial,Helvetica,sans-serif;
                               font-weight:bold;font-size:16px;text-decoration:none;">
@@ -80,9 +80,9 @@
                   </td>
 
                   <!-- Instagram -->
-                  <td style="padding:0 8px;">
+                  <td style="padding:0 10px;">
                     <a href="https://www.instagram.com/beresmy/"
-                       style="display:inline-block;width:28px;height:28px;line-height:28px;
+                       style="display:inline-block;width:32px;height:32px;line-height:32px;
                               border-radius:50%;background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);
                               color:#ffffff;text-align:center;font-family:Arial,Helvetica,sans-serif;
                               font-weight:bold;font-size:16px;text-decoration:none;">
@@ -91,12 +91,12 @@
                   </td>
 
                   <!-- LinkedIn -->
-                  <td style="padding:0 8px;">
+                  <td style="padding:0 10px;">
                     <a href="https://www.linkedin.com/company/beres-my/about/"
-                       style="display:inline-block;width:28px;height:28px;line-height:28px;
+                       style="display:inline-block;width:32px;height:32px;line-height:32px;
                               border-radius:50%;background-color:#0077b5;color:#ffffff;
                               text-align:center;font-family:Arial,Helvetica,sans-serif;
-                              font-weight:bold;font-size:14px;text-decoration:none;">
+                              font-weight:bold;font-size:15px;text-decoration:none;">
                       in
                     </a>
                   </td>
