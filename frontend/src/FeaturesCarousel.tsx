@@ -113,15 +113,15 @@ export default function FeaturesGrid() {
 
   return (
     <MotionConfig transition={spring}>
-      <section id="features" ref={sectionRef as any} className="bg-white py-20">
+      <section id="features" ref={sectionRef as any} className="bg-[#DFF9D7] py-20">
         <div className="relative mx-auto max-w-6xl px-6 md:px-10">
-          <motion.img
+          {/* <motion.img
             src="/cart.svg"
             alt="Cart"
             className="hidden md:block absolute -top-10 right-0 h-48 w-auto drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)] pointer-events-none select-none"
             animate={{ scale: [1, 0.9, 1], rotate: [0, 0, 40, 40, 0], borderRadius: ["0%", "0%", "20%", "20%", "0%"] }}
             transition={{ duration: 2, ease: "easeInOut", times: [0, 0.2, 0.5, 0.8, 1], repeat: Infinity, repeatDelay: 1 }}
-          />
+          /> */}
 
           <div className="mb-10 md:mb-14 text-left">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#0B1E18]">{t("features.title")}</h2>

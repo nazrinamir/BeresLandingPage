@@ -46,14 +46,14 @@ export default function Navbar() {
       isOpen={showWaitlistPopup}
       onClose={() => setShowWaitlistPopup(false)}
     />
-    <div id="site-nav" className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto drop-shadow-[0_0_10px_#012219] backdrop-blur-sm rounded-3xl ">
+    <div id="site-nav" className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto shadow-md backdrop-blur-sm rounded-3xl ">
 
-      <nav className={`mx-auto max-w-4xl transition-all duration-300 ease-in-out rounded-3xl border border-white/10 bg-[#012219]/50 py-1 shadow-lg h-full overflow-hidden`}>
+      <nav className={`mx-auto max-w-4xl transition-all duration-300 ease-in-out rounded-3xl border border-white/10 bg-white py-1 shadow-lg h-full overflow-hidden`}>
         <div className="flex items-center px-4 sm:px-4 py-1.5 gap-4 text-sm">
           {/* Brand Logo */}
           <a href="#home" className="flex items-center">
             <img
-              src="/bereslogo.svg"
+              src="/beresblack.svg"
               alt="Beres Logo"
               className="h-5.5 w-full"
             />
@@ -66,7 +66,7 @@ export default function Navbar() {
                 <a
                   href={l.href}
                   onClick={(e) => handleLinkClick(e, l.href)}
-                  className="!text-white/80 hover:text-white leading-none"
+                  className="!text-black hover:text-white leading-none"
                 >
                   {l.label}
                 </a>
@@ -88,7 +88,7 @@ export default function Navbar() {
             <button
               aria-label="Toggle menu"
               onClick={() => setOpen((v) => !v)}
-              className="sm:hidden h-8 w-8 inline-flex items-center justify-center rounded-full border border-white/15 text-white/90 transition-transform duration-200 hover:scale-105"
+              className="sm:hidden h-8 w-8 inline-flex items-center justify-center rounded-full border border-white/15 !text-black transition-transform duration-200 hover:scale-105"
             >
               <svg
                 width="18"
@@ -141,7 +141,7 @@ export default function Navbar() {
                   <a
                     href={l.href}
                     onClick={(e) => handleLinkClick(e, l.href)}
-                    className="block px-2 py-1 !text-white hover:bg-white/5 rounded-lg transition-colors duration-200"
+                    className="block px-2 py-1 !text-black hover:bg-white/5 rounded-lg transition-colors duration-200"
                   >
                     {l.label}
                   </a>

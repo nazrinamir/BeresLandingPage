@@ -100,7 +100,7 @@ function AppContent() {
       <Navbar />
 
       {/* Hero + Section Details on continuous green background */}
-      <div className="bg-[#A7E34A]">
+      <div className="bg-[#012219]">
         <div className="rounded-b-3xl overflow-hidden">
           <HeroSection isLoading={isLoading} />
         </div>
