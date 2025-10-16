@@ -101,14 +101,16 @@ function AppContent() {
 
       {/* Hero + Section Details on continuous green background */}
       <div className="bg-[#012219]">
-        <div className="rounded-b-3xl overflow-hidden">
+        <div>
           <HeroSection isLoading={isLoading} />
         </div>
+        <div>
         <SectionDetails />
+        </div>
       </div>
 
       {/* Features Section */}
-      <div className=' bg-white'>
+      <div >
         <FeaturesCarousel />
       </div>
 
