@@ -1,163 +1,124 @@
-import { useEffect, useState } from "react";
+"use client";
+
 import { motion } from "framer-motion";
 import { useTranslation } from "./lang/useTranslation";
-import { ChevronLeft, ChevronRight } from "lucide-react"; // ⬅️ install lucide-react if not yet
 
-type Slide = { title: string; img: string };
-
-const mod = (n: number, m: number) => ((n % m) + m) % m;
+type Benefit = {
+    title: string;
+    desc: string;
+    img: string;
+    color: string;
+    textColor?: string;
+};
 
 export default function BenefitSection() {
     const { t } = useTranslation();
 
-    // Slides
-    const slides: Slide[] = [
-        { title: t("benefits.items.0"), img: "/StraightfromWhatsApp.svg" },
-        { title: t("benefits.items.1"), img: "/OrdersonAutopilot.svg" },
-        { title: t("benefits.items.2"), img: "/YourBusiness.svg" },
-        { title: t("benefits.items.3"), img: "/Bye-bye.svg" },
-        { title: t("benefits.items.4"), img: "/ServeBetter.svg" },
+    const BENEFITS: Benefit[] = [
+        {
+            title: t("benefits.items.0"),
+            desc: t("benefits.desc.0"),
+            img: "/StraightfromWhatsApp.svg",
+            color: "#E9D7FF", // lavender
+        },
+        {
+            title: t("benefits.items.1"),
+            desc: t("benefits.desc.1"),
+            img: "/OrdersonAutopilot.svg",
+            color: "#FFD6E8", // pink
+        },
+        {
+            title: t("benefits.items.2"),
+            desc: t("benefits.desc.2"),
+            img: "/YourBusiness.svg",
+            color: "#FFF0B3", // yellow
+        },
+        {
+            title: t("benefits.items.3"),
+            desc: t("benefits.desc.3"),
+            img: "/Bye-bye.svg",
+            color: "#D6FFE4", // mint green
+        },
+        {
+            title: t("benefits.items.4"),
+            desc: t("benefits.desc.4"),
+            img: "/ServeBetter.svg",
+            color: "#D6E8FF", // light blue
+        },
     ];
 
-    const [index, setIndex] = useState(0);
-    const [paused, setPaused] = useState(false);
-
-    // Auto-play
-    useEffect(() => {
-        if (paused) return;
-        const id = setInterval(() => setIndex((i) => (i + 1) % slides.length), 2500);
-        return () => clearInterval(id);
-    }, [paused, slides.length]);
-
-    const prev = () => setIndex((i) => mod(i - 1, slides.length));
-    const next = () => setIndex((i) => mod(i + 1, slides.length));
-
-    // Position helper: -1 (left), 0 (center), +1 (right), others hidden
-    const posOf = (i: number) => {
-        const left = mod(index - 1, slides.length);
-        const right = mod(index + 1, slides.length);
-        if (i === index) return 0;
-        if (i === left) return -1;
-        if (i === right) return 1;
-        return 2; // offstage
-    };
-
-    // Drag end → decide swipe
-    const onDragEnd = (_: any, info: { offset: { x: number }; velocity: { x: number } }) => {
-        const power = Math.abs(info.offset.x) + Math.abs(info.velocity.x) * 200;
-        if (power > 180) {
-            info.offset.x < 0 ? next() : prev();
-        }
-    };
-
-    // Card sizes and spacing (px)
-    const CARD_W = 400; // width of one card
-    const GAP = 49; // distance between cards when peeking
-    const STEP = CARD_W + GAP;
-
     return (
-        <section
-            className="relative bg-[#f8f3f3] py-16 md:block hidden select-none overflow-x-hidden shadow-inner"
-            onPointerDown={() => setPaused(true)}
-            onPointerUp={() => setPaused(false)}
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-        >
-            <div className="mx-auto px-6">
-                {/* Title */}
-                <div className="mb-8 text-center">
-                    <h2 className="text-2xl font-extrabold text-[#0B1E18]">
+        <section className="relative bg-[#F8F4F4] py-16 select-none overflow-hidden">
+            <div className="max-w-6xl mx-auto px-6">
+                {/* ====== Title ====== */}
+                <div className="text-center mb-12">
+                    <h2 className="text-2xl md:text-4xl font-extrabold text-[#0B1E18]">
                         {t("benefits.title")}
                     </h2>
-                    <p className="text-lg mt-1 text-gray-500">{t("benefits.subtitle")}</p>
+                    <p className="text-gray-500 mt-2">{t("benefits.subtitle")}</p>
                 </div>
 
-                {/* Carousel viewport */}
-                <div className="relative h-[500px] overflow-visible">
-                    {/* Slides */}
-                    {slides.map((s, i) => {
-                        const p = posOf(i); // -1,0,1,2
-                        const isCenter = p === 0;
-                        const isSide = Math.abs(p) === 1;
+                {/* ====== Bento Grid ====== */}
+                {/* <div
+                    className="
+        grid gap-6
+        sm:grid-cols-2
+        lg:grid-cols-4
+        auto-rows-auto
+        items-stretch
+    "
+                > */}
 
-                        return (
+                    <div
+                        className="
+    grid gap-6
+    sm:grid-cols-2
+    lg:grid-cols-4
+    auto-rows-[220px]
+  "
+                    >
+
+
+                        <motion.div
+                            whileHover={{ scale: 1.03 }}
+                            transition={{ duration: 0.3 }}
+                            className="lg:col-span-2 lg:row-span-2 rounded-3xl p-6 flex flex-col justify-between h-full min-h-[400px]"
+                            style={{ backgroundColor: BENEFITS[0].color }}
+                        >
+
+                            <div>
+                                <h3 className="font-bold text-xl mb-3">{BENEFITS[0].title}</h3>
+                                <p className="text-sm opacity-80">{BENEFITS[0].desc}</p>
+                            </div>
+                            <img
+                                src={BENEFITS[0].img}
+                                alt={BENEFITS[0].title}
+                                className="w-full h-auto object-contain rounded-2xl"
+                            />
+                        </motion.div>
+
+                        {/* 2–5 smaller cards */}
+                        {BENEFITS.slice(1).map((b, i) => (
                             <motion.div
                                 key={i}
-                                className="absolute top-0 left-1/2 -translate-x-1/2"
-                                style={{
-                                    width: CARD_W,
-                                    height: CARD_W + 100,
-                                    touchAction: "pan-y",
-                                    pointerEvents: isCenter ? "auto" : "none", // only center card interactive
-                                }}
-                                drag={isCenter ? "x" : false}
-                                dragConstraints={{ left: 0, right: 0 }}
-                                onDragEnd={onDragEnd}
-                                whileTap={{ scale: isCenter ? 0.98 : 1 }}
-                                animate={{
-                                    x: p === 2 ? (p > 0 ? STEP * 2 : -STEP * 2) : p * STEP,
-                                    scale: isCenter ? 1 : 0.9,
-                                    opacity: p === 2 ? 0 : 1,
-                                    zIndex: isCenter ? 3 : isSide ? 2 : 1,
-                                }}
-                                transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                                whileHover={{ scale: 1.03 }}
+                                transition={{ duration: 0.3 }}
+                                className="rounded-3xl p-5 flex flex-col justify-between shadow-sm"
+                                style={{ backgroundColor: b.color }}
                             >
-                                {isCenter ? (
-                                    <div className="w-full h-full bg-[#f8f4f4] rounded-2xl border border-[#E6E8EA] shadow-[0_10px_22px_rgba(0,0,0,0.12)] p-5 grid place-items-center">
-                                        <div className="text-lg text-black font-extrabold leading-snug">{s.title}</div>
-                                        <img
-                                            src={s.img}
-                                            alt={s.title}
-                                            className="w-full h-full !bg-[#f8f4f4] object-contain"
-                                            draggable={false}
-                                        />
-                                    </div>
-                                ) : (
-                                    // Side cards: keep blur
-                                    <div className="w-full h-full rounded-2xl bg-[#f8f4f4] grid place-items-center px-6 text-center blur-sm">
-                                        <div className="text-lg font-extrabold leading-snug text-black">{s.title}</div>
-                                        <img
-                                            src={s.img}
-                                            alt={s.title}
-                                            className="w-full h-full !bg-[#f8f4f4] object-contain"
-                                            draggable={false}
-                                        />
-                                    </div>
-                                )}
+                                <div>
+                                    <h3 className="font-bold text-lg mb-2">{b.title}</h3>
+                                    <p className="text-sm opacity-80">{b.desc}</p>
+                                </div>
+                                <img
+                                    src={b.img}
+                                    alt={b.title}
+                                    className="w-full h-auto object-contain mt-2"
+                                />
                             </motion.div>
-                        );
-                    })}
-                    
-                    {/* Arrow Buttons */}
-                    <button
-                        onClick={prev}
-                        className="absolute top-1/2 left-2 -translate-y-1/2 p-2 rounded-full bg-white shadow-md hover:bg-gray-100"
-                        aria-label="Previous slide"
-                    >
-                        <ChevronLeft className="w-6 h-6 text-gray-700" />
-                    </button>
-                    <button
-                        onClick={next}
-                        className="absolute top-1/2 right-2 -translate-y-1/2 p-2 rounded-full bg-white shadow-md hover:bg-gray-100"
-                        aria-label="Next slide"
-                    >
-                        <ChevronRight className="w-6 h-6 text-gray-700" />
-                    </button>
+                        ))}
+                    </div>
                 </div>
-
-                {/* Dots */}
-                <div className="mt-6 flex items-center justify-center gap-2">
-                    {slides.map((_, i) => (
-                        <button
-                            key={i}
-                            onClick={() => setIndex(i)}
-                            className={`h-2 rounded-full transition-all ${i === index ? "w-5 bg-[#0B1E18]" : "w-2 bg-[#C9D1D9]"
-                                }`}
-                            aria-label={`Go to slide ${i + 1}`}
-                        />
-                    ))}
-                </div>
-            </div>
         </section>
     );
 }

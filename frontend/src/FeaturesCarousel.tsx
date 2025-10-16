@@ -95,7 +95,7 @@ export default function FeatureStepsWithCube() {
                     </div>
                     <div>
                       <p
-                        className={`font-semibold ${isActive ? "text-black" : "text-[#0B1E18]"
+                        className={`font-semibold ${isActive ? "!text-black" : "text-[#0B1E18]"
                           }`}
                       >
                         {f.title}
