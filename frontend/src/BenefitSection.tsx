@@ -48,7 +48,7 @@ export default function BenefitSection() {
     ];
 
     return (
-        <section className="relative bg-[#F8F4F4] py-16 select-none overflow-hidden">
+        <section className="relative bg-[#] py-16 select-none overflow-hidden">
             <div className="max-w-6xl mx-auto px-6">
                 {/* ====== Title ====== */}
                 <div className="text-center mb-12">
