@@ -118,9 +118,6 @@ export default function CustomerExperienceSection() {
                     <p className="text-gray-800 leading-relaxed text-base md:text-lg mb-3 font-inter">
                       {card.text}
                     </p>
-                    <a href="#" className="text-gray-900 font-semibold hover:underline">
-                      Read more →
-                    </a>
                   </div>
                 </div>
               </SwiperSlide>
