@@ -10,7 +10,8 @@ export default {
           "BlinkMacSystemFont",
           "Segoe UI",
           "Roboto",
-          "sans-serif"
+          "sans-serif",
+          "Inter",
         ],
         poppins: ["Poppins", "sans-serif"]
       }

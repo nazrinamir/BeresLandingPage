@@ -9,7 +9,7 @@ const slides = [
   {
     id: 0,
     title: "Animals and superpowers",
-    gradient: "from-blue-400 to-sky-300",
+    gradient: "from-blue-300 to-sky-200",
     cards: [
       {
         text: "Choose your spirit animal.",
@@ -36,7 +36,7 @@ const slides = [
   {
     id: 1,
     title: "Chat Cards",
-    gradient: "from-cyan-400 to-sky-300",
+    gradient: "from-cyan-300 to-sky-200",
     cards: [
       {
         text: "Start a chat about feelings.",
@@ -63,7 +63,7 @@ const slides = [
   {
     id: 2,
     title: "Listen and relax",
-    gradient: "from-pink-400 to-pink-300",
+    gradient: "from-pink-300 to-pink-200",
     cards: [
       {
         text: "Close your eyes and listen.",
@@ -90,7 +90,7 @@ const slides = [
   {
     id: 3,
     title: "Backed by science",
-    gradient: "from-orange-400 to-orange-300",
+    gradient: "from-green-300 to-green-200",
     cards: [
       {
         text: "Mindfulness research backed.",
@@ -135,8 +135,8 @@ export default function SuperChillSlider() {
               key={i}
               onClick={() => setActiveTab(i)}
               className={`relative transition-all duration-300 px-3 py-1 ${activeTab === i
-                  ? "text-black font-bold"
-                  : "text-gray-400 hover:text-gray-700"
+                ? "text-black font-bold"
+                : "text-gray-400 hover:text-gray-700"
                 }`}
             >
               {/* Neon highlighter background (animated) */}
@@ -194,7 +194,7 @@ export default function SuperChillSlider() {
                         <img
                           src={card.image}
                           alt={card.text}
-                          className="max-h-56 object-contain"
+                          className="max-h-72 w-auto object-contain scale-110"
                         />
                       </div>
 
@@ -203,15 +203,15 @@ export default function SuperChillSlider() {
                         <h3 className="text-2xl font-bold text-gray-900 mb-3">
                           {slide.title}
                         </h3>
-                        <p className="text-base text-gray-800 leading-relaxed mb-2">
+                        <p className="text-base text-gray-800 leading-relaxed mb-2 font-inter">
                           {card.text}
                         </p>
-                        <a
+                        {/* <a
                           href="#"
                           className="text-gray-900 font-semibold hover:underline"
                         >
                           Read more →
-                        </a>
+                        </a> */}
                       </div>
                     </div>
                   </SwiperSlide>
