@@ -60,7 +60,7 @@ export default function CustomerExperienceSection() {
               key={i}
               onClick={() => {
                 setActiveTab(i);
-                swiperRef.current?.slideTo(i);
+                swiperRef.current?.slideTo(i, 300); // Add duration for smooth transition
               }}
               className={`relative transition-all duration-300 px-3 py-1 ${
                 activeTab === i
@@ -84,10 +84,10 @@ export default function CustomerExperienceSection() {
             spaceBetween={32}
             slidesPerView={1.1}
             breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 2.2 },
+              768: { slidesPerView: 1.5 },
+              1024: { slidesPerView: 2 },
             }}
-            centeredSlides={false}
+            centeredSlides={true}
             className="overflow-visible"
           >
             {cards.map((card, idx) => (
@@ -95,7 +95,7 @@ export default function CustomerExperienceSection() {
                 <div
                   onClick={() => {
                     setActiveTab(idx);
-                    swiperRef.current?.slideTo(idx);
+                    swiperRef.current?.slideTo(idx, 300); // Add duration for smooth transition
                   }}
                   className={`rounded-[2rem] bg-gradient-to-br ${card.gradient} shadow-md flex flex-col md:flex-row items-center justify-between p-8 md:p-12 transition-all duration-300 cursor-pointer ${
                     activeTab === idx ? "scale-[1.02] ring-4 ring-[#d8ff35]" : "hover:scale-[1.01]"
