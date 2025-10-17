@@ -1,145 +1,222 @@
 "use client";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useRef } from "react";
 
 const slides = [
   {
     id: 0,
     title: "Animals and superpowers",
-    text: "Choose an animal and superpower that feel right for today. What fits your mood? Something strong, something soft, something clever — or maybe something calm?",
-    image:
-      "https://superchill.org/app/uploads/2025/07/Slider-image-CheckIn-ENG-1024x815.png",
     gradient: "from-blue-400 to-sky-300",
+    cards: [
+      {
+        text: "Choose your spirit animal.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-CheckIn-ENG-1024x815.png",
+      },
+      {
+        text: "Find your mood for today.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-CheckIn-ENG-1024x815.png",
+      },
+      {
+        text: "Pick a superpower that fits.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-CheckIn-ENG-1024x815.png",
+      },
+      {
+        text: "Combine to reveal your energy!",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-CheckIn-ENG-1024x815.png",
+      },
+    ],
   },
   {
     id: 1,
     title: "Chat Cards",
-    text: "The Super Chill Chat Cards help to talk in a playful manner about everything that’s going on in that little noggin. Chatting about what you feel, what you think and how you deal with difficult things, helps to hold your noggin high.",
-    image: "https://superchill.org/app/uploads/2025/07/Slider-image-Evenkletsen-ENG.png",
     gradient: "from-cyan-400 to-sky-300",
+    cards: [
+      {
+        text: "Start a chat about feelings.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-Evenkletsen-ENG.png",
+      },
+      {
+        text: "Discover fun question cards.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-Evenkletsen-ENG.png",
+      },
+      {
+        text: "Share your thoughts freely.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-Evenkletsen-ENG.png",
+      },
+      {
+        text: "Learn to express emotions.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-Evenkletsen-ENG.png",
+      },
+    ],
   },
   {
     id: 2,
     title: "Listen and relax",
-    text: "You can do the ‘Calm’ and ‘Focused’ exercises with your eyes closed — just listening. And one day, you might not even need your phone anymore.. because the practice is already in your head, ready for whenever you need it.",
-    image:
-      "https://superchill.org/app/uploads/2025/07/Slider-image-Alleen-luisteren-1024x815.png",
     gradient: "from-pink-400 to-pink-300",
+    cards: [
+      {
+        text: "Close your eyes and listen.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-Alleen-luisteren-1024x815.png",
+      },
+      {
+        text: "Breathe in, breathe out.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-Alleen-luisteren-1024x815.png",
+      },
+      {
+        text: "Focus on calm moments.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-Alleen-luisteren-1024x815.png",
+      },
+      {
+        text: "Feel peaceful energy flow.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-Alleen-luisteren-1024x815.png",
+      },
+    ],
   },
   {
     id: 3,
     title: "Backed by science",
-    text: "The exercises in Super Chill are rooted in established methods that have been thoroughly examined. From the very start, a solid scientific foundation has been prioritised, so you can trust that our exercises truly make a difference.",
-    image: "https://superchill.org/app/uploads/2025/07/Slider-image-SCHUB-ENG.png",
     gradient: "from-orange-400 to-orange-300",
+    cards: [
+      {
+        text: "Mindfulness research backed.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-SCHUB-ENG.png",
+      },
+      {
+        text: "Built with neuroscience input.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-SCHUB-ENG.png",
+      },
+      {
+        text: "Trusted by experts globally.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-SCHUB-ENG.png",
+      },
+      {
+        text: "Proven to improve focus.",
+        image: "https://superchill.org/app/uploads/2025/07/Slider-image-SCHUB-ENG.png",
+      },
+    ],
   },
 ];
 
 export default function SuperChillSlider() {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
+  const [activeTab, setActiveTab] = useState(0);
+  const swiperRefs = useRef<any[]>([]);
 
   return (
-    <section className="py-16 bg-[#fff6e9]">
-      <div className="text-center">
-        <h2 className="text-4xl font-bold mb-6 text-gray-900">
+    <section className="py-20 bg-[#fff6e9]">
+      <div className="text-center px-4">
+        <h2 className="text-4xl font-bold mb-10 text-gray-900">
           Also waiting for you <br />
           in the <mark className="bg-yellow-300 px-2">app</mark>
         </h2>
 
-        {/* Slider Navigation Tabs */}
-        <div className="flex justify-center space-x-6 text-gray-500 mb-10 text-lg font-medium">
+        {/* Tabs */}
+        <div className="flex justify-center flex-wrap gap-4 text-gray-600 mb-12 text-lg font-semibold">
           {slides.map((s, i) => (
-            <span
+            <button
               key={i}
-              className={`cursor-pointer transition hover:text-black ${
-                i === 2 ? "text-black border-b-2 border-yellow-300" : ""
+              onClick={() => setActiveTab(i)}
+              className={`transition pb-1 border-b-2 ${
+                activeTab === i
+                  ? "border-yellow-400 text-black"
+                  : "border-transparent hover:text-black"
               }`}
             >
               {s.title}
-            </span>
+            </button>
           ))}
         </div>
 
-        {/* Swiper */}
-        <div className="relative">
-          <Swiper
-            modules={[Navigation]}
-            navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onInit={(swiper) => {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
-              swiper.navigation.init();
-              swiper.navigation.update();
-            }}
-            spaceBetween={40}
-            slidesPerView={1.2}
-            centeredSlides
-            className="overflow-visible"
-          >
-            {slides.map((slide) => (
-              <SwiperSlide key={slide.id}>
-                <div
-                  className={`rounded-3xl flex flex-col md:flex-row justify-between items-center text-left shadow-md p-10 bg-gradient-to-br ${slide.gradient}`}
-                >
-                  <div className="md:w-1/2 flex justify-center mb-6 md:mb-0">
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                      className="max-h-96 object-contain"
-                    />
-                  </div>
-                  <div className="md:w-1/2 md:pl-8">
-                    <h3 className="text-3xl font-extrabold uppercase text-gray-900 mb-4">
-                      {slide.title}
-                    </h3>
-                    <p className="text-gray-800 leading-relaxed">{slide.text}</p>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+        {/* Slider Section */}
+        {slides.map((slide, i) => (
+          <div key={slide.id} className={`${activeTab === i ? "block" : "hidden"}`}>
+            <div className="relative">
+              <Swiper
+                modules={[Navigation]}
+                onInit={(swiper) => (swiperRefs.current[i] = swiper)}
+                spaceBetween={32}
+                slidesPerView={1.1}
+                breakpoints={{
+                  768: { slidesPerView: 1.5 },
+                  1024: { slidesPerView: 2.2 },
+                }}
+                centeredSlides={false}
+                className="overflow-visible"
+              >
+                {slide.cards.map((card, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div
+                      className={`rounded-3xl bg-gradient-to-br ${slide.gradient} shadow-md flex flex-row items-center h-[22rem]`}
+                    >
+                      {/* Image (Left) */}
+                      <div className="w-1/2 flex justify-center items-center p-6">
+                        <img
+                          src={card.image}
+                          alt={card.text}
+                          className="max-h-64 object-contain"
+                        />
+                      </div>
 
-          {/* Navigation Buttons */}
-          <div className="absolute bottom-[-2rem] right-10 flex space-x-3">
-            <button
-              ref={prevRef}
-              className="bg-yellow-300 hover:bg-yellow-400 text-black rounded-md p-3 transition"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              ref={nextRef}
-              className="bg-yellow-300 hover:bg-yellow-400 text-black rounded-md p-3 transition"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+                      {/* Text (Right) */}
+                      <div className="w-1/2 pr-6">
+                        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                          {slide.title}
+                        </h3>
+                        <p className="text-lg text-gray-800 leading-relaxed">
+                          {card.text}
+                        </p>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Arrows */}
+              <div className="absolute -bottom-14 right-8 flex space-x-3">
+                <button
+                  onClick={() => swiperRefs.current[i]?.slidePrev()}
+                  className="bg-yellow-300 hover:bg-yellow-400 text-black rounded-md p-3 transition"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+                <button
+                  onClick={() => swiperRefs.current[i]?.slideNext()}
+                  className="bg-yellow-300 hover:bg-yellow-400 text-black rounded-md p-3 transition"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );
