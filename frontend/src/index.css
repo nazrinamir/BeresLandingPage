@@ -125,4 +125,58 @@ button {
   .section {
     padding: 2rem 0;
   }
+
+  /* Force soft beige card even if a Tailwind bg-* sneaks in */
+  .neumorphic-card {
+    position: relative;
+    border-radius: 28px;
+    background-color: #F3EDE6 !important;
+    /* base color */
+    background-image:
+      radial-gradient(120% 120% at 0% 0%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0) 55%),
+      linear-gradient(145deg, #ECE5DE 0%, #F7F2EF 60%, #E7DDD5 100%);
+    background-blend-mode: overlay, normal;
+    border: 1px solid rgba(16, 24, 40, 0.06);
+    box-shadow:
+      0 24px 48px rgba(16, 24, 40, 0.12),
+      0 1px 0 rgba(255, 255, 255, 0.8) inset,
+      0 -1px 0 rgba(16, 24, 40, 0.04) inset;
+  }
+
+  .neumorphic-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background: radial-gradient(40% 40% at 18% 12%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 60%);
+    pointer-events: none;
+  }
+  /* Blurry white glass card */
+.glass-card {
+  position: relative;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.55);            /* translucent white */
+  backdrop-filter: blur(16px);                       /* the blur */
+  -webkit-backdrop-filter: blur(16px);               /* Safari */
+  border: 1px solid rgba(255, 255, 255, 0.7);        /* soft border */
+  box-shadow:
+    0 10px 30px rgba(16, 24, 40, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Optional: subtle highlight in top-left */
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: radial-gradient(40% 40% at 18% 12%, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0) 60%);
+  pointer-events: none;
+}
+
+/* Dark mode tweak (keeps it white but slightly denser) */
+:root.dark .glass-card {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.6);
+}
 }
