@@ -121,8 +121,8 @@ export default function SuperChillSlider() {
   const swiperRefs = useRef<any[]>([]);
 
   return (
-    <section className="py-20 bg-[#fff6e9]">
-      <div className="text-center">
+    <section className="py-20 bg-[#DFF9D7]">
+      <div className="text-center px-2">
         <h2 className="text-4xl font-bold mb-10 text-gray-900">
           Also waiting for you <br />
           in the <mark className="bg-yellow-300 px-2">app</mark>
@@ -139,13 +139,33 @@ export default function SuperChillSlider() {
                   : "text-gray-400 hover:text-gray-700"
                 }`}
             >
-              {/* Neon highlighter background */}
+              {/* Neon highlighter background (animated) */}
               {activeTab === i && (
-                <span className="absolute inset-0 bg-[#d8ff35] rounded-sm rotate-[-2deg] z-[-1]" />
+                <span
+                  className="absolute inset-x-0 top-[4px] bottom-0 bg-[#d8ff35] rounded-sm rotate-[-2deg] z-0 block"
+                  style={{
+                    animation: "markerSwipe 0.25s ease",
+                    transformOrigin: "left",
+                  }}
+                ></span>
               )}
-              {s.title}
+              <span className="relative z-[1]">{s.title}</span>
             </button>
           ))}
+
+          {/* Keyframes for highlight animation */}
+          <style jsx>{`
+    @keyframes markerSwipe {
+      from {
+        transform: scaleX(0) rotate(-2deg);
+        opacity: 0.4;
+      }
+      to {
+        transform: scaleX(1) rotate(-2deg);
+        opacity: 1;
+      }
+    }
+  `}</style>
         </div>
 
         {/* Slider Section */}
