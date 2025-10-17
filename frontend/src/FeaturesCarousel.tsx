@@ -187,31 +187,25 @@ export default function SuperChillSlider() {
                 {slide.cards.map((card, idx) => (
                   <SwiperSlide key={idx}>
                     <div
-                      className={`rounded-3xl bg-gradient-to-br ${slide.gradient} shadow-md flex flex-row items-center h-[22rem]`}
+                      className={`rounded-3xl bg-gradient-to-br ${slide.gradient} shadow-md flex flex-col md:flex-row items-center h-auto md:h-[22rem] p-6`}
                     >
-                      {/* Image (Left) */}
-                      <div className="w-1/2 flex justify-center items-center p-6">
+                      {/* Image (Left / Top on mobile) */}
+                      <div className="w-full md:w-1/2 flex justify-center items-center mb-6 md:mb-0">
                         <img
                           src={card.image}
                           alt={card.text}
-                          className="max-h-72 w-auto object-contain scale-110"
+                          className="max-h-60 md:max-h-72 w-auto object-contain scale-100 md:scale-110"
                         />
                       </div>
 
-                      {/* Text (Right) */}
-                      <div className="w-1/2 pr-6 text-left">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                      {/* Text (Right / Bottom on mobile) */}
+                      <div className="w-full md:w-1/2 text-center md:text-left md:pr-6">
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 md:mb-3">
                           {slide.title}
                         </h3>
-                        <p className="text-base text-gray-800 leading-relaxed mb-2 font-inter">
+                        <p className="text-sm md:text-base text-gray-800 leading-relaxed mb-2 font-inter">
                           {card.text}
                         </p>
-                        {/* <a
-                          href="#"
-                          className="text-gray-900 font-semibold hover:underline"
-                        >
-                          Read more →
-                        </a> */}
                       </div>
                     </div>
                   </SwiperSlide>

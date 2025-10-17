@@ -7,6 +7,7 @@ import IncentivePopup from './components/popup/IncentivePopup';
 import HeroSection from './HeroSection';
 import BenefitSection from './BenefitSection';
 import FeaturesCarousel from './FeaturesCarousel';
+import FeaturesCustomer from './FeaturesCustomer';
 import Step from './Step';
 import FooterSection from './footerSection';
 import { ToastProvider } from './components/toast/ToastContext';
@@ -112,6 +113,11 @@ function AppContent() {
       {/* Features Section */}
       <div >
         <FeaturesCarousel />
+      </div>
+
+      {/* Features Section */}
+      <div >
+        <FeaturesCustomer />
       </div>
 
       <section id="benefits" className="scroll-mt-52">
