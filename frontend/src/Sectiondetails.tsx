@@ -162,9 +162,9 @@ export default function SectionDetails() {
                         className="flex justify-center md:justify-end mt-10 md:mt-0"
                     >
                         <img
-                            src="/waitlistlogo.svg"
+                            src="/Waitlistanimation.gif"
                             alt="Join the waitlist"
-                            className="w-[400px] sm:w-[480px] md:w-[520px] lg:w-[600px] drop-shadow-[0_10px_28px_rgba(0,0,0,0.4)]"
+                            className="w-[400px] sm:w-[480px] md:w-[600px] lg:w-[800px] drop-shadow-[0_10px_28px_rgba(0,0,0,0.4)]"
                             loading="lazy"
                         />
                     </motion.div>
