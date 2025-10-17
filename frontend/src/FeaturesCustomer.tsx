@@ -12,7 +12,7 @@ const cards = [
     color: "#012219",
     text: "Customers browse your WhatsApp catalog and tap Add to Cart. This instant action confirms their intent and immediately triggers the automated checkout flow.",
     image:
-      "https://superchill.org/app/uploads/2025/07/Slider-image-CheckIn-ENG-1024x815.png",
+      "",
   },
   {
     id: 1,
@@ -20,7 +20,7 @@ const cards = [
     color: "#AFEB2B",
     text: "The moment an item is added, Beres automatically performs a real-time stock check. No manual checks, no delays, and 'no wait, let me check' messages.",
     image:
-      "https://superchill.org/app/uploads/2025/07/Slider-image-Evenkletsen-ENG.png",
+      "",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const cards = [
     color: "#65D546",
     text: "If stock is available, a secure, customized payment link is instantly generated and delivered directly within the WhatsApp chat. Customers can review, click, and pay on the spot—guaranteeing the sale.",
     image:
-      "https://superchill.org/app/uploads/2025/07/Slider-image-Alleen-luisteren-1024x815.png",
+      "",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const cards = [
     color: "#AFEB2B",
     text: "If the item is unavailable, the customer receives an immediate Out-of-Stock notification. This complete transparency prevents frustration, eliminates follow-up messages, and keeps customers happy.",
     image:
-      "https://superchill.org/app/uploads/2025/07/Slider-image-SCHUB-ENG.png",
+      "",
   },
 ];
 
@@ -48,9 +48,9 @@ export default function CustomerExperienceSection() {
     <section className="py-20 bg-[#DFF9D7]">
       <div className="px-2">
         {/* Heading */}
-        <h2 className="text-center text-4xl md:text-5xl font-extrabold leading-tight mb-8">
+        <h2 className="text-center text-4xl md:text-5xl !font-bold leading-tight mb-8 text-[#012219]">
           For Your Customers Experience: <br />
-          <span className="text-[#6CC24A]">
+          <span className="text-[#012219]">
             Smooth, Instant Shopping Experience
           </span>
         </h2>
@@ -92,7 +92,7 @@ export default function CustomerExperienceSection() {
               prevEl: ".swiper-button-prev-custom",
             }}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
-            onSlideChange={(swiper) => setActiveTab(swiper.activeIndex)} // <– keeps tabs synced
+            onSlideChange={(swiper) => setActiveTab(swiper.activeIndex)} // sync tabs
             spaceBetween={32}
             slidesPerView={1.1}
             breakpoints={{
@@ -110,7 +110,7 @@ export default function CustomerExperienceSection() {
                     setActiveTab(idx);
                     swiperRef.current?.slideTo(idx, 300);
                   }}
-                  className={`rounded-[2rem] shadow-md flex flex-col md:flex-row items-center justify-between p-8 md:p-12 transition-all duration-300 cursor-pointer ${
+                  className={`rounded-[2rem] shadow-md flex flex-col md:flex-row items-center justify-between p-8 md:p-12 transition-all duration-300 cursor-pointer min-h-[520px] md:min-h-[480px] ${
                     activeTab === idx
                       ? "scale-[1.02] ring-4 ring-[#d8ff35]"
                       : "hover:scale-[1.01]"
@@ -118,16 +118,16 @@ export default function CustomerExperienceSection() {
                   style={{ backgroundColor: card.color }}
                 >
                   {/* Image */}
-                  <div className="w-full md:w-1/2 flex justify-center items-center mb-6 md:mb-0">
+                  <div className="w-full md:w-1/2 flex justify-center items-center mb-6 md:mb-0 h-full">
                     <img
                       src={card.image}
                       alt={card.text}
-                      className="max-h-[460px] w-auto object-contain"
+                      className="h-[300px] w-auto object-contain"
                     />
                   </div>
 
                   {/* Text */}
-                  <div className="w-full md:w-1/2 text-center md:text-left md:pl-8">
+                  <div className="w-full md:w-1/2 text-center md:text-left md:pl-8 flex flex-col justify-center h-full">
                     <h3
                       className={`text-2xl md:text-3xl font-extrabold mb-3 ${
                         card.color === "#012219"
@@ -152,11 +152,9 @@ export default function CustomerExperienceSection() {
             ))}
           </Swiper>
 
-          {/* Arrows (stay visible) */}
+          {/* Arrows */}
           <div className="flex justify-center mt-10 space-x-3">
-            <button
-              className="swiper-button-prev-custom bg-[#e5e7eb] hover:bg-[#d1d5db] text-black rounded-lg p-3 transition shadow-md"
-            >
+            <button className="swiper-button-prev-custom bg-[#e5e7eb] hover:bg-[#d1d5db] text-black rounded-lg p-3 transition shadow-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -171,9 +169,7 @@ export default function CustomerExperienceSection() {
               </svg>
             </button>
 
-            <button
-              className="swiper-button-next-custom bg-[#d8ff35] hover:bg-[#cfff00] text-black rounded-lg p-3 transition shadow-md"
-            >
+            <button className="swiper-button-next-custom bg-[#d8ff35] hover:bg-[#cfff00] text-black rounded-lg p-3 transition shadow-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -191,7 +187,7 @@ export default function CustomerExperienceSection() {
         </div>
       </div>
 
-      {/* Marker animation */}
+      {/* Marker Animation */}
       <style jsx>{`
         @keyframes markerSwipe {
           from {
