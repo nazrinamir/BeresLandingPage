@@ -14,22 +14,22 @@ const slides = [
       {
         text: "Choose your spirit animal.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-CheckIn-ENG-1024x815.png",
+          "",
       },
       {
         text: "Find your mood for today.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-CheckIn-ENG-1024x815.png",
+          "",
       },
       {
         text: "Pick a superpower that fits.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-CheckIn-ENG-1024x815.png",
+          "",
       },
       {
         text: "Combine to reveal your energy!",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-CheckIn-ENG-1024x815.png",
+          "",
       },
     ],
   },
@@ -41,22 +41,22 @@ const slides = [
       {
         text: "Start a chat about feelings.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-Evenkletsen-ENG.png",
+          "",
       },
       {
         text: "Discover fun question cards.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-Evenkletsen-ENG.png",
+          "",
       },
       {
         text: "Share your thoughts freely.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-Evenkletsen-ENG.png",
+          "",
       },
       {
         text: "Learn to express emotions.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-Evenkletsen-ENG.png",
+          "",
       },
     ],
   },
@@ -68,22 +68,22 @@ const slides = [
       {
         text: "Close your eyes and listen.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-Alleen-luisteren-1024x815.png",
+          "",
       },
       {
         text: "Breathe in, breathe out.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-Alleen-luisteren-1024x815.png",
+          "",
       },
       {
         text: "Focus on calm moments.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-Alleen-luisteren-1024x815.png",
+          "",
       },
       {
         text: "Feel peaceful energy flow.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-Alleen-luisteren-1024x815.png",
+          "",
       },
     ],
   },
@@ -95,22 +95,22 @@ const slides = [
       {
         text: "Mindfulness research backed.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-SCHUB-ENG.png",
+          "",
       },
       {
         text: "Built with neuroscience input.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-SCHUB-ENG.png",
+          "",
       },
       {
         text: "Trusted by experts globally.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-SCHUB-ENG.png",
+          "",
       },
       {
         text: "Proven to improve focus.",
         image:
-          "https://superchill.org/app/uploads/2025/07/Slider-image-SCHUB-ENG.png",
+          "",
       },
     ],
   },
@@ -145,8 +145,7 @@ export default function SuperChillSlider() {
       <div className="px-2">
         {/* Heading */}
         <h2 className="text-center text-4xl md:text-5xl font-extrabold leading-tight mb-8">
-          Also waiting for you <br />
-          in the <mark className="bg-yellow-300 px-2">app</mark>
+          Feature
         </h2>
 
         {/* Tabs */}
@@ -218,9 +217,6 @@ export default function SuperChillSlider() {
                       <p className="text-gray-800 leading-relaxed text-base md:text-lg mb-3 font-inter">
                         {currentCard.text}
                       </p>
-                      <a href="#" className="text-gray-900 font-semibold hover:underline">
-                        Read more →
-                      </a>
                     </div>
 
                     {/* Internal Navigation Arrows */}
