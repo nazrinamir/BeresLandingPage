@@ -23,7 +23,7 @@ export default function SectionDetails() {
     const [showPopup, setShowPopup] = useState(false);
     const [isJoined, setIsJoined] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    
+
 
     const headingControls = useAnimation();
     const emailControls = useAnimation();
@@ -93,7 +93,7 @@ export default function SectionDetails() {
               text-[1.75rem] sm:text-[2rem] md:!text-[70px]
               leading-[1.05] mb-4 sm:mb-6 tracking-tight"
                         >
-                            Our fantastic <br className="hidden sm:block" /> services is on the way
+                            It only takes <br className="hidden sm:block" /> 5 seconds.
                         </h2>
 
                         {/* Paragraph */}
@@ -101,7 +101,7 @@ export default function SectionDetails() {
                             className="!text-white text-[1rem] sm:text-[1.1rem] md:text-[1.15rem]
               leading-relaxed max-w-md mb-8"
                         >
-                            Want early access to this latest innovation? Join the waitlist and you’ll be part of the inner circle community who get priority access as soon as it lands.
+                            Join the waitlist now and be the first to access Beres when it goes live.
                         </p>
 
                         {/* EMAIL FORM */}

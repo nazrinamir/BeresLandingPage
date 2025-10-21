@@ -20,16 +20,16 @@ export default function BenefitSection() {
               {/* <h4 className="text-gray-700 text-sm font-semibold uppercase tracking-wide">
                 Plan
               </h4> */}
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B1E18] leading-tight text-left">
+              <h3 className="!text-5xl sm:text-4xl md:text-5xl !font-bold !text-white leading-tight text-left">
                 {t("benefits.title")}
               </h3>
-              <p className="!text-gray-900 text-base sm:text-lg leading-relaxed text-justify">
+              <p className="!text-white text-base sm:text-lg leading-relaxed text-justify">
                 {t("benefits.subtitle")}
               </p>
             </div>
-            <button className="bg-[#F8F9F7] hover:bg-[#E8E9E8] font-semibold text-black px-6 py-3 rounded-full shadow-sm w-full sm:w-fit transition-all mt-2">
+            {/* <button className="bg-[#F8F9F7] hover:bg-[#E8E9E8] font-semibold text-black px-6 py-3 rounded-full shadow-sm w-full sm:w-fit transition-all mt-2">
               Learn more
-            </button>
+            </button> */}
           </div>
         </div>
 

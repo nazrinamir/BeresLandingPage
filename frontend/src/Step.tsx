@@ -103,50 +103,25 @@ export default function Step() {
   const handlewaitlistpopup = () => setShowWaitlistPopup(true);
 
   return (
-    <div className="min-h-screen bg-[#F5F5F5] flex items-center justify-center p-4">
-      {/* Main green card container - made much bigger */}
-      <div className="w-full max-w-6xl bg-[#A7F03D] rounded-3xl p-16 relative overflow-hidden">
-        {/* Background grid pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="w-full h-full" style={{
-            backgroundImage: `radial-gradient(circle, #8ECF33 1px, transparent 1px)`,
-            backgroundSize: '20px 20px'
-          }} />
-        </div>
-        
-        {/* Abstract curved line graphic */}
-        <div className="absolute top-0 right-0 w-40 h-40 opacity-30">
-          <svg viewBox="0 0 100 100" className="w-full h-full">
-            <path
-              d="M20 80 Q50 20 80 80"
-              stroke="#8ECF33"
-              strokeWidth="8"
-              fill="none"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 text-center">
-          {/* Main headline */}
-          <h2 className="text-5xl md:text-7xl font-bold text-[#222222] mb-8">
-            Join the Beres waitlist today!
-          </h2>
-          
-          {/* Sub-headline */}
-          <p className="text-xl md:text-2xl text-[#222222] mb-16 max-w-3xl mx-auto">
-            and be part of Malaysia's first WhatsApp automation platform
-          </p>
-
-          {/* CTA Button */}
-          <button
-            type="button"
-            onClick={() => setShowWaitlistPopup(true)}
-            className="bg-[#1A361A] hover:bg-[#0F2418] text-white font-medium text-xl px-12 py-6 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
-          >
-            Join the waitlist now
-          </button>
+    <div className="relative py-4 md:py-6" id="steps">
+      {/* Card container - smaller section */}
+      <div className="relative z-10 flex items-center justify-center min-h-[50vh] md:min-h-[55vh]">
+        <div className="bg-[url('/Maskgroup.svg')] bg-cover bg-center rounded-3xl shadow-2xl p-12 md:p-16 max-w-4xl mx-4">
+          <div className="text-center">
+            <h2 className="text-4xl md:text-6xl !text-black mb-8 !font-bold">
+              Join the Beres waitlist today!
+            </h2>
+            <p className="text-xl md:text-2xl !text-black mb-10 max-w-3xl mx-auto !font-semibold">
+              and be part of Malaysia's first WhatsApp automation platform
+            </p>
+            <button
+              type="button"
+              onClick={() => setShowWaitlistPopup(true)}
+              className="bg-[#1A361A] hover:bg-[#0F2418] text-white font-medium text-xl px-12 py-5 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              Join the waitlist now
+            </button>
+          </div>
         </div>
       </div>
 
