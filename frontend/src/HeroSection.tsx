@@ -69,7 +69,7 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
           data-aos="fade-up"
         >
           <img
-            src="/Heropage.gif"
+            src="/Hero.gif"
             alt="Join the waitlist"
             className="w-[1500px] md:w-[800px] max-w-full drop-shadow-[0_12px_36px_rgba(0,0,0,0.45)] transition-transform duration-500 hover:scale-[1.03]"
             loading="lazy"

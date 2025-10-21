@@ -121,13 +121,13 @@ function AppContent() {
       </div>
 
       <section id="benefits" className="scroll-mt-52">
-        <div className="md:block hidden bg-[#EFEFEF]">
+        <div>
           <BenefitSection />
         </div>
 
-        <div className="md:hidden block">
+        {/* <div className="md:hidden block">
           <BenefitSectionMobile />
-        </div>
+        </div> */}
       </section>
 
 

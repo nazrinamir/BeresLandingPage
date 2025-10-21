@@ -106,7 +106,7 @@ export default function SuperChillSlider() {
   };
 
   return (
-    <section className="py-20 bg-[#DFF9D7]">
+    <section className="py-20 bg-[#DFF9D7]" id="features">
       <div className="px-2">
         {/* Small Badge Heading */}
         <div className="inline-block bg-[#E2FBD7] text-[#012219] px-5 py-2 rounded-full border border-[#012219]/20 font-semibold text-2xl mb-6">

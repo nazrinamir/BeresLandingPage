@@ -103,72 +103,73 @@ export default function Step() {
   const handlewaitlistpopup = () => setShowWaitlistPopup(true);
 
   return (
-    <motion.section id="steps" className="bg-white py-20">
-      <div className="relative mx-auto max-w-6xl px-6 md:px-10">
-        {/* Floating sticker */}
-        {/* <motion.img
-          src="/invoice.svg"
-          alt="Invoice"
-          className="hidden md:block absolute -top-28 -right-8 h-48 w-auto drop-shadow-[0_8px_18px_rgba(0,0,0,0.25)] pointer-events-none select-none"
-          // style={{ y: stickerY, rotate: stickerR }}
-          animate={{ scale: [1, 0.9, 1], rotate: [0, 0, 40, 40, 0], borderRadius: ["0%", "0%", "20%", "20%", "0%"] }}
-          transition={{ duration: 2, ease: "easeInOut", times: [0, 0.2, 0.5, 0.8, 1], repeat: Infinity, repeatDelay: 1 }}
-        /> */}
+    <motion.section
+      id="steps"
+      className=" text-white py-14 px-6 overflow-hidden rounded-t-[4rem] "
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
+      viewport={{ once: true }}
+    >
+      <div className="relative mx-auto max-w-6xl text-center">
+        {/* ===== TOP CTA HEADING ===== */}
+        <div className="mb-20">
+          <h2 className="text-4xl md:text-6xl font-semibold leading-tight mb-6">
+            Ready to <span className="text-[#A7E34A] font-bold">start building?</span>
+          </h2>
+          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-12">
+            Accelerate your business and unlock new opportunities with{" "}
+            <span className="text-[#A7E34A] font-medium">Beres</span>. Automate,
+            sync, and sell effortlessly.
+          </p>
 
-        {/* ===== HEADLINE OUTSIDE THE MASK (cannot be clipped) ===== */}
-        {/* <div className="mb-10 md:mb-14 text-left">
-          <motion.h2
-            className="leading-tight text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1E18]"
-            initial={{ y: 16, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ type: "spring", stiffness: 320, damping: 26 }}
-          >
-            With these three simple steps
-          </motion.h2>
-          <motion.p
-            className="text-base sm:text-lg md:text-2xl mt-2 text-gray-400"
-            initial={{ y: 12, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ type: "spring", stiffness: 320, damping: 28 }}
-          >
-            Yeah, not kidding.
-          </motion.p>
-        </div> */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <button
+              type="button"
+              onClick={() => setShowWaitlistPopup(true)}
+              className="bg-[#A7E34A] hover:bg-[#97d53d] text-[#0B1E18] font-semibold text-lg px-8 py-4 rounded-md shadow-[0_4px_18px_rgba(167,227,74,0.3)] transition-all duration-200"
+            >
+              Get Started
+            </button>
 
-        {/* ===== BLUE AREA WITH CLIP-PATH (keeps your reveal effect) ===== */}
+            <a
+              href="https://beres.my/docs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#A7E34A] font-medium text-lg flex items-center gap-2 hover:gap-3 transition-all duration-300"
+            >
+              Learn how Beres works
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        {/* ===== GRID BELOW (your original layout) ===== */}
         <motion.div
-          variants={sectionVariants}
+          variants={{
+            initial: { opacity: 0, clipPath: "inset(12% 12% 12% 12% round 24px)" },
+            animate: {
+              opacity: 1,
+              clipPath: "inset(0% 0% 0% 0% round 24px)",
+              transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+            },
+          }}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.25 }}
-          className="rounded-[24px] overflow-hidden"
+          className="rounded-[24px] overflow-hidden mt-12"
         >
-          {/* Illustrations */}
-          {/* <motion.img
-            src="/mobilesteps.svg"
-            alt="Steps mobile illustration"
-            className="mt-6 w-full h-auto md:hidden mx-auto
-             min-h-[240px] sm:min-h-[300px] max-h-[65vh] object-contain"
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          /> */}
-          {/* <motion.img
-            src="/Group164.svg"
-            alt="Steps desktop illustration"
-            className="mt-6 w-full h-full hidden md:block"
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          /> */}
-
-          {/* Grid below (unchanged) */}
-          <div className="mt-16 grid grid-cols-1 md:[grid-template-columns:2fr_3fr] gap-2">
-            {/* LEFT card */}
+          <div className="grid grid-cols-1 md:[grid-template-columns:2fr_3fr] gap-2">
+            {/* LEFT card (image) */}
             <motion.div
               className="rounded-2xl bg-[#08231B] h-40 md:h-[260px] flex items-center justify-center overflow-hidden"
               initial={{ y: 24, opacity: 0 }}
@@ -177,18 +178,13 @@ export default function Step() {
               transition={{ type: "spring", stiffness: 320, damping: 30 }}
             >
               <img
-                src="/Frame8.svg"
-                alt="Extra illustration"
-                className="h-full w-auto object-contain md:hidden"
-              />
-              <img
                 src="/Beres_dont_rush.png"
                 alt="Extra illustration"
-                className="h-full w-auto object-contain hidden md:block"
+                className="h-full w-auto object-contain"
               />
             </motion.div>
 
-            {/* RIGHT card */}
+            {/* RIGHT card (rewards & buttons) */}
             <motion.div
               className="rounded-2xl bg-[#A7E34A] p-6 md:p-8 flex flex-col md:h-[260px]"
               initial={{ y: 24, opacity: 0 }}
@@ -210,8 +206,10 @@ export default function Step() {
 
               <motion.div
                 className="grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 gap-2 pr-2 h-full"
-                style={{ scrollbarGutter: "stable" }}
-                variants={list}
+                variants={{
+                  initial: {},
+                  animate: { transition: { staggerChildren: 0.06, delayChildren: 0.15 } },
+                }}
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: true, amount: 0.4 }}
@@ -227,7 +225,7 @@ export default function Step() {
                         <img
                           src={b.icon}
                           alt=""
-                          className={`h-8 w-8 md:h-8 md:w-8 object-contain ${b.label === "Share with your friends" ? "scale-125" : ""
+                          className={`h-8 w-8 object-contain ${b.label === "Share with your friends" ? "scale-125" : ""
                             }`}
                         />
                       </span>
@@ -244,8 +242,20 @@ export default function Step() {
                         href={(b as any).href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        variants={item}
-                        whileHover={{ y: -6, scale: 1.03, boxShadow: "0 10px 18px rgba(0,0,0,0.18)" }}
+                        variants={{
+                          initial: { y: 16, opacity: 0, scale: 0.98 },
+                          animate: {
+                            y: 0,
+                            opacity: 1,
+                            scale: 1,
+                            transition: { type: "spring", stiffness: 380, damping: 28 },
+                          },
+                        }}
+                        whileHover={{
+                          y: -6,
+                          scale: 1.03,
+                          boxShadow: "0 10px 18px rgba(0,0,0,0.18)",
+                        }}
                         whileTap={{ scale: 0.98, y: -2 }}
                         onMouseMove={tilt.onMove}
                         onMouseLeave={tilt.onLeave}
@@ -263,15 +273,27 @@ export default function Step() {
                       <motion.button
                         key={i}
                         type="button"
-                        variants={item}
-                        whileHover={{ y: -6, scale: 1.03, boxShadow: "0 10px 18px rgba(0,0,0,0.18)" }}
+                        variants={{
+                          initial: { y: 16, opacity: 0, scale: 0.98 },
+                          animate: {
+                            y: 0,
+                            opacity: 1,
+                            scale: 1,
+                            transition: { type: "spring", stiffness: 380, damping: 28 },
+                          },
+                        }}
+                        whileHover={{
+                          y: -6,
+                          scale: 1.03,
+                          boxShadow: "0 10px 18px rgba(0,0,0,0.18)",
+                        }}
                         whileTap={{ scale: 0.98, y: -2 }}
                         onMouseMove={tilt.onMove}
                         onMouseLeave={tilt.onLeave}
                         style={tilt.style}
                         className={common}
                         aria-label={b.label}
-                        onClick={handlewaitlistpopup}
+                        onClick={() => setShowWaitlistPopup(true)}
                       >
                         {Inner}
                       </motion.button>
@@ -282,8 +304,20 @@ export default function Step() {
                     <motion.button
                       key={i}
                       type="button"
-                      variants={item as Variants}
-                      whileHover={{ y: -6, scale: 1.03, boxShadow: "0 10px 18px rgba(0,0,0,0.18)" }}
+                      variants={{
+                        initial: { y: 16, opacity: 0, scale: 0.98 },
+                        animate: {
+                          y: 0,
+                          opacity: 1,
+                          scale: 1,
+                          transition: { type: "spring", stiffness: 380, damping: 28 },
+                        },
+                      }}
+                      whileHover={{
+                        y: -6,
+                        scale: 1.03,
+                        boxShadow: "0 10px 18px rgba(0,0,0,0.18)",
+                      }}
                       whileTap={{ scale: 0.98, y: -2 }}
                       onMouseMove={tilt.onMove}
                       onMouseLeave={tilt.onLeave}
@@ -293,7 +327,6 @@ export default function Step() {
                       onClick={() => {
                         if (b.label === "Share with your friends") setShowShare(true);
                         else if (b.label === "One-to-one session") setShowOneToOne(true);
-                        else if (b.label === "Tweet about us") window.open(tweetIntent, "_blank", "noopener,noreferrer");
                       }}
                     >
                       {Inner}
@@ -306,6 +339,7 @@ export default function Step() {
         </motion.div>
       </div>
 
+      {/* POPUPS */}
       <WaitlistPopup
         isOpen={showWaitlistPopup}
         onClose={() => setShowWaitlistPopup(false)}
