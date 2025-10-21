@@ -23,6 +23,7 @@ export default function SectionDetails() {
     const [showPopup, setShowPopup] = useState(false);
     const [isJoined, setIsJoined] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    
 
     const headingControls = useAnimation();
     const emailControls = useAnimation();
@@ -30,6 +31,7 @@ export default function SectionDetails() {
     const emailRef = useRef<HTMLDivElement | null>(null);
     const headingInView = useInView(headingRef, { amount: 0.4 });
     const emailInView = useInView(emailRef, { amount: 0.4 });
+
 
     useEffect(() => {
         headingControls.start(headingInView ? "show" : "hidden");
@@ -84,26 +86,26 @@ export default function SectionDetails() {
                         className="text-left flex flex-col items-start justify-center 
              pl-0 sm:pl-4 md:pl-10 lg:pl-24"
                     >
+                        <p className="!text-yellow-300 text-xl">Coming Soon</p>
                         {/* Heading */}
                         <h2
                             className="!text-[#AFEB2B] font-extrabold
               text-[1.75rem] sm:text-[2rem] md:!text-[70px]
               leading-[1.05] mb-4 sm:mb-6 tracking-tight"
                         >
-                            Took only <br className="hidden sm:block" /> 5 seconds
+                            Our fantastic <br className="hidden sm:block" /> services is on the way
                         </h2>
 
                         {/* Paragraph */}
                         <p
-                            className="!text-[#AFEB2B] text-[1rem] sm:text-[1.1rem] md:text-[1.15rem]
+                            className="!text-white text-[1rem] sm:text-[1.1rem] md:text-[1.15rem]
               leading-relaxed max-w-md mb-8"
                         >
-                            Join the waitlist today and be among the first to experience our
-                            exclusive early access.
+                            Want early access to this latest innovation? Join the waitlist and you’ll be part of the inner circle community who get priority access as soon as it lands.
                         </p>
 
                         {/* EMAIL FORM */}
-                        <motion.div
+                        {/* <motion.div
                             ref={emailRef}
                             variants={fadeRight}
                             initial="hidden"
@@ -151,11 +153,11 @@ export default function SectionDetails() {
                                     "Join the waitlist"
                                 )}
                             </button>
-                        </motion.div>
+                        </motion.div> */}
                     </motion.div>
 
                     {/* RIGHT SIDE IMAGE */}
-                    <motion.div
+                    {/* <motion.div
                         variants={fadeRight}
                         initial="hidden"
                         animate={emailControls}
@@ -167,7 +169,7 @@ export default function SectionDetails() {
                             className="w-[400px] sm:w-[480px] md:w-[600px] lg:w-[800px] drop-shadow-[0_10px_28px_rgba(0,0,0,0.4)]"
                             loading="lazy"
                         />
-                    </motion.div>
+                    </motion.div> */}
                 </div>
             </div>
 

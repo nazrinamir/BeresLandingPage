@@ -45,16 +45,16 @@ export default function CustomerExperienceSection() {
       <div className="px-2">
         {/* Heading */}
         <h2 className="text-center text-4xl md:text-5xl !font-bold leading-tight mb-8 text-[#012219]">
-          For Customers: <br />
+          What will your customer experience: <br />
           <span className="text-[#012219]">
             Smooth, Instant Shopping Experience
           </span>
         </h2>
-        <p className="text-center text-gray-700 max-w-3xl mx-auto mb-12">
+        {/* <p className="text-center text-gray-700 max-w-3xl mx-auto mb-12">
           Beres turns your WhatsApp Business account into a high-converting,
           automated sales system eliminating manual inventory checks and payment
           follow-ups.
-        </p>
+        </p> */}
 
         {/* Tabs */}
         <div className="flex justify-center flex-wrap gap-8 mb-14 text-lg font-semibold">

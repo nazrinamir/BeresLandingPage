@@ -13,8 +13,13 @@ const slides = [
     cards: [
       {
         heading: "Performance overview",
-        text: "See your orders, payments, and stock levels update in real time, all in one place.",
-        image: "",
+        text: "See your orders, payments, and stock levels update in real time, all in one place",
+        image: "/dashboard.svg",
+      },
+      {
+        heading: "Instant Transaction Alerts",
+        text: "Stay informed the moment a sale happens Beres automatically updates your dashboard with every completed payment, eliminating the need for manual tracking",
+        image: "/staynotify.svg",
       },
     ],
   },
@@ -30,7 +35,7 @@ const slides = [
       },
       {
         heading: "WhatsApp Catalogue Mirrors Instantly",
-        text: "eres automatically keeps your WhatsApp Business Catalogue perfectly updated. Out of stock? Update Beres, and your WhatsApp catalogue reflects the change instantly",
+        text: "Beres automatically keeps your WhatsApp Business Catalogue perfectly updated. Out of stock? Update Beres, and your WhatsApp catalogue reflects the change instantly",
         image: "/Catalogmirror.gif",
       },
     ],
@@ -47,31 +52,31 @@ const slides = [
       },
       {
         heading: "Pay Directly in Chat",
-        text: "Customers receive a secure payment link right inside WhatsApp and can complete their purchase in seconds",
+        text: "Customers automatically receive a secure payment link right inside WhatsApp and can complete their purchase in seconds",
         image: "/instantcheckout.svg",
       },
     ],
   },
-  {
-    id: 3,
-    title: "Real-Time Sales Notification",
-    color: "#012219", // Changed from gradient
-    cards: [
-      {
-        heading: "Instant Transaction Alerts",
-        text: "Stay informed the moment a sale happens Beres automatically updates your dashboard with every completed payment, eliminating the need for manual tracking or refreshes.",
-        image: "/staynotify.svg",
-      },
-    ],
-  },
+  // {
+  //   id: 3,
+  //   title: "Real-Time Sales Notification",
+  //   color: "#012219", // Changed from gradient
+  //   cards: [
+  //     {
+  //       heading: "Instant Transaction Alerts",
+  //       text: "Stay informed the moment a sale happens Beres automatically updates your dashboard with every completed payment, eliminating the need for manual tracking or refreshes.",
+  //       image: "/staynotify.svg",
+  //     },
+  //   ],
+  // },
   {
     id: 2,
     title: "A  Proof of Purchase",
-    color: "#AFEB2B", // Changed from gradient
+    color: "#012219", // Changed from gradient
     cards: [
       {
         heading: "E-Receipt Generated",
-        text: " The e-receipt is sent directly to the customer’s WhatsApp chat in real time, giving them immediate proof of purchase and enhancing your brand’s credibility",
+        text: `The e-receipt is sent directly to the customer’s WhatsApp chat in real time <span class='text-[#A7E34A]'>after payment successful</span>, giving them immediate proof of purchase and enhancing your brand’s credibility.`,
         image: "/ereceipt.svg",
       },
     ],
@@ -115,7 +120,7 @@ export default function SuperChillSlider() {
 
         {/* Title */}
         <h2 className="text-center text-4xl md:text-5xl !font-bold leading-tight mb-8 !text-[#012219]">
-          For Business Owners to work less, sell more: <br />
+          How can Busines Owner (You) Work less and Sell more: <br />
           <span className="text-[#012219]">
             Automation that keeps your store active around the clock.
           </span>
@@ -188,11 +193,10 @@ export default function SuperChillSlider() {
                           "https://via.placeholder.com/400x300?text=Feature"
                         }
                         alt={currentCard.text}
-                        className={`w-auto object-contain ${
-                          slide.id === 0 
-                            ? "h-[220px] md:h-[380px]" // Bigger for Smart Product Management
-                            : "h-[180px] md:h-[300px]" // Normal size for others
-                        }`}
+                        className={`w-auto object-contain ${slide.id === 0
+                          ? "h-[220px] md:h-[380px]" // Bigger for Smart Product Management
+                          : "h-[180px] md:h-[300px]" // Normal size for others
+                          }`}
                       />
                     </div>
 
@@ -204,12 +208,11 @@ export default function SuperChillSlider() {
                         }`}>
                         {currentCard.heading}
                       </h3>
-                      <p className={`text-[#012219] leading-relaxed text-sm md:text-lg mb-3 font-inter ${slide.color === "#012219"
-                        ? "!text-white"
-                        : "!text-[#012219]"
-                        }`}>
-                        {currentCard.text}
-                      </p>
+                      <p
+                        className={`text-[#012219] leading-relaxed text-sm md:text-lg mb-3 font-inter ${slide.color === "#012219" ? "!text-white" : "!text-[#012219]"
+                          }`}
+                        dangerouslySetInnerHTML={{ __html: currentCard.text }}
+                      />
                     </div>
 
                     {/* Card Navigation Arrows - Only show if more than 1 card */}

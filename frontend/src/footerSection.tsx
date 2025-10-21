@@ -12,6 +12,9 @@ const FooterSection = () => {
   const [showImprint, setShowImprint] = useState(false);
   const [showWaitlist, setShowWaitlist] = useState(false);
 
+  // Local email state for the header form (purely visual; join opens popup)
+  const [email, setEmail] = useState('');
+
   // Auto-open if URL has #waitlist, #privacy-policy, or ?waitlist=1
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -44,11 +47,39 @@ const FooterSection = () => {
   return (
     <footer className="bg-[#032016] text-gray-300 py-20 rounded-t-3xl">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        {/* Logo */}
-        <div className="flex items-center justify-start md:justify-start space-x-3 mb-10">
-          <img src="/bereslogo.svg" alt="Beres Logo" className="h-full w-40" />
+        {/* Top row: Logo (left) + Email Join (right) */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
+          <div className="flex items-center justify-start space-x-3">
+            <img src="/bereslogo.svg" alt="Beres Logo" className="h-full w-40" />
+          </div>
+
+          {/* Email join input */}
+          <div className="w-full md:w-auto md:min-w-[520px]">
+            <div className="flex items-center w-full bg-white rounded-full shadow overflow-hidden">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
+                aria-label="Email address"
+              />
+              <button
+                onClick={openWaitlist}
+                className="font-semibold px-5 py-2 mr-1 rounded-full transition text-nowrap flex items-center justify-center gap-2 bg-[#AEEA30] text-black hover:bg-[#9cd426]"
+                aria-haspopup="dialog"
+                aria-controls="waitlist-popup"
+              >
+                Join the waitlist
+              </button>
+            </div>
+            <p className="text-xs text-white/80 mt-3">
+              Join the waitlist today and be among the first to experience our exclusive early access.
+            </p>
+          </div>
         </div>
 
+        {/* Middle grid: Description / About / Social */}
         <div className="grid grid-cols-1 md:grid-cols-[1.25fr_1fr_auto] gap-10 md:gap-12 text-center md:text-left md:items-start">
           {/* Left: Description */}
           <div className="w-full">

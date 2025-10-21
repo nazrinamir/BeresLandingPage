@@ -36,10 +36,10 @@ export default function BenefitSection() {
         {/* === RIGHT CARDS SECTION === */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.2fr_1.2fr] gap-6 sm:gap-8 lg:gap-10 flex-[1.3]">
           {[
-            { title: " Save Time, Sell Faster" },
-            { title: "Operate Without Limits" },
-            { title: "Improve Customer Experience" },
-            { title: "Simplify Your Operations" },
+            { title: " Save Time, Sell Faster", img: "/savetime.svg" },
+            { title: "Run your Business 24/7", img: "/runbusiness.svg" },
+            { title: "Improve Customer Experience", img: "/improvecustomer.svg" },
+            { title: "Simplify Your Operations", img: "/simplifyoperation.svg" },
           ].map((card, i) => (
             <motion.div
               key={i}
@@ -48,9 +48,16 @@ export default function BenefitSection() {
               className="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col justify-between"
             >
               <div>
-                <h3 className="font-semibold text-lg sm:text-xl mb-2 text-[#0B1E18]">
+                <h3 className="font-semibold !text-[1rem] sm:text-xl mb-2 text-[#0B1E18]">
                   {card.title}
                 </h3>
+
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  className="mt-4 w-full max-h-40 object-contain"
+                  loading="lazy"
+                />
               </div>
             </motion.div>
           ))}
