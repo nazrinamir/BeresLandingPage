@@ -1,10 +1,7 @@
 "use client";
 import { motion, useAnimation, useInView, easeOut } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { WaitlistHelper } from "./helper/waitlistHelper/waitlistHelper";
-import { useTranslation } from "./lang/useTranslation";
-import { SuccessPopup } from "./components/popup/SuccessPopup";
-import { useToast } from "./components/toast";
+import WaitlistPopup from "./components/popup/waitlistPopup";
 
 const fadeUp = {
     hidden: { opacity: 0, y: 50 },
@@ -17,67 +14,61 @@ const fadeRight = {
 };
 
 export default function SectionDetails() {
-    const { t } = useTranslation();
-    const { addToast } = useToast();
-    const [email, setEmail] = useState("");
     const [showPopup, setShowPopup] = useState(false);
-    const [isJoined, setIsJoined] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
-
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const [expired, setExpired] = useState(false);
 
     const headingControls = useAnimation();
-    const emailControls = useAnimation();
+    const rightControls = useAnimation();
     const headingRef = useRef<HTMLDivElement | null>(null);
-    const emailRef = useRef<HTMLDivElement | null>(null);
+    const rightRef = useRef<HTMLDivElement | null>(null);
     const headingInView = useInView(headingRef, { amount: 0.4 });
-    const emailInView = useInView(emailRef, { amount: 0.4 });
-
+    const rightInView = useInView(rightRef, { amount: 0.4 });
 
     useEffect(() => {
         headingControls.start(headingInView ? "show" : "hidden");
     }, [headingInView, headingControls]);
 
     useEffect(() => {
-        emailControls.start(emailInView ? "show" : "hidden");
-    }, [emailInView, emailControls]);
+        rightControls.start(rightInView ? "show" : "hidden");
+    }, [rightInView, rightControls]);
 
-    const resetForm = () => {
-        setEmail("");
-        setShowPopup(false);
-        setIsJoined(false);
-        setIsSubmitting(false);
-    };
+    // Countdown logic
+    useEffect(() => {
+        const targetDate = new Date("2025-11-01T00:00:00").getTime();
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-    const handleSubmitWaitlist = async () => {
-        if (isSubmitting) return;
-        setIsSubmitting(true);
-        setIsJoined(true);
-
-        try {
-            const waitlistHelper = new WaitlistHelper();
-            const response = await waitlistHelper.submit({ email });
-
-            if (response.success) {
-                setShowPopup(true);
-                addToast({ type: "success", message: response.message, duration: 5000 });
+            if (distance <= 0) {
+                setExpired(true);
+                clearInterval(timer);
+                setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
             } else {
-                addToast({ type: "error", message: response.message, duration: 5000 });
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                setTimeLeft({ days, hours, minutes, seconds });
             }
-        } catch (error) {
-            addToast({
-                type: "error",
-                message: "An error occurred. Please try again.",
-                duration: 5000,
-            });
-        } finally {
-            resetForm();
-        }
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
+
+    const handleOpenWaitlist = () => {
+        if (isSubmitting || expired) return;
+        setIsSubmitting(true);
+        setShowPopup(true);
+        setTimeout(() => setIsSubmitting(false), 400);
     };
 
     return (
-        <section className="relative bg-[#012219] py-16 md:py-20">
+        <section className="relative bg-[#012219] py-24 md:py-36">
             <div className="container mx-auto max-w-7xl px-4 sm:px-6 md:px-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:gap-16 md:justify-end">
+                <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 md:gap-20 md:justify-end">
+                    {/* LEFT */}
                     <motion.div
                         ref={headingRef}
                         variants={fadeUp}
@@ -87,93 +78,62 @@ export default function SectionDetails() {
              pl-0 sm:pl-4 md:pl-10 lg:pl-24"
                     >
                         <p className="!text-yellow-300 text-xl">Coming Soon</p>
-                        {/* Heading */}
                         <h2
                             className="!text-[#AFEB2B] font-extrabold
-              text-[1.75rem] sm:text-[2rem] md:!text-[70px]
+              text-[1.9rem] sm:text-[2.25rem] md:!text-[72px]
               leading-[1.05] mb-4 sm:mb-6 tracking-tight"
                         >
                             It only takes <br className="hidden sm:block" /> 5 seconds.
                         </h2>
-
-                        {/* Paragraph */}
                         <p
                             className="!text-white text-[1rem] sm:text-[1.1rem] md:text-[1.15rem]
               leading-relaxed max-w-md mb-8"
                         >
                             Join the waitlist now and be the first to access Beres when it goes live.
                         </p>
-
-                        {/* EMAIL FORM */}
-                        {/* <motion.div
-                            ref={emailRef}
-                            variants={fadeRight}
-                            initial="hidden"
-                            animate={emailControls}
-                            className="flex items-center w-full max-w-sm bg-white rounded-full shadow overflow-hidden"
-                        >
-                            <input
-                                id="waitlist-email"
-                                type="email"
-                                placeholder="Enter your email"
-                                className="w-full px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <button
-                                onClick={handleSubmitWaitlist}
-                                disabled={isSubmitting}
-                                className={`font-semibold px-5 py-2 mr-1 rounded-full transition text-nowrap flex items-center justify-center gap-2 ${isSubmitting
-                                    ? "bg-gray-400 text-gray-600 cursor-wait"
-                                    : "bg-[#AEEA30] text-black hover:bg-[#9cd426]"
-                                    }`}
-                            >
-                                {isSubmitting ? (
-                                    <svg
-                                        className="animate-spin h-4 w-4"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <circle
-                                            className="opacity-25"
-                                            cx="12"
-                                            cy="12"
-                                            r="10"
-                                            stroke="currentColor"
-                                            strokeWidth="4"
-                                        ></circle>
-                                        <path
-                                            className="opacity-75"
-                                            fill="currentColor"
-                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                        ></path>
-                                    </svg>
-                                ) : (
-                                    "Join the waitlist"
-                                )}
-                            </button>
-                        </motion.div> */}
                     </motion.div>
 
-                    {/* RIGHT SIDE IMAGE */}
-                    {/* <motion.div
+                    {/* RIGHT: Countdown + Button */}
+                    <motion.div
+                        ref={rightRef}
                         variants={fadeRight}
                         initial="hidden"
-                        animate={emailControls}
-                        className="flex justify-center md:justify-end mt-10 md:mt-0"
+                        animate={rightControls}
+                        className="flex flex-col items-center justify-center text-center space-y-12"
                     >
-                        <img
-                            src="/Waitlistanimation.gif"
-                            alt="Join the waitlist"
-                            className="w-[400px] sm:w-[480px] md:w-[600px] lg:w-[800px] drop-shadow-[0_10px_28px_rgba(0,0,0,0.4)]"
-                            loading="lazy"
-                        />
-                    </motion.div> */}
+                        <div className="flex justify-center items-center gap-5 sm:gap-7 flex-wrap md:flex-nowrap">
+                            {[
+                                { label: "Days", value: timeLeft.days },
+                                { label: "Hours", value: timeLeft.hours },
+                                { label: "Minutes", value: timeLeft.minutes },
+                                { label: "Seconds", value: timeLeft.seconds },
+                            ].map((item, i) => (
+                                <div
+                                    key={i}
+                                    className="bg-[#123C30] text-[#AFEB2B] rounded-2xl shadow-md w-32 sm:w-36 h-32 flex flex-col items-center justify-center"
+                                >
+                                    <span className="text-5xl sm:text-6xl font-extrabold">{item.value}</span>
+                                    <span className="text-white text-sm mt-2">{item.label}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <button
+                            onClick={handleOpenWaitlist}
+                            disabled={expired || isSubmitting}
+                            className={`mt-2 font-semibold text-lg px-10 py-4 rounded-full transition-all ${
+                                expired
+                                    ? "bg-gray-500 text-gray-300 cursor-not-allowed"
+                                    : "bg-[#AEEA30] text-black hover:bg-[#9cd426]"
+                            }`}
+                        >
+                            {expired ? "Offer expired" : isSubmitting ? "Opening..." : "Join the waitlist now"}
+                        </button>
+                    </motion.div>
                 </div>
             </div>
 
-            {showPopup && <SuccessPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />}
+            {showPopup && <WaitlistPopup isOpen={showPopup} onClose={() => setShowPopup(false)} />}
         </section>
     );
 }

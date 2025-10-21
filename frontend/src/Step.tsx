@@ -103,17 +103,17 @@ export default function Step() {
   const handlewaitlistpopup = () => setShowWaitlistPopup(true);
 
   return (
-    <div className="relative py-4 md:py-6" id="steps">
-      {/* Card container - smaller section */}
-      <div className="relative z-10 flex items-center justify-center min-h-[50vh] md:min-h-[55vh]">
-        <div className="bg-[url('/Maskgroup.svg')] bg-cover bg-center rounded-3xl shadow-2xl p-12 md:p-16 max-w-4xl mx-4">
+    <div className="relative py-2 md:py-4 bg-[#DFF9D7]" id="steps">
+      {/* Card container - smaller section but taller card */}
+      <div className="relative z-10 flex items-center justify-center min-h-[60vh] md:min-h-[65vh]">
+        <div className="bg-[url('/Maskgroup.svg')] bg-cover bg-center rounded-3xl shadow-2xl p-16 md:p-20 max-w-4xl mx-4">
           <div className="text-center">
-            <h2 className="text-4xl md:text-6xl !text-black mb-8 !font-bold">
+            <h2 className="text-4xl md:text-6xl !text-black mb-10 !font-bold">
               Join the Beres waitlist today!
             </h2>
-            <p className="text-xl md:text-2xl !text-black mb-10 max-w-3xl mx-auto !font-semibold">
-              and be part of Malaysia's first WhatsApp automation platform
-            </p>
+            <p className="text-xl md:text-2xl !text-black mb-12 max-w-3xl mx-auto !font-semibold">
+              and be part of Malaysia's first WhatsApp automation platform 
+            </p> 
             <button
               type="button"
               onClick={() => setShowWaitlistPopup(true)}
@@ -128,7 +128,7 @@ export default function Step() {
       {/* POPUPS */}
       <WaitlistPopup
         isOpen={showWaitlistPopup}
-        onClose={() => setShowWaitlistPopup(false)}
+        onClose={() => setShowWaitlistPopup(false)} 
       />
       {showShare && (
         <ShareModal

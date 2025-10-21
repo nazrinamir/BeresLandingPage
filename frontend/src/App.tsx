@@ -40,33 +40,56 @@ function AppContent() {
   // Loading screen logic
   useEffect(() => {
     const loadApp = async () => {
-      // Minimum loading time for better UX
-      const minLoadingTime = 2000; // 2 seconds
+      const minLoadingTime = 1200; // tighten if you want snappier feel
       const startTime = Date.now();
 
-      // Wait for all images to load
-      const imagePromises = Array.from(document.querySelectorAll('img'))
-        .map((img) => {
-          if (img.complete) return Promise.resolve();
-          return new Promise((resolve) => {
-            img.onload = resolve;
-            img.onerror = resolve; // Continue even if image fails to load
-          });
+      // Only wait for critical, above-the-fold images (exclude lazy)
+      const criticalImages = Array.from(
+        document.querySelectorAll<HTMLImageElement>('img:not([loading="lazy"])')
+      );
+
+      // Helper: wait for an image with a timeout cap
+      const waitForImage = (img: HTMLImageElement, timeoutMs = 3000) => {
+        if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+
+        return new Promise<void>((resolve) => {
+          const done = () => {
+            img.onload = null;
+            img.onerror = null;
+            resolve();
+          };
+
+          img.onload = done;
+          img.onerror = done;
+
+          // Cap the wait per image
+          const t = setTimeout(() => {
+            done();
+          }, timeoutMs);
+
+          // Clear timeout once done
+          const wrap = (fn: any) => (...args: any[]) => {
+            clearTimeout(t);
+            fn?.(...args);
+          };
+          img.onload = wrap(img.onload);
+          img.onerror = wrap(img.onerror);
         });
+      };
 
-      // Wait for minimum time and all images
-      await Promise.all([
-        new Promise(resolve => setTimeout(resolve, minLoadingTime)),
-        Promise.all(imagePromises)
-      ]);
-
-      // Ensure minimum loading time has passed
-      const elapsedTime = Date.now() - startTime;
-      if (elapsedTime < minLoadingTime) {
-        await new Promise(resolve => setTimeout(resolve, minLoadingTime - elapsedTime));
+      try {
+        await Promise.all([
+          new Promise((r) => setTimeout(r, minLoadingTime)),
+          Promise.all(criticalImages.map((img) => waitForImage(img, 3000))),
+        ]);
+      } finally {
+        // Ensure minimum time has passed
+        const elapsedTime = Date.now() - startTime;
+        if (elapsedTime < minLoadingTime) {
+          await new Promise((r) => setTimeout(r, minLoadingTime - elapsedTime));
+        }
+        setIsLoading(false);
       }
-
-      setIsLoading(false);
     };
 
     loadApp();
@@ -106,7 +129,7 @@ function AppContent() {
           <HeroSection isLoading={isLoading} />
         </div>
         <div>
-        <SectionDetails />
+          <SectionDetails />
         </div>
       </div>
 

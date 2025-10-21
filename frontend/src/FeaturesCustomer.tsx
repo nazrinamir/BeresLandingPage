@@ -165,18 +165,18 @@ export default function CustomerExperienceSection() {
       </div>
 
       {/* Marker animation */}
-      <style jsx>{`
-        @keyframes markerSwipe {
-          from {
-            transform: scaleX(0) rotate(-2deg);
-            opacity: 0.4;
-          }
-          to {
-            transform: scaleX(1) rotate(-2deg);
-            opacity: 1;
-          }
-        }
-      `}</style>
+      <style>{`
+  @keyframes markerSwipe {
+    from {
+      transform: scaleX(0) rotate(-2deg);
+      opacity: 0.4;
+    }
+    to {
+      transform: scaleX(1) rotate(-2deg);
+      opacity: 1;
+    }
+  }
+`}</style>
     </section>
   );
 }
