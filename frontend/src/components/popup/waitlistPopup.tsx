@@ -198,9 +198,9 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                     </div> */}
 
                     {/* Phone Field - Optional */}
-                    {/* <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                            Phone Number
+                    <div className='mb-4'>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                            Phone Number <span className="text-red-500">*</span>
                         </label>
                         <input
                             type="tel"
@@ -208,10 +208,11 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                             name="phone"
                             value={formData.phone}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                            placeholder="+1 (555) 123-4567"
+                            className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#AEEA30] focus:border-[#AEEA30] transition-colors ${errors.email ? 'border-red-500' : 'border-gray-300'
+                                }`}
+                            placeholder="0123456789"
                         />
-                    </div> */}
+                    </div>
 
                     {/* Business Field - Optional */}
                     {/* <div>

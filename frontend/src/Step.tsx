@@ -116,7 +116,7 @@ export default function Step() {
         /> */}
 
         {/* ===== HEADLINE OUTSIDE THE MASK (cannot be clipped) ===== */}
-        <div className="mb-10 md:mb-14 text-left">
+        {/* <div className="mb-10 md:mb-14 text-left">
           <motion.h2
             className="leading-tight text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0B1E18]"
             initial={{ y: 16, opacity: 0 }}
@@ -135,7 +135,7 @@ export default function Step() {
           >
             Yeah, not kidding.
           </motion.p>
-        </div>
+        </div> */}
 
         {/* ===== BLUE AREA WITH CLIP-PATH (keeps your reveal effect) ===== */}
         <motion.div
@@ -146,7 +146,7 @@ export default function Step() {
           className="rounded-[24px] overflow-hidden"
         >
           {/* Illustrations */}
-          <motion.img
+          {/* <motion.img
             src="/mobilesteps.svg"
             alt="Steps mobile illustration"
             className="mt-6 w-full h-auto md:hidden mx-auto
@@ -155,8 +155,8 @@ export default function Step() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          />
-          <motion.img
+          /> */}
+          {/* <motion.img
             src="/Group164.svg"
             alt="Steps desktop illustration"
             className="mt-6 w-full h-full hidden md:block"
@@ -164,7 +164,7 @@ export default function Step() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          />
+          /> */}
 
           {/* Grid below (unchanged) */}
           <div className="mt-16 grid grid-cols-1 md:[grid-template-columns:2fr_3fr] gap-2">

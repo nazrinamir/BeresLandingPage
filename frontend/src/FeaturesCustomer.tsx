@@ -11,32 +11,28 @@ const cards = [
     title: "The Intent Signal",
     color: "#012219",
     text: "Customers browse your WhatsApp catalog and tap Add to Cart. This instant action confirms their intent and immediately triggers the automated checkout flow.",
-    image:
-      "",
+    image: "/intentsignal.gif",
   },
   {
     id: 1,
     title: "Live Stock Confirmation (Zero Waiting)",
     color: "#AFEB2B",
-    text: "The moment an item is added, Beres automatically performs a real-time stock check. No manual checks, no delays, and 'no wait, let me check' messages.",
-    image:
-      "",
+    text: "The moment an item is added, Beres automatically performs a real-time stock check. No manual checks, no delays, and no 'wait, let me check' messages.",
+    image: "/livestock.svg",
   },
   {
     id: 2,
-    title: "Secure In-Chat Payment Link",
+    title: "Secure, In-Chat Payment Link",
     color: "#65D546",
     text: "If stock is available, a secure, customized payment link is instantly generated and delivered directly within the WhatsApp chat. Customers can review, click, and pay on the spot—guaranteeing the sale.",
-    image:
-      "",
+    image: "/payment.svg",
   },
   {
     id: 3,
-    title: "Immediate Out-of-Stock Clarity",
-    color: "#AFEB2B",
-    text: "If the item is unavailable, the customer receives an immediate Out-of-Stock notification. This complete transparency prevents frustration, eliminates follow-up messages, and keeps customers happy.",
-    image:
-      "",
+    title: "Instant E-Receipts",
+    color: "#012219",
+    text: "After checkout, Beres instantly shares an official e-receipt in WhatsApp, confirming that the order is complete. Customers enjoy a smooth, reassuring experience knowing every payment is tracked, verified, and acknowledged in seconds.",
+    image: "/outofstock.svg",
   },
 ];
 
@@ -49,7 +45,7 @@ export default function CustomerExperienceSection() {
       <div className="px-2">
         {/* Heading */}
         <h2 className="text-center text-4xl md:text-5xl !font-bold leading-tight mb-8 text-[#012219]">
-          For Your Customers Experience: <br />
+          For Customers: <br />
           <span className="text-[#012219]">
             Smooth, Instant Shopping Experience
           </span>
@@ -69,14 +65,13 @@ export default function CustomerExperienceSection() {
                 setActiveTab(i);
                 swiperRef.current?.slideTo(i, 400);
               }}
-              className={`relative transition-all duration-300 px-3 py-1 ${
-                activeTab === i
-                  ? "text-black font-bold"
-                  : "text-gray-400 hover:text-gray-700"
-              }`}
+              className={`relative transition-all duration-300 px-3 py-1 ${activeTab === i
+                ? "text-black font-bold"
+                : "text-gray-400 hover:text-gray-700"
+                }`}
             >
               {activeTab === i && (
-                <span className="absolute inset-x-0 top-[4px] bottom-0 bg-[#d8ff35] rounded-sm rotate-[-2deg] z-0 block animate-[markerSwipe_0.3s_ease]" />
+                <span className="absolute inset-x-0 top-[4px] bottom-0 bg-[#AFEB2B] rounded-sm rotate-[-2deg] z-0 block animate-[markerSwipe_0.3s_ease]" />
               )}
               <span className="relative z-[1]">{s.title}</span>
             </button>
@@ -92,12 +87,12 @@ export default function CustomerExperienceSection() {
               prevEl: ".swiper-button-prev-custom",
             }}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
-            onSlideChange={(swiper) => setActiveTab(swiper.activeIndex)} // sync tabs
+            onSlideChange={(swiper) => setActiveTab(swiper.activeIndex)}
             spaceBetween={32}
-            slidesPerView={1.1}
+            slidesPerView={1.2}
             breakpoints={{
-              768: { slidesPerView: 1.5 },
-              1024: { slidesPerView: 2 },
+              768: { slidesPerView: 1.2 },
+              1024: { slidesPerView: 1.6 },
             }}
             centeredSlides
             grabCursor
@@ -110,39 +105,36 @@ export default function CustomerExperienceSection() {
                     setActiveTab(idx);
                     swiperRef.current?.slideTo(idx, 300);
                   }}
-                  className={`rounded-[2rem] shadow-md flex flex-col md:flex-row items-center justify-between p-8 md:p-12 transition-all duration-300 cursor-pointer min-h-[520px] md:min-h-[480px] ${
-                    activeTab === idx
-                      ? "scale-[1.02] ring-4 ring-[#d8ff35]"
-                      : "hover:scale-[1.01]"
-                  }`}
+                  className={`rounded-[2rem] shadow-md flex flex-col md:flex-row items-center justify-between p-8 md:p-12 h-[520px] md:h-[480px] transition-all duration-300 cursor-pointer ${activeTab === idx
+                    ? "scale-[1.02]"
+                    : "hover:scale-[1.01]"
+                    }`}
                   style={{ backgroundColor: card.color }}
                 >
                   {/* Image */}
-                  <div className="w-full md:w-1/2 flex justify-center items-center mb-6 md:mb-0 h-full">
+                  <div className="w-full md:w-1/2 flex justify-center items-center mb-6 md:mb-0 h-[200px] md:h-full">
                     <img
                       src={card.image}
                       alt={card.text}
-                      className="h-[300px] w-auto object-contain"
+                      className="h-[180px] md:h-[300px] w-auto object-contain"
                     />
                   </div>
 
                   {/* Text */}
-                  <div className="w-full md:w-1/2 text-center md:text-left md:pl-8 flex flex-col justify-center h-full">
+                  <div className="w-full md:w-1/2 text-center md:text-left md:pl-8 flex flex-col justify-center h-[280px] md:h-full">
                     <h3
-                      className={`text-2xl md:text-3xl font-extrabold mb-3 ${
-                        card.color === "#012219"
-                          ? "!text-[#90EE90]"
-                          : "!text-[#012219]"
-                      }`}
+                      className={`text-xl md:text-4xl font-extrabold mb-2 md:mb-3 ${card.color === "#012219"
+                        ? "!text-[#AFEB2B]"
+                        : "!text-[#012219]"
+                        }`}
                     >
                       {card.title}
                     </h3>
                     <p
-                      className={`leading-relaxed text-lg md:text-lg mb-3 font-inter ${
-                        card.color === "#012219"
-                          ? "!text-white"
-                          : "!text-[#012219]"
-                      }`}
+                      className={`leading-relaxed text-sm md:text-lg mb-3 font-inter ${card.color === "#012219"
+                        ? "!text-white"
+                        : "!text-[#012219]"
+                        }`}
                     >
                       {card.text}
                     </p>
@@ -152,42 +144,27 @@ export default function CustomerExperienceSection() {
             ))}
           </Swiper>
 
-          {/* Arrows */}
-          <div className="flex justify-center mt-10 space-x-3">
-            <button className="swiper-button-prev-custom bg-[#e5e7eb] hover:bg-[#d1d5db] text-black rounded-lg p-3 transition shadow-md">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M15.75 4.5a.75.75 0 0 1 .53 1.28L10.06 12l6.22 6.22a.75.75 0 1 1-1.06 1.06l-6.75-6.75a.75.75 0 0 1 0-1.06l6.75-6.75a.75.75 0 0 1 .53-.22z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-
-            <button className="swiper-button-next-custom bg-[#d8ff35] hover:bg-[#cfff00] text-black rounded-lg p-3 transition shadow-md">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M8.25 4.5a.75.75 0 0 0-.53 1.28L13.94 12l-6.22 6.22a.75.75 0 0 0 1.06 1.06l6.75-6.75a.75.75 0 0 0 0-1.06L8.78 4.72a.75.75 0 0 0-.53-.22z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
+          {/* Bullet Indicators - REPLACED ARROWS WITH BULLETS */}
+          <div className="flex justify-center mt-10 gap-2">
+            {cards.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setActiveTab(idx);
+                  swiperRef.current?.slideTo(idx, 300);
+                }}
+                className={`h-2 rounded-full transition-all ${activeTab === idx
+                  ? "w-5 bg-[#0B1E18]"
+                  : "w-2 bg-[#C9D1D9]"
+                  }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Marker Animation */}
+      {/* Marker animation */}
       <style jsx>{`
         @keyframes markerSwipe {
           from {
