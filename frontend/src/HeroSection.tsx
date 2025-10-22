@@ -10,9 +10,12 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
   return (
     <section
       id="home"
-      className="relative w-full bg-[#DFF9D7] py-16 md:py-20 text-center"
+      className="relative w-full bg-[#DFF9D7] py-16 md:py-20 text-center overflow-hidden"
     >
-      {/* Floating sparkles (optional) */}
+      {/* === Bottom Gradient (smooth transition to next section) === */}
+      <div className="absolute bottom-0 left-0 right-0 h-[30%] bg-gradient-to-b from-transparent via-[#C8F2A6] to-[#65D546] pointer-events-none"></div>
+
+      {/* === Floating sparkles (optional aesthetic particles) === */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(12)].map((_, i) => (
           <div
@@ -29,9 +32,9 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
         ))}
       </div>
 
-      {/* Content */}
+      {/* === Content Wrapper === */}
       <div className="relative z-10 container mx-auto max-w-6xl flex flex-col items-center justify-center px-6 md:px-10">
-        {/* WhatsApp Mock Messages */}
+        {/* === Hero Video === */}
         <div
           className="flex flex-col items-center justify-center mb-6 sm:mb-11"
           data-aos="fade-up"
@@ -46,7 +49,7 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
           />
         </div>
 
-        {/* Heading — Responsive H1/H2 */}
+        {/* === Heading === */}
         <div data-aos-delay="100" className="w-full">
           {/* Mobile */}
           <h2 className="!text-[#012219] text-2xl sm:hidden leading-relaxed max-w-[98%] mx-auto mb-4 font-extrabold">
@@ -59,7 +62,7 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
           </h1>
         </div>
 
-        {/* Subtext */}
+        {/* === Subtext === */}
         <p
           className="!text-black text-[0.8rem] sm:text-base md:text-lg leading-relaxed max-w-[92%] sm:max-w-xl md:max-w-5xl mx-auto"
           data-aos="fade-up"
@@ -71,6 +74,7 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
         </p>
       </div>
 
+      {/* === Scroll Indicator === */}
       <ScrollIndicator targetId="features" isVisible={!isLoading} />
     </section>
   );

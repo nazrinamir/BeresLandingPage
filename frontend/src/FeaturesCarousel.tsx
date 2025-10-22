@@ -119,10 +119,10 @@ export default function SuperChillSlider() {
         </div>
 
         {/* Title */}
-        <h2 className="text-center text-4xl md:text-5xl !font-bold leading-tight mb-8 !text-[#012219]">
-          How can Busines Owner (You) Work less and Sell more: <br />
-          <span className="text-[#012219]">
-            Automation that keeps your store active around the clock.
+        <h2 className="text-center !text-xl sm:!text-2xl md:!text-3xl lg:!text-4xl !font-bold leading-snug mb-8 !text-[#012219]">
+          How Can Business Owners (You) Work Less and Sell More: <br />
+          <span className="!text-[#012219]">
+            Automation That Keeps Your Store Active Around the Clock
           </span>
         </h2>
 
@@ -156,6 +156,12 @@ export default function SuperChillSlider() {
               nextEl: ".swiper-next-btn",
               prevEl: ".swiper-prev-btn",
             }}
+            className="overflow-visible"
+            style={{
+              paddingTop: "1rem",     // ✅ Extra top space for blue area
+              paddingBottom: "1rem",  // ✅ Extra bottom space for blue area
+            }}
+
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             onSlideChange={(swiper) => setActiveTab(swiper.activeIndex)} // keep tab synced
             spaceBetween={32}
@@ -293,7 +299,7 @@ export default function SuperChillSlider() {
       </div>
 
       {/* Marker Animation */}
-<style>{`
+      <style>{`
   @keyframes markerSwipe {
     from {
       transform: scaleX(0) rotate(-2deg);

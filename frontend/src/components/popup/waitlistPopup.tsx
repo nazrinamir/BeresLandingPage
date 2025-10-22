@@ -144,6 +144,41 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
 
                 {/* Form */}
                 <form onSubmit={handleSubmit} className="p-6 text-black">
+
+                    {/* Name Fields - Optional */}
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                        <div>
+                            <label htmlFor="first_name" className="block text-sm font-medium text-gray-700 mb-2">
+                                First Name <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="first_name"
+                                name="first_name"
+                                value={formData.first_name}
+                                onChange={handleInputChange}
+                                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#AEEA30] focus:border-[#AEEA30] transition-colors ${errors.email ? 'border-red-500' : 'border-gray-300'
+                                    }`}
+                                placeholder="John"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="last_name" className="block text-sm font-medium text-gray-700 mb-2">
+                                Last Name <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="last_name"
+                                name="last_name"
+                                value={formData.last_name}
+                                onChange={handleInputChange}
+                                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#AEEA30] focus:border-[#AEEA30] transition-colors ${errors.email ? 'border-red-500' : 'border-gray-300'
+                                    }`}
+                                placeholder="Doe"
+                            />
+                        </div>
+                    </div>
+
                     {/* Email Field - Required */}
                     <div className='mb-4'>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -165,39 +200,7 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                         )}
                     </div>
 
-                    {/* Name Fields - Optional */}
-                    <div className="grid grid-cols-2 gap-3 mb-4">
-                        <div>
-                            <label htmlFor="first_name" className="block text-sm font-medium text-gray-700 mb-2">
-                                First Name <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                id="first_name"
-                                name="first_name"
-                                value={formData.first_name}
-                                onChange={handleInputChange}
-                                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#AEEA30] focus:border-[#AEEA30] transition-colors ${errors.email ? 'border-red-500' : 'border-gray-300'
-                                }`}
-                                placeholder="John"
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="last_name" className="block text-sm font-medium text-gray-700 mb-2">
-                                Last Name <span className="text-red-500">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                id="last_name"
-                                name="last_name"
-                                value={formData.last_name}
-                                onChange={handleInputChange}
-                                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#AEEA30] focus:border-[#AEEA30] transition-colors ${errors.email ? 'border-red-500' : 'border-gray-300'
-                                }`}
-                                placeholder="Doe"
-                            />
-                        </div>
-                    </div>
+
 
                     {/* Phone Field - Optional */}
                     <div className='mb-4'>
@@ -255,9 +258,9 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                     </button>
 
                     {/* Privacy Note */}
-                    <p className="text-xs text-gray-500 text-center mt-4">
+                    {/* <p className="text-xs text-gray-500 text-center mt-4">
                         By joining, you agree to receive updates about our launch. We respect your privacy and won't spam you.
-                    </p>
+                    </p> */}
                 </form>
             </div>
         </div>

@@ -127,7 +127,7 @@ export default function SectionDetails() {
                                     : "bg-[#AEEA30] text-black hover:bg-[#9cd426]"
                             }`}
                         >
-                            {expired ? "Offer expired" : isSubmitting ? "Opening..." : "Join the waitlist now"}
+                            {expired ? "Offer expired" : isSubmitting ? "Opening..." : "Join the waitlist"}
                         </button>
                     </motion.div>
                 </div>

@@ -103,21 +103,27 @@ export default function Step() {
   const handlewaitlistpopup = () => setShowWaitlistPopup(true);
 
   return (
-    <div className="relative py-2 md:py-4 bg-[#DFF9D7]" id="steps">
-      {/* Card container - smaller section but taller card */}
-      <div className="relative z-10 flex items-center justify-center min-h-[60vh] md:min-h-[65vh]">
-        <div className="bg-[url('/Maskgroup.svg')] bg-cover bg-center rounded-3xl shadow-2xl p-16 md:p-20 max-w-4xl mx-4">
+    <div className="relative py-4 sm:py-6 md:py-8 bg-[#DFF9D7]" id="steps">
+      {/* Card container - responsive height and padding */}
+      <div className="relative z-10 flex items-center justify-center min-h-[50vh] sm:min-h-[55vh] md:min-h-[60vh] lg:min-h-[65vh]">
+        <div className="bg-[url('/Maskgroup.svg')] bg-cover bg-center rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 lg:p-16 xl:p-20 max-w-4xl mx-3 sm:mx-4 md:mx-6">
           <div className="text-center">
-            <h2 className="text-4xl md:text-6xl !text-black mb-10 !font-bold">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl !text-black mb-6 sm:mb-8 md:mb-10 !font-bold leading-tight">
               Join the Beres waitlist today!
             </h2>
-            <p className="text-xl md:text-2xl !text-black mb-12 max-w-3xl mx-auto !font-semibold">
-              and be part of Malaysia's first WhatsApp automation platform 
-            </p> 
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl !text-black mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto !font-semibold leading-relaxed px-2">
+              and be part of Malaysia's first WhatsApp automation platform
+            </p>
             <button
               type="button"
               onClick={() => setShowWaitlistPopup(true)}
-              className="!bg-[#012219] hover:bg-[#0F2418] !text-[#AFEB2B] font-medium text-xl px-12 py-5 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="!bg-[#012219] hover:bg-[#0F2418] !text-[#AFEB2B] font-medium 
+             text-sm sm:text-base md:text-lg lg:text-xl 
+             px-6 sm:px-8 md:px-10 lg:px-12 
+             py-3 sm:py-4 md:py-5 
+             rounded-full transition-all duration-200 
+             shadow-lg hover:shadow-xl 
+             w-full sm:w-auto mx-auto lg:mx-0"
             >
               Join the waitlist now
             </button>
@@ -128,7 +134,7 @@ export default function Step() {
       {/* POPUPS */}
       <WaitlistPopup
         isOpen={showWaitlistPopup}
-        onClose={() => setShowWaitlistPopup(false)} 
+        onClose={() => setShowWaitlistPopup(false)}
       />
       {showShare && (
         <ShareModal

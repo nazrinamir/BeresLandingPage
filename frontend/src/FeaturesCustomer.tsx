@@ -44,17 +44,12 @@ export default function CustomerExperienceSection() {
     <section className="py-20 bg-[#DFF9D7]">
       <div className="px-2">
         {/* Heading */}
-        <h2 className="text-center text-4xl md:text-5xl !font-bold leading-tight mb-8 text-[#012219]">
-          What will your customer experience: <br />
+        <h2 className="text-center !text-xl sm:!text-2xl md:!text-3xl lg:!text-4xl !font-bold leading-snug mb-8 text-[#012219]">
+          What Will Your Customer Experience: <br />
           <span className="text-[#012219]">
             Smooth, Instant Shopping Experience
           </span>
         </h2>
-        {/* <p className="text-center text-gray-700 max-w-3xl mx-auto mb-12">
-          Beres turns your WhatsApp Business account into a high-converting,
-          automated sales system eliminating manual inventory checks and payment
-          follow-ups.
-        </p> */}
 
         {/* Tabs */}
         <div className="flex justify-center flex-wrap gap-8 mb-14 text-lg font-semibold">
@@ -97,6 +92,11 @@ export default function CustomerExperienceSection() {
             centeredSlides
             grabCursor
             className="overflow-visible"
+            style={{
+              paddingTop: "2rem",     // ✅ space above card (inside blue background)
+              paddingBottom: "2rem",  // ✅ space below card (inside blue background)
+              boxSizing: "border-box",
+            }}
           >
             {cards.map((card, idx) => (
               <SwiperSlide key={idx}>
