@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import ScrollIndicator from './components/button/ScrollIndicator';
 
 interface HeroSectionProps {
@@ -8,42 +7,11 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-
-  // Track mouse position
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      setMousePos({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
   return (
     <section
       id="home"
       className="relative w-full bg-[#DFF9D7] py-16 md:py-20 text-center"
     >
-      <div
-        className="absolute inset-0 pointer-events-none transition-all duration-300"
-        style={{
-          background: `
-      radial-gradient(
-        500px at ${mousePos.x}% ${mousePos.y}%,
-        rgba(255, 255, 150, 0.45) 0%,
-        rgba(201, 255, 100, 0.35) 25%,
-        rgba(155, 255, 130, 0.25) 50%,
-        rgba(120, 240, 100, 0.10) 80%,
-        rgba(255,255,255,0) 100%
-      )
-    `,
-          transition: 'background-position 0.2s ease-out',
-        }}
-      ></div>
-
       {/* Floating sparkles (optional) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(12)].map((_, i) => (
@@ -68,11 +36,13 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
           className="flex flex-col items-center justify-center mb-6 sm:mb-11"
           data-aos="fade-up"
         >
-          <img
-            src="/Hero.gif"
-            alt="Join the waitlist"
-            className="w-[1500px] md:w-[800px] max-w-full drop-shadow-[0_12px_36px_rgba(0,0,0,0.45)] transition-transform duration-500 hover:scale-[1.03]"
-            loading="lazy"
+          <video
+            src="/heropage.webm"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-[1500px] md:w-[800px] max-w-full transition-transform duration-500 hover:scale-[1.03]"
           />
         </div>
 

@@ -117,7 +117,7 @@ export default function Step() {
             <button
               type="button"
               onClick={() => setShowWaitlistPopup(true)}
-              className="bg-[#1A361A] hover:bg-[#0F2418] text-white font-medium text-xl px-12 py-5 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="!bg-[#012219] hover:bg-[#0F2418] !text-[#AFEB2B] font-medium text-xl px-12 py-5 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Join the waitlist now
             </button>

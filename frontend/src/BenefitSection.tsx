@@ -5,26 +5,39 @@ export default function BenefitSection() {
   const { t } = useTranslation();
 
   return (
-    <section className="bg-[#DFF9D7] py-12 sm:py-16 md:py-20 lg:py-24 flex justify-center rounded-b-2xl">
-      {/* Floating Green Box */}
-      <div className="relative flex flex-col xl:flex-row items-stretch gap-6 sm:gap-8 lg:gap-12 overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-6 lg:p-8 shadow-[0_12px_45px_rgba(0,0,0,0.06)] bg-[#65D546] max-w-[1200px] w-[95%] md:min-h-[600px]">
-        {/* Background tint layer */}
-        <div className="absolute inset-0 -z-10 rounded-[1.5rem] sm:rounded-[2rem] bg-[#F4F6F3]" />
+    <section className="relative bg-[#65D546] overflow-hidden rounded-b-2xl flex justify-center py-14">
+      {/* === GRID BACKGROUND === */}
+      <div className="absolute inset-0 bg-[url('/green-grid-bg.svg')] bg-cover bg-center opacity-90"></div>
 
-        {/* LEFT TEXT SECTION */}
-        <div className="flex flex-col justify-center flex-[0.9] xl:pr-6">
-          <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
-            <h3 className="!text-3xl sm:text-4xl lg:text-5xl !font-bold !text-white leading-tight text-left">
-              {t("benefits.title")}
-            </h3>
-            <p className="!text-white text-sm sm:text-base lg:text-lg leading-relaxed text-justify">
-              {t("benefits.subtitle")}
-            </p>
-          </div>
+      {/* === Top Badge === */}
+      <div className="absolute top-6 flex justify-center w-full z-20">
+        <div className="px-6 py-2 bg-white/10 backdrop-blur-md border border-white/20 !text-white font-semibold rounded-full text-lg shadow-sm">
+          Benefits
+        </div>
+      </div>
+
+      {/* === CONTENT WRAPPER === */}
+      <div className="relative z-10 flex flex-col xl:flex-row items-center xl:items-start justify-between w-[90%] max-w-[1200px] gap-10 mt-16">
+
+        {/* === LEFT CONTENT === */}
+        <div className="flex flex-col justify-center xl:justify-start flex-1 text-left xl:pl-4">
+          <h3 className="!font-bold !text-5xl sm:text-5xl leading-[1.15] mb-4 text-[#012219]">
+            Why Business<br className="hidden sm:block"/> Owners Love<br className="hidden sm:block" />
+            <span className="text-white">Beres</span>
+          </h3>
+
+          <p className="!text-[#012219] text-base sm:text-lg leading-relaxed max-w-sm mb-8 text-justify">
+            Manage your business with less effort, fewer mistakes, and more time to focus on growth.
+          </p>
+
+          <button className="bg-[#012219] text-[#AFEB2B] font-semibold px-6 py-3 rounded-full shadow-md hover:bg-[#023524] transition-all w-fit">
+            Join the waitlist now
+          </button>
         </div>
 
-        {/* RIGHT CARDS SECTION */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 flex-[1.5] h-full">
+
+        {/* === RIGHT CARDS GRID === */}
+        <div className="grid grid-cols-2 gap-4 flex-1">
           {[
             { title: "Save Time, Sell Faster", img: "/savetime.svg" },
             { title: "Run Your Business 24/7", img: "/runbusiness.svg" },
@@ -34,20 +47,21 @@ export default function BenefitSection() {
             <motion.div
               key={i}
               whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white rounded-[1rem] sm:rounded-[1.25rem] lg:rounded-[1.5rem] p-5 sm:p-6 lg:p-8 shadow-[0_4px_20px_rgba(0,0,0,0.05)] flex flex-col justify-between min-h-[250px] sm:min-h-[280px] lg:min-h-[300px]"
+              transition={{ duration: 0.25 }}
+              className="bg-white relative rounded-[1.5rem] shadow-[0_6px_18px_rgba(0,0,0,0.05)] flex flex-col items-center justify-center text-center"
             >
-              <div className="flex flex-col items-center text-center">
-                <h3 className="font-semibold text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-5 lg:mb-6 text-[#0B1E18]">
-                  {card.title}
-                </h3>
-                <img
-                  src={card.img}
-                  alt={card.title}
-                  className="mt-2 w-full max-w-[180px] sm:max-w-[200px] lg:max-w-[240px] object-contain"
-                  loading="lazy"
-                />
-              </div>
+              {/* Red Grid Overlay */}
+              <div className="absolute inset-0 bg-[url('/red-grid-bg.svg')] bg-[length:24px_24px] opacity-25 rounded-[1.5rem] pointer-events-none"></div>
+
+              <h3 className="font-semibold text-[#0B1E18] text-lg md:text-xl mb-4 relative z-10">
+                {card.title}
+              </h3>
+              <img
+                src={card.img}
+                alt={card.title}
+                className="w-full !max-w-[250px] sm:max-w-[180px] object-contain relative z-10"
+                loading="lazy"
+              />
             </motion.div>
           ))}
         </div>
