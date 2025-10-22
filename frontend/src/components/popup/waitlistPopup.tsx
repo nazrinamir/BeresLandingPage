@@ -166,10 +166,10 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     {/* Name Fields - Optional */}
-                    {/* <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-3 mb-4">
                         <div>
                             <label htmlFor="first_name" className="block text-sm font-medium text-gray-700 mb-2">
-                                First Name
+                                First Name <span className="text-red-500">*</span>
                             </label>
                             <input
                                 type="text"
@@ -177,13 +177,14 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                                 name="first_name"
                                 value={formData.first_name}
                                 onChange={handleInputChange}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#AEEA30] focus:border-[#AEEA30] transition-colors ${errors.email ? 'border-red-500' : 'border-gray-300'
+                                }`}
                                 placeholder="John"
                             />
                         </div>
                         <div>
                             <label htmlFor="last_name" className="block text-sm font-medium text-gray-700 mb-2">
-                                Last Name
+                                Last Name <span className="text-red-500">*</span>
                             </label>
                             <input
                                 type="text"
@@ -191,11 +192,12 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
                                 name="last_name"
                                 value={formData.last_name}
                                 onChange={handleInputChange}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#AEEA30] focus:border-[#AEEA30] transition-colors ${errors.email ? 'border-red-500' : 'border-gray-300'
+                                }`}
                                 placeholder="Doe"
                             />
                         </div>
-                    </div> */}
+                    </div>
 
                     {/* Phone Field - Optional */}
                     <div className='mb-4'>
