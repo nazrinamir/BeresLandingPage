@@ -109,10 +109,10 @@ export default function Step() {
         <div className="bg-[url('/Maskgroup.svg')] bg-cover bg-center rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 md:p-12 lg:p-16 xl:p-20 max-w-4xl mx-3 sm:mx-4 md:mx-6">
           <div className="text-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl !text-black mb-6 sm:mb-8 md:mb-10 !font-bold leading-tight">
-              Join the Beres waitlist today!
+              Scrolling For More Information?
             </h2>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl !text-black mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto !font-semibold leading-relaxed px-2">
-              and be part of Malaysia's first WhatsApp automation platform
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl !text-black mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto !font-semibold leading-relaxed px-2"    style={{ fontFamily: "var(--font-inter)" }}>
+              There’s more to come! Be the first to gain exclusive news from Beres by joining the waitlist now.
             </p>
             <button
               type="button"
@@ -125,7 +125,7 @@ export default function Step() {
              shadow-lg hover:shadow-xl 
              w-full sm:w-auto mx-auto lg:mx-0"
             >
-              Join the waitlist now
+              Get early access
             </button>
           </div>
         </div>

@@ -15,9 +15,9 @@ const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
 
       {/* Popup image Computer*/}
       <img
-        src="/Chop1.svg"
+        src="/survey.svg"
         alt="Special Incentive"
-        className="relative w-[90vw] max-w-2xl rounded-2xl z-10 hidden md:block"
+        className="relative w-[30vw] max-w-sm rounded-2xl z-10 hidden md:block"
       />
 
       {/* Popup image Mobile*/}
@@ -40,9 +40,9 @@ const IncentivePopup = ({ onClose }: { onClose: () => void }) => (
         href="https://forms.office.com/r/v27frh4uhR"
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute text-xs md:text-base -bottom-4 md:-bottom-4 bg-lime-400 !text-black font-bold px-4 py-2 md:px-8 md:py-4 rounded-full shadow-md hover:bg-lime-500 transition z-40"
+        className="absolute text-xs md:text-base -bottom-4 md:-bottom-4 !bg-[#012219] !text-[#AFEB2B] font-bold px-4 py-2 md:px-8 md:py-4 rounded-full shadow-md hover:bg-lime-500 transition z-40"
       >
-        <strong>Catch Up Now!</strong>
+        <strong>Complete Survey</strong>
       </a>
     </div>
 

@@ -6,7 +6,7 @@ import WaitlistPopup from "../popup/waitlistPopup";
 const links = [
   { label: "Features", href: "#features" },
   { label: "Benefits", href: "#benefits" },
-  { label: "Steps", href: "#steps" },
+  // { label: "Steps", href: "#steps" },
 ];
 
 function scrollToHash(href: string) {

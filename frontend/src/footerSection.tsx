@@ -53,30 +53,20 @@ const FooterSection = () => {
             <img src="/bereslogo.svg" alt="Beres Logo" className="h-full w-40" />
           </div>
 
-          {/* Email join input */}
-          <div className="w-full md:w-auto md:min-w-[520px]">
-            <div className="flex items-center w-full bg-white rounded-full shadow overflow-hidden">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none"
-                aria-label="Email address"
-              />
-              <button
-                onClick={openWaitlist}
-                className="font-semibold px-5 py-2 mr-1 rounded-full transition text-nowrap flex items-center justify-center gap-2 bg-[#AEEA30] text-black hover:bg-[#9cd426]"
-                aria-haspopup="dialog"
-                aria-controls="waitlist-popup"
-              >
-                Join the waitlist
-              </button>
-            </div>
+          {/* Join Waitlist Button */}
+          {/* <div className="flex flex-col items-center md:items-end text-center md:text-right">
+            <button
+              onClick={openWaitlist}
+              className="bg-[#AEEA30] hover:bg-[#9cd426] text-black font-semibold px-8 py-3 md:px-10 md:py-4 rounded-full shadow-lg transition-all duration-200"
+              aria-haspopup="dialog"
+              aria-controls="waitlist-popup"
+            >
+              Join the waitlist
+            </button>
             <p className="text-xs text-white/80 mt-3">
               Join the waitlist today and be among the first to experience our exclusive early access.
             </p>
-          </div>
+          </div> */}
         </div>
 
         {/* Middle grid: Description / About / Social */}
@@ -107,6 +97,16 @@ const FooterSection = () => {
                 >
                   Join our waitlist
                 </button>
+              </li>
+              <li>
+                <a
+                  href="https://forms.office.com/r/v27frh4uhR"
+                  className="!text-white hover:text-[#AEEA30] transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Survey
+                </a>
               </li>
             </ul>
           </div>

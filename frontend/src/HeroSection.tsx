@@ -53,12 +53,12 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
         <div data-aos-delay="100" className="w-full">
           {/* Mobile */}
           <h2 className="!text-[#012219] text-2xl sm:hidden leading-relaxed max-w-[98%] mx-auto mb-4 font-extrabold">
-            Don't have time to reply each of your potential sales?
+            Don’t Have Time To Reply Each Of Your Potential Sales?
           </h2>
 
           {/* Desktop */}
           <h1 className="hidden sm:block !text-[#012219] text-5xl md:text-6xl leading-tight max-w-3xl mx-auto mb-4 font-extrabold">
-            Don't have time to reply each of your potential sales?
+            Don’t Have Time To Reply Each Of Your Potential Sales?
           </h1>
         </div>
 
