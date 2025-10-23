@@ -84,7 +84,6 @@ export default function BenefitSection() {
         <WaitlistPopup
           isOpen={showWaitlistPopup}
           onClose={() => setShowWaitlistPopup(false)}
-          onSuccess={handleWaitlistSuccess}
         />
 
         <SuccessPopup

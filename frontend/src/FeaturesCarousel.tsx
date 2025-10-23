@@ -2,6 +2,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -76,8 +77,8 @@ export default function SuperChillSlider() {
   const [activeCardIndices, setActiveCardIndices] = useState(
     Array(slides.length).fill(0)
   );
-  const swiperRef = useRef(null);
-  const scrollRef = useRef(null);
+  const swiperRef = useRef<SwiperType | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   // 👉 Enable mouse drag scroll
   useEffect(() => {
@@ -85,10 +86,10 @@ export default function SuperChillSlider() {
     if (!el) return;
 
     let isDown = false;
-    let startX;
-    let scrollLeft;
+    let startX: number;
+    let scrollLeft: number;
 
-    const start = (e) => {
+    const start = (e: MouseEvent) => {
       isDown = true;
       el.classList.add("dragging");
       startX = e.pageX - el.offsetLeft;
@@ -98,7 +99,7 @@ export default function SuperChillSlider() {
       isDown = false;
       el.classList.remove("dragging");
     };
-    const move = (e) => {
+    const move = (e: MouseEvent) => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - el.offsetLeft;
@@ -119,7 +120,7 @@ export default function SuperChillSlider() {
     };
   }, []);
 
-  const handleCardNavigation = (tabIndex, direction) => {
+  const handleCardNavigation = (tabIndex: number, direction: "prev" | "next") => {
     setActiveCardIndices((prev) => {
       const newIndices = [...prev];
       const currentSlide = slides[tabIndex];
@@ -285,7 +286,7 @@ export default function SuperChillSlider() {
                     {slide.cards.length > 1 && (
                       <div className="absolute bottom-4 right-4 flex space-x-2">
                         <button
-                          onClick={(e) => {
+                          onClick={(e: React.MouseEvent) => {
                             e.stopPropagation();
                             handleCardNavigation(idx, "prev");
                           }}
@@ -306,7 +307,7 @@ export default function SuperChillSlider() {
                         </button>
 
                         <button
-                          onClick={(e) => {
+                          onClick={(e: React.MouseEvent) => {
                             e.stopPropagation();
                             handleCardNavigation(idx, "next");
                           }}

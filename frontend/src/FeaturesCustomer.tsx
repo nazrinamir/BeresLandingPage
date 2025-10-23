@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import type { Swiper as SwiperType } from "swiper";
 
 const cards = [
   {
@@ -38,8 +39,8 @@ const cards = [
 
 export default function CustomerExperienceSection() {
   const [activeTab, setActiveTab] = useState(0);
-  const swiperRef = useRef(null);
-  const scrollRef = useRef(null);
+  const swiperRef = useRef<SwiperType | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   // ✅ Enable mouse drag scroll for tabs
   useEffect(() => {
@@ -47,10 +48,10 @@ export default function CustomerExperienceSection() {
     if (!el) return;
 
     let isDown = false;
-    let startX;
-    let scrollLeft;
+    let startX: number;
+    let scrollLeft: number;
 
-    const start = (e) => {
+    const start = (e: MouseEvent) => {
       isDown = true;
       el.classList.add("dragging");
       startX = e.pageX - el.offsetLeft;
@@ -60,7 +61,7 @@ export default function CustomerExperienceSection() {
       isDown = false;
       el.classList.remove("dragging");
     };
-    const move = (e) => {
+    const move = (e: MouseEvent) => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - el.offsetLeft;
@@ -96,9 +97,9 @@ export default function CustomerExperienceSection() {
             </span>
             <span
               className="
-        absolute left-0 bottom-1 w-70 h-[10px]
+        absolute left-0 bottom-1 w-[280px] h-[10px]
         bg-[#AEEA30] rounded-full opacity-70
-        -z-0
+        z-0
       "
             ></span>
           </span>
@@ -127,10 +128,11 @@ export default function CustomerExperienceSection() {
                   setActiveTab(i);
                   swiperRef.current?.slideTo(i, 400);
                 }}
-                className={`relative transition-all duration-300 px-3 py-1 ${activeTab === i
-                  ? "text-black font-bold"
-                  : "text-gray-400 hover:text-gray-700"
-                  }`}
+                className={`relative transition-all duration-300 px-3 py-1 ${
+                  activeTab === i
+                    ? "text-black font-bold"
+                    : "text-gray-400 hover:text-gray-700"
+                }`}
               >
                 {activeTab === i && (
                   <span className="absolute inset-x-0 top-[4px] bottom-0 bg-[#AFEB2B] rounded-sm rotate-[-2deg] z-0 block animate-[markerSwipe_0.3s_ease]" />
@@ -169,34 +171,35 @@ export default function CustomerExperienceSection() {
                     setActiveTab(idx);
                     swiperRef.current?.slideTo(idx, 300);
                   }}
-                  className={`rounded-[2rem] shadow-md flex flex-col md:flex-row items-center justify-between p-8 md:p-12 h-[520px] md:h-[480px] transition-all duration-300 cursor-pointer ${activeTab === idx
-                    ? "scale-[1.02]"
-                    : "hover:scale-[1.01]"
-                    }`}
+                  className={`rounded-[2rem] shadow-md flex flex-col md:flex-row items-center justify-between p-8 md:p-12 h-[520px] md:h-[480px] transition-all duration-300 cursor-pointer ${
+                    activeTab === idx ? "scale-[1.02]" : "hover:scale-[1.01]"
+                  }`}
                   style={{ backgroundColor: card.color }}
                 >
                   {/* Image/Video */}
                   <div className="w-full md:w-1/2 flex justify-center items-center mb-6 md:mb-0 h-[200px] md:h-full">
-                    {card.image.endsWith('.webm') ? (
+                    {card.image.endsWith(".webm") ? (
                       <video
                         src={card.image}
                         autoPlay
                         loop
                         muted
                         playsInline
-                        className={`w-auto object-contain ${card.id === 0
-                          ? "h-[220px] md:h-[380px]"
-                          : "h-[180px] md:h-[300px]"
-                          }`}
+                        className={`w-auto object-contain ${
+                          card.id === 0
+                            ? "h-[220px] md:h-[380px]"
+                            : "h-[180px] md:h-[300px]"
+                        }`}
                       />
                     ) : (
                       <img
                         src={card.image}
-                        alt={card.text}
-                        className={`w-auto object-contain ${card.id === 0
-                          ? "h-[220px] md:h-[380px]"
-                          : "h-[180px] md:h-[300px]"
-                          }`}
+                        alt={card.title}
+                        className={`w-auto object-contain ${
+                          card.id === 0
+                            ? "h-[220px] md:h-[380px]"
+                            : "h-[180px] md:h-[300px]"
+                        }`}
                       />
                     )}
                   </div>
@@ -204,26 +207,28 @@ export default function CustomerExperienceSection() {
                   {/* Text */}
                   <div className="w-full md:w-1/2 text-center md:text-left md:pl-8 flex flex-col justify-center h-[280px] md:h-full">
                     <h3
-                      className={`!text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl font-extrabold mb-3 md:mb-4 ${card.color === "#FFBE55"
-                        ? "!text-white"
-                        : card.color === "#BDCCFF"
+                      className={`!text-2xl sm:!text-3xl md:!text-4xl lg:!text-5xl font-extrabold mb-3 md:mb-4 ${
+                        card.color === "#FFBE55"
+                          ? "!text-white"
+                          : card.color === "#BDCCFF"
                           ? "!text-[#414B6E]"
                           : card.color === "#F86C51"
-                            ? "!text-white"
-                            : "!text-[#125744]"
-                        }`}
+                          ? "!text-white"
+                          : "!text-[#125744]"
+                      }`}
                     >
                       {card.title}
                     </h3>
                     <p
-                      className={`text-[#012219] leading-relaxed text-sm md:text-lg mb-3 text-justify ${card.color === "#FFBE55"
-                        ? "!text-white"
-                        : card.color === "#BDCCFF"
+                      className={`text-[#012219] leading-relaxed text-sm md:text-lg mb-3 text-justify ${
+                        card.color === "#FFBE55"
+                          ? "!text-white"
+                          : card.color === "#BDCCFF"
                           ? " !text-[#414B6E]"
                           : card.color === "#F86C51"
-                            ? "!text-white"
-                            : "!text-[#125744]"
-                        }`}
+                          ? "!text-white"
+                          : "!text-[#125744]"
+                      }`}
                       style={{ fontFamily: "var(--font-inter)" }}
                     >
                       {card.text}
@@ -243,10 +248,9 @@ export default function CustomerExperienceSection() {
                   setActiveTab(idx);
                   swiperRef.current?.slideTo(idx, 300);
                 }}
-                className={`h-2 rounded-full transition-all ${activeTab === idx
-                  ? "w-5 bg-[#0B1E18]"
-                  : "w-2 bg-[#C9D1D9]"
-                  }`}
+                className={`h-2 rounded-full transition-all ${
+                  activeTab === idx ? "w-5 bg-[#0B1E18]" : "w-2 bg-[#C9D1D9]"
+                }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}

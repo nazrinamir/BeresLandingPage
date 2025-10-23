@@ -4,7 +4,7 @@ import PrivacyPopup from './components/popup/privacyPopup';
 import ImprintPopup from './components/popup/ImprintPopup';
 import WaitlistPopup from './components/popup/waitlistPopup';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const FooterSection = () => {
   const [showTerms, setShowTerms] = useState(false);

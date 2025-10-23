@@ -12,7 +12,7 @@ import Step from './Step';
 import FooterSection from './footerSection';
 import { ToastProvider } from './components/toast/ToastContext';
 import ToastContainer from './components/toast/ToastContainer';
-import BenefitSectionMobile from './BenefitSectionMobile';
+// import BenefitSectionMobile from './BenefitSectionMobile';
 import LoadingScreen from './components/loading/LoadingScreen';
 import SectionDetails from "./Sectiondetails";
 // Add this import for Rive
