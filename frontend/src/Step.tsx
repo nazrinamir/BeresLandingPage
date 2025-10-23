@@ -100,7 +100,7 @@ export default function Step() {
   //   [tweetIntent]
   // );
 
-  const handlewaitlistpopup = () => setShowWaitlistPopup(true);
+  // const handlewaitlistpopup = () => setShowWaitlistPopup(true);
 
   return (
     <div className="relative py-4 sm:py-6 md:py-8 bg-[#DFF9D7]" id="steps">
