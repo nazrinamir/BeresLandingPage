@@ -1,18 +1,18 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useTranslation } from "./lang/useTranslation";
+// import { useTranslation } from "./lang/useTranslation";
 import WaitlistPopup from "./components/popup/waitlistPopup";
 import { SuccessPopup } from "./components/popup/SuccessPopup";
 
 export default function BenefitSection() {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const [showWaitlistPopup, setShowWaitlistPopup] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
-  const handleWaitlistSuccess = () => {
-    setShowWaitlistPopup(false);
-    setShowSuccessPopup(true);
-  };
+  // const handleWaitlistSuccess = () => {
+  //   setShowWaitlistPopup(false);
+  //   setShowSuccessPopup(true);
+  // };
 
   return (
     <>

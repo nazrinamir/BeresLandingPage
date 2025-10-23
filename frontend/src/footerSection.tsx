@@ -13,7 +13,7 @@ const FooterSection = () => {
   const [showWaitlist, setShowWaitlist] = useState(false);
 
   // Local email state for the header form (purely visual; join opens popup)
-  const [email, setEmail] = useState('');
+  // const [email, setEmail] = useState('');
 
   // Auto-open if URL has #waitlist, #privacy-policy, or ?waitlist=1
   useEffect(() => {
