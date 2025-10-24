@@ -203,3 +203,25 @@ button {
   }
 
 }
+
+/* Add this to prevent horizontal overflow globally */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Add this for mobile-specific overflow prevention */
+@media (max-width: 768px) {
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Prevent any element from causing horizontal scroll */
+  .swiper-container,
+  .swiper-wrapper,
+  .swiper-slide {
+    max-width: 100%;
+    overflow: hidden;
+  }
+}

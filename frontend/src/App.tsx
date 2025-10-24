@@ -116,7 +116,7 @@ function AppContent() {
   }, [isLoading]); // Add isLoading as dependency
 
   return (
-    <div className="relative min-h-screen text-white w-full">
+    <div className="relative min-h-screen text-white w-full overflow-x-hidden"> {/* Added overflow-x-hidden */}
       {/* Loading Screen */}
       <LoadingScreen isLoading={isLoading} />
 

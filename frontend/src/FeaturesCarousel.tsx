@@ -147,15 +147,44 @@ export default function SuperChillSlider() {
           Features
         </div>
 
-        {/* Title */}
         <h2 className="text-center !text-xl sm:!text-2xl md:!text-3xl lg:!text-4xl !font-bold leading-snug mb-8 !text-[#012219]">
-          <span className="relative inline-block">
-            <span className="relative z-10">Move Like Never Before:</span>
+          {/* === Mobile version === */}
+          <span className="block sm:hidden">
+            <span className="relative inline-block pb-2">
+              <span className="relative z-10 block">
+                Move Like Never Before:
+                <br />
+                For Business Owners
+              </span>
+              {/* green underline only under the first 2 lines */}
+              <span
+                className="
+          absolute left-1/2 -translate-x-1/2 bottom-0
+          w-[90%] h-[8px] bg-[#AEEA30] rounded-full opacity-70 z-0
+        "
+              ></span>
+            </span>
+            <br />
+            <span className="relative inline-block text-[#012219]">
+              <span className="relative z-10">
+                Who Let Their Store Run 24/7
+              </span>
+            </span>
           </span>
-          <br />
-          <span className="relative inline-block !text-[#012219] pb-1">
-            <span className="relative z-10">For Business Owners Who Let Their Store Run 24/7</span>
-            <span className="absolute left-0 bottom-0 w-90 h-[10px] bg-[#AEEA30] rounded-full opacity-70 z-0"></span>
+
+          {/* === Desktop version === */}
+          <span className="hidden sm:inline-block relative pb-1">
+            <span className="relative z-10 block">
+              Move Like Never Before:
+              <br />
+              For Business Owners Who Let Their Store Run 24/7
+            </span>
+            <span
+              className="
+        absolute left-0 bottom-0
+        w-[40%] h-[10px] bg-[#AEEA30] rounded-full opacity-70 z-0
+      "
+            ></span>
           </span>
         </h2>
 
@@ -208,7 +237,7 @@ export default function SuperChillSlider() {
             }}
             centeredSlides
             grabCursor
-            className="overflow-visible"
+            className="overflow-hidden" // Changed from "overflow-visible"
           >
             {slides.map((slide, idx) => {
               const currentCardIndex = activeCardIndices[idx];

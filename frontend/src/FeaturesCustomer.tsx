@@ -156,7 +156,7 @@ export default function CustomerExperienceSection() {
             }}
             centeredSlides
             grabCursor
-            className="overflow-visible"
+            className="overflow-hidden" // Changed from "overflow-visible"
             style={{
               paddingTop: "2rem",
               paddingBottom: "2rem",

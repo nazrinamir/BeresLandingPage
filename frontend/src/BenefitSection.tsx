@@ -17,16 +17,19 @@ export default function BenefitSection() {
   return (
     <>
       <section className="relative bg-[#DFF9D7] py-12 sm:py-16 md:py-20 lg:py-24 flex justify-center rounded-b-2xl">
-        {/* === GRID BACKGROUND === */}
         <div className="absolute inset-0 bg-[url('/Maskgroupbenefit.svg')] bg-cover bg-no-repeat opacity-90"></div>
-        <div className="absolute top-4 sm:top-6 flex justify-center w-full z-20 mt-8">
-          <div className="px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border !border-black !text-black font-semibold text-2xl inline-block">
+
+        {/* === TOP LABEL === */}
+        <div className="absolute top-4 sm:top-6 flex justify-center w-full z-20 mt-6 sm:mt-8">
+          <div className="px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-black text-black font-semibold text-2xl inline-block">
             Benefits
           </div>
         </div>
 
         {/* === CONTENT WRAPPER === */}
-        <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between w-[95%] sm:w-[90%] max-w-[1200px] gap-6 sm:gap-8 lg:gap-10 mt-12 sm:mt-14 lg:mt-16">
+        <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-start justify-between 
+  w-[95%] sm:w-[90%] max-w-[1200px] gap-6 sm:gap-8 lg:gap-10 
+  mt-24 sm:mt-14 lg:mt-16">
 
           {/* === LEFT CONTENT === */}
           <div className="flex flex-col justify-center lg:justify-start flex-1 text-center lg:text-left lg:pl-4 mt-0 lg:mt-36">

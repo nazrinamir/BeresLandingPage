@@ -45,7 +45,7 @@ const HeroSection = ({ isLoading = false }: HeroSectionProps) => {
             loop
             muted
             playsInline
-            className="w-[1500px] md:w-[800px] max-w-full transition-transform duration-500 hover:scale-[1.03]"
+            className="w-full max-w-[800px] md:w-[800px] max-w-full transition-transform duration-500 hover:scale-[1.03]"
           />
         </div>
 
