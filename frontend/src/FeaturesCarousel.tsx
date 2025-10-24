@@ -13,12 +13,12 @@ const slides = [
     cards: [
       {
         heading: "Performance Overview",
-        text: "See your orders, payments, and stock levels update in real time, all in one place",
+        text: "See your orders, payments, and stock levels update in real time, all in one place.",
         image: "/dashboard.svg",
       },
       {
         heading: "Instant Transaction Alerts",
-        text: "Stay informed the moment a sale happens Beres automatically updates your dashboard with every completed payment, eliminating the need for manual tracking",
+        text: "Stay informed the moment a sale happens Beres automatically updates your dashboard with every completed payment, eliminating the need for manual tracking.",
         image: "/alert.svg",
       },
     ],
@@ -30,12 +30,12 @@ const slides = [
     cards: [
       {
         heading: "Upload Products in Beres",
-        text: "Add your products once, then easily update stock anytime even for multiple items at once. Your catalog stays up to date in minutes",
+        text: "Add your products once, then easily update stock anytime even for multiple items at once. Your catalog stays up to date in minutes.",
         image: "/addonetime.webm",
       },
       {
         heading: "WhatsApp Catalogue Mirrors Instantly",
-        text: "Beres automatically keeps your WhatsApp Business Catalogue perfectly updated. Out of stock? Update Beres, and your WhatsApp catalogue reflects the change instantly",
+        text: "Beres automatically keeps your WhatsApp Business Catalogue perfectly updated. Out of stock? Update Beres, and your WhatsApp catalogue reflects the change instantly.",
         image: "/catalog.webm",
       },
     ],
@@ -52,7 +52,7 @@ const slides = [
       },
       {
         heading: "Pay Directly in Chat",
-        text: "Customers automatically receive a secure payment link right inside WhatsApp and can complete their purchase in seconds",
+        text: "Customers automatically receive a secure payment link right inside WhatsApp and can complete their purchase in seconds.",
         image: "/payment.svg",
       },
     ],
@@ -150,7 +150,7 @@ export default function SuperChillSlider() {
         {/* Title */}
         <h2 className="text-center !text-xl sm:!text-2xl md:!text-3xl lg:!text-4xl !font-bold leading-snug mb-8 !text-[#012219]">
           <span className="relative inline-block">
-            <span className="relative z-10">Move Like Never Before With</span>
+            <span className="relative z-10">Move Like Never Before:</span>
           </span>
           <br />
           <span className="relative inline-block !text-[#012219] pb-1">

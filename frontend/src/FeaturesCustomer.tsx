@@ -17,7 +17,7 @@ const cards = [
     id: 1,
     title: "Live Stock Confirmation (Zero Waiting)",
     color: "#BDCCFF",
-    text: "The moment an item is added, Beres automatically performs a real-time stock check. No manual checks, no delays, and no 'wait, let me check' messages.",
+    text: `The moment an item is added, Beres automatically performs a real-time stock check. No manual checks, no delays, and no "wait, let me check" messages.`,
     image: "/livestock.svg",
   },
   {
