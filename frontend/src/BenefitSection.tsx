@@ -59,7 +59,7 @@ export default function BenefitSection() {
                   key={i}
                   whileHover={{ scale: 1.04 }}
                   transition={{ duration: 0.25 }}
-                  className="bg-white relative rounded-[1.5rem] sm:rounded-[2rem] shadow-[0_8px_25px_rgba(0,0,0,0.08)] flex flex-col items-center justify-center text-center py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-7"
+                  className="bg-white relative rounded-[1.5rem] sm:rounded-[2rem] shadow-[0_8px_25px_rgba(0,0,0,0.08)] flex flex-col items-center text-center py-6 sm:py-8 lg:py-12 px-4 sm:px-6 lg:px-7"
                 >
                   {/* Red Grid Overlay */}
                   <div className="absolute inset-0 bg-[url('/red-grid-bg.svg')] bg-[length:16px_16px] sm:bg-[length:20px_20px] lg:bg-[length:24px_24px] opacity-25 rounded-[1.5rem] sm:rounded-[2rem] pointer-events-none"></div>
