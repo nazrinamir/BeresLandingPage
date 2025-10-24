@@ -66,7 +66,7 @@ export default function Navbar() {
                 <a
                   href={l.href}
                   onClick={(e) => handleLinkClick(e, l.href)}
-                  className="!text-black hover:text-white leading-none"
+                  className="text-black! hover:text-white leading-none"
                 >
                   {l.label}
                 </a>

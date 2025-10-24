@@ -85,7 +85,7 @@ export default function CustomerExperienceSection() {
     <section className="py-20 bg-[#DFF9D7]">
       <div className="px-2">
         {/* Heading */}
-        <h2 className="text-center !text-xl sm:!text-2xl md:!text-3xl lg:!text-4xl !font-bold leading-snug mb-8 text-[#012219] relative inline-block">
+        <h2 className="text-center !text-xl sm:!text-2xl md:!text-3xl lg:!text-4xl font-bold! leading-snug mb-8 text-[#012219] relative inline-block">
           <span className="relative inline-block">
             <span
               className="

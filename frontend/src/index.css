@@ -205,7 +205,8 @@ button {
 }
 
 /* Add this to prevent horizontal overflow globally */
-html, body {
+html,
+body {
   overflow-x: hidden;
   max-width: 100%;
 }
@@ -216,12 +217,12 @@ html, body {
     max-width: 100%;
     box-sizing: border-box;
   }
-  
-  /* Prevent any element from causing horizontal scroll */
-  .swiper-container,
+
+  /* Do NOT restrict Swiper internals; let it calculate widths correctly */
+  .swiper,
   .swiper-wrapper,
   .swiper-slide {
-    max-width: 100%;
-    overflow: hidden;
+    max-width: none;
+    overflow: visible;
   }
 }
