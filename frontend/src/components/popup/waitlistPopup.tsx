@@ -115,8 +115,8 @@ const WaitlistPopup: React.FC<WaitlistPopupProps> = ({ isOpen, onClose }) => {
         <>
             {/* Existing waitlist popup JSX */}
             {isOpen && !showSuccessPopup && (
-                <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 ">
-                    <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md relative">
+                <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 mt-5">
+                    <div className="bg-white rounded-3xl shadow-2xl w-90 md:w-full max-w-md relative">
                         {/* Header with gradient */}
                         <div className="bg-gradient-to-r from-[#012219] to-[#0B1E18] p-6 text-white relative rounded-t-2xl">
                             <div className="absolute top-4 right-4">
